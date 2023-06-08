@@ -1,0 +1,124 @@
+/* App.css
+/* ---------------------------------------------------------- /*
+# Table of Contents
+
+- Vars
+- UI Base
+- Font Base Styling
+- Layout Styling
+- 
+
+/* Variables
+/* ---------------------------------------------------------- */
+
+:root {
+    /* Colors */
+    /* --color-primary: #691eeb;
+    --color-secondary: #ADFF00;
+    --color-neutral-dark: #0C0C0C;
+    --color-neutral-dark-2: #2A086D;
+    --color-neutral-light: #F8F8F8;
+    --color-neutral-light-2: #C8C8C8;
+    --color-neutral-light-3: #D9D2FF; */
+    --color-semantic-warning: #FFD014;
+    --color-semantic-safety: #18C1F9;
+    --color-semantic-success: #00E038;
+    --color-semantic-danger: #CC3300;
+    --color-dream-step: linear-gradient(88.11deg, #4FACFE 30.94%, #00F2FE 76.29%);
+    --color-imagine-step: linear-gradient(85.49deg, #F83600 21.23%, #F9D423 70.14%);
+    --color-develop-step: linear-gradient(49.17deg, #6A11CB 26.15%, #2575FC 69.61%);
+  
+    /* Outer Margins */
+    --margin-outer-desktop: 4rem;
+    --margin-outer-tablet: 3rem;
+    --margin-outer-mobile: 1.5rem;
+  }
+  
+  :root[data-theme='light'] {
+    --background-start-rgb: rgba(255, 255, 255, 1);
+    --background-end-rgb: rgba(236, 236, 245, 1);
+    --color-primary: #571FFF;
+    /* --color-secondary: #ADFF00; */
+    --color-neutral-dark: #040415;
+    --neutral-dark-absolute: #040415;
+    --neutral-dark-950: #292929;
+    --neutral-dark-900: #3d3d3d;
+    --neutral-dark-800: #464646;
+    --neutral-dark-700: #525252;
+    --neutral-dark-600: #656565;
+    --neutral-dark-500: #7c7c7c;
+    --neutral-dark-400: #989898;
+    --neutral-dark-300: #bdbdbd;
+    --neutral-dark-200: #dcdcdc;
+    --neutral-dark-100: #efefef;
+    /* --color-neutral-dark-2: #2A086D; */
+    --color-neutral-light: #dcdcdc;
+    --color-neutral-light-2: #0D0D34;
+    /* --color-neutral-light-3: #D9D2FF; */
+    --scrollbar-color: #571FFF transparent
+  }
+  :root[data-theme='dark'] {
+    --background-start-rgb: rgba(4, 4, 21, 1);
+    --background-end-rgb: rgba(0, 0, 19, 1);
+    --color-primary: #1FFFC7;
+    /* --color-secondary: #ADFF00; */
+    --color-neutral-dark: #fff;
+    --neutral-dark-absolute: #040415;
+    --neutral-dark-950: #040415;
+    --neutral-dark-900: #1c1f93;
+    --neutral-dark-800: #1716bd;
+    --neutral-dark-700: #1a18ea;
+    --neutral-dark-600: #2324ff;
+    --neutral-dark-500: #4354ff;
+    --neutral-dark-400: #677fff;
+    --neutral-dark-300: #92aeff;
+    --neutral-dark-200: #bbcfff;
+    --neutral-dark-100: #d9e5ff;
+    /* --color-neutral-dark-2: #2A086D; */
+    --color-neutral-light: #0D0D34;
+    --color-neutral-light-2: #0D0D34;
+    /* --color-neutral-light-3: #D9D2FF; */
+    --scrollbar-color: #1FFFC7 transparent
+  }
+  
+  * {
+    background: linear-gradient(107.56deg, var(--background-start-rgb) 0%, var(--background-end-rgb) 100%);
+    font-family: var(--font-sans-serif);
+    font-style: normal;
+    scroll-behavior: smooth;
+    scrollbar-color: var(--scrollbar-color);
+    scrollbar-width: thin;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-synthesis: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    background-color: transparent;
+  }
+  
+::-webkit-scrollbar-thumb {
+    background-color: var(--color-primary);
+    height: 32px;
+    border-radius: 8px;
+}
+
+  html,
+  body {
+    max-width: 100vw;
+    min-height: 100vh;
+    overflow-x: hidden;
+    z-index: 4;
+  }
+  span, button, form, div, input, i, a, svg, h1, h2, h3, h4, h5, h6, p, img, span {
+    background: none;
+  }

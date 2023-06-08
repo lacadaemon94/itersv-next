@@ -1,0 +1,86 @@
+.topbar {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    height: fit-content;
+    padding: 2rem;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.topbar .logo {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: fit-content;
+    height: fit-content;
+
+    gap: 8px;
+    align-items: center;
+}
+
+.logo svg {
+    font-size: 2em;
+    color: var(--color-neutral-dark);
+}
+.logo p {
+    font-size: 1.5em;
+    font-weight: 800;
+    text-transform: capitalize;
+    color: var(--color-neutral-dark);
+}
+.topbar .menuitems {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: fit-content;
+    height: fit-content;
+    align-items: center;
+    gap: 1.5rem;
+}
+.topbar .menuitem {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: fit-content;
+    height: fit-content;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    border-radius: 12px;
+    background: none;
+
+    box-shadow: none;
+    outline: none;
+    border: none;
+    appearance: none;
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition: background-color 0.3s ease-out;
+}
+.menuitem:hover {
+    background-color: var(--color-neutral-light);
+}
+.menuitem svg {
+    color: var(--color-neutral-dark);
+    font-size: clamp(1em, 1.5vw, 1.25em);
+}
+.menuitem p {
+    color: var(--color-neutral-dark);
+    font-size: clamp(1em, 1.5vw, 1.25em);
+    font-weight: 800;
+    text-transform: capitalize;
+}
+.topbar button[data-islight="true"] svg {
+    fill: var(--color-neutral-dark);
+}
+.menuitem:focus {
+    outline: 2px solid var(--color-primary);
+}
