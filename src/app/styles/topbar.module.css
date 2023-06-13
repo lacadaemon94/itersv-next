@@ -5,9 +5,10 @@
     flex-wrap: nowrap;
     width: 100%;
     height: fit-content;
-    padding: 2rem;
-    align-items: flex-start;
+    padding: clamp(1.5rem, 2.5vw, 2rem);
+    align-items: center;
     justify-content: space-between;
+    z-index: 3;
 }
 
 .topbar .logo {
@@ -23,14 +24,19 @@
 }
 
 .logo svg {
-    font-size: 2em;
+    font-size: clamp(1.5em, 3vw, 2em);
     color: var(--color-neutral-dark);
 }
 .logo p {
-    font-size: 1.5em;
+    font-size: clamp(1em, 3vw, 1.5em);
     font-weight: 800;
     text-transform: capitalize;
     color: var(--color-neutral-dark);
+}
+@media only screen and (max-width: 480px) {
+    .logo p {
+        display: none;
+    }
 }
 .topbar .menuitems {
     display: flex;
@@ -40,7 +46,7 @@
     width: fit-content;
     height: fit-content;
     align-items: center;
-    gap: 1.5rem;
+    gap: clamp(1em, 2vw, 1.5em);
 }
 .topbar .menuitem {
     display: flex;
@@ -51,7 +57,7 @@
     height: fit-content;
     align-items: center;
     gap: 8px;
-    padding: 12px;
+    padding: clamp(8px, 2vw, 12px);
     border-radius: 12px;
     background: none;
 
@@ -70,11 +76,12 @@
 }
 .menuitem svg {
     color: var(--color-neutral-dark);
-    font-size: clamp(1em, 1.5vw, 1.25em);
+    font-size: 1.5em;
 }
 .menuitem p {
     color: var(--color-neutral-dark);
-    font-size: clamp(1em, 1.5vw, 1.25em);
+    font-size: clamp(1em, 1.25vw, 1.25em);
+    letter-spacing: 0.02em;
     font-weight: 800;
     text-transform: capitalize;
 }

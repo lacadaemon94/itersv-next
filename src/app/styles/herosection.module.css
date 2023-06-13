@@ -1,0 +1,117 @@
+.herosection {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 100%;
+    height: fit-content;
+    align-items: center;
+    gap: 4rem;
+    margin-top: 4.5rem;
+    min-height: 57.5rem;
+}
+@media only screen and (max-width: 1024px) {
+    .herosection {
+        min-height: unset;
+    }
+}
+.herosection .heroimage {
+    position: absolute;
+    width: 104%;
+    height: auto;
+    margin-top: -4.5rem;
+}
+@media only screen and (max-width: 1280px) {
+    .herosection .heroimage {
+        display: none;
+    }
+}
+.herosection .herotext {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: fit-content;
+    height: fit-content;
+    align-items: center;
+    gap: 8px;
+}
+@media only screen and (max-width: 1280px) {
+    .herosection .herotext {
+        margin-top: 5rem;
+    }
+}
+.herotext .htext {
+    font-size: clamp(3.25em, 8vw, 8em);
+    font-weight: 800;
+    text-transform: capitalize;
+    text-align: center;
+    letter-spacing: 0.02em;
+}
+.herosection .ctas {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: fit-content;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+.ctas .cta {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: fit-content;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(8px, 2vw, 12px);
+
+    border-radius: 8px;
+    border: 2px solid var(--color-primary);
+    background: none;
+
+    transition: background-color 0.3s ease-out;
+    
+    appearance: none;
+    outline: none;
+    box-shadow: none;
+    text-decoration: none;
+}
+.cta a {
+    font-size: clamp(1em, 2vw, 1.5em);
+    font-weight: 600;
+    color: var(--color-primary);
+    text-transform: capitalize;
+    text-decoration: none;
+
+    transition: color 0.3s ease-out;
+}
+.cta:hover {
+    background-color: var(--color-primary);
+}
+.cta:hover a {
+    color: var(--neutral-dark-absolute);
+}
+.cta:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+}
+.cta[data-issecondary="true"] {
+    border-color: var(--color-neutral-light-2);
+}
+.cta[data-issecondary="true"] a {
+    color: var(--color-neutral-light-2);
+}
+.cta[data-issecondary="true"]:hover {
+    background-color: var(--color-neutral-light-2);
+}
+.cta[data-isSecondary="true"]:hover a {
+    color: var(--neutral-dark-absolute);
+}
+.cta[data-issecondary="true"]:focus {
+    outline-color: var(--color-neutral-light-2);
+}
