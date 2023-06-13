@@ -5,6 +5,7 @@ import { RadialTextGradient } from "react-text-gradients-and-animations";
 import styles from "../../../styles/home.module.css";
 
 type Props = {
+  id: string;
   gradientLineStart: string;
   gradientLineEnd: string;
   gradientCircle: string;
@@ -15,6 +16,7 @@ type Props = {
 };
 
 export const Glider = ({
+  id,
   gradientLineStart,
   gradientLineEnd,
   gradientCircle,
@@ -44,7 +46,7 @@ export const Glider = ({
       >
         <motion.path
           d="M2 0L2.00001 174"
-          stroke="url(#paint0_linear_2463_4856)"
+          stroke={`url(#step_${id})`}
           strokeWidth="5"
           variants={lineVariants}
           initial="initial"
@@ -56,7 +58,7 @@ export const Glider = ({
         />
         <defs>
           <linearGradient
-            id="paint0_linear_2463_4856"
+            id={`step_${id}`}
             x1="2.66654"
             y1="6.76667"
             x2="2.66654"
@@ -113,7 +115,7 @@ export const Glider = ({
           mass: 1,
           delay: 1,
         }}
-        viewport={{ once: true, margin: '41px 0px 0px 0px' }}
+        viewport={{ once: true, margin: "41px 0px 0px 0px" }}
         className={styles.stepname}
       >
         <RadialTextGradient

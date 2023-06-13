@@ -5,8 +5,11 @@ import { RadialTextGradient } from "react-text-gradients-and-animations";
 import styles from "../../../styles/home.module.css";
 
 type Props = {
+  id: string;
   titleText: string;
   titleEmphasis: string;
+  linePath: string;
+  lineDimensions: string;
   gradientLineStart: string;
   gradientLineEnd: string;
   gradientTextOne: string;
@@ -14,15 +17,18 @@ type Props = {
 };
 
 const Title = ({
+  id,
   titleText,
   titleEmphasis,
+  linePath,
+  lineDimensions,
   gradientLineStart,
   gradientLineEnd,
   gradientTextOne,
   gradientTextTwo,
 }: Props) => {
   const underStrike = useRef(null);
-  const isUStrikeInView = useInView(underStrike, { once: true })
+  const isUStrikeInView = useInView(underStrike, { once: true });
 
   const underStrikeVariants = {
     initial: { pathLength: 0 },
@@ -30,7 +36,7 @@ const Title = ({
   };
 
   return (
-    <motion.div 
+    <motion.div
       className={styles.title}
       initial={{
         opacity: 0,
@@ -64,30 +70,30 @@ const Title = ({
             {titleEmphasis}
           </RadialTextGradient>
           <svg
-            width="1em"
-            height="56"
-            viewBox="0 0 298 56"
+            width="100"
+            height="auto"
+            viewBox={lineDimensions}
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             ref={underStrike}
           >
             <motion.path
-              d="M2 53.5003C2 53.5003 64.4136 18.931 108.5 11.5003C134.519 7.11477 155.5 4.00032 174 8.00032C187.083 10.8291 192.406 14.9652 186.5 22.5003C172 41.0003 94.9478 54.1054 104.5 35.0003C108.5 27 124 19.5993 132 16.5002C187.5 -5.00002 295.5 4.00005 295.5 4.00005"
-              stroke="url(#paint0_linear_2465_4858)"
+              d={linePath}
+              stroke={`url(#step_title_${id})`}
               strokeWidth="5"
               strokeLinecap="round"
               variants={underStrikeVariants}
               initial="initial"
-              animate={isUStrikeInView ? 'inView' : 'initial'}
+              animate={isUStrikeInView ? "inView" : "initial"}
               transition={{
-                type: 'spring',
+                type: "spring",
                 duration: 1.5,
-                delay: 1.5
+                delay: 1.5,
               }}
             />
             <defs>
               <linearGradient
-                id="paint0_linear_2465_4858"
+                id={`step_title_${id}`}
                 x1="2"
                 y1="27.8157"
                 x2="295.5"
@@ -106,3 +112,6 @@ const Title = ({
 };
 
 export default Title;
+
+
+

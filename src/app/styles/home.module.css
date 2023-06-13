@@ -22,7 +22,7 @@
     flex-direction: column;
     flex-wrap: nowrap;
     width: 100%;
-    gap: 4rem;
+    gap: 16rem;
 }
 .steps .step {
     display: flex;
@@ -79,7 +79,7 @@
 }
 .title p {
     font-weight: 800;
-    font-size: 6em;
+    font-size: clamp(2em, 6vw, 6em);
     color: var(--color-neutral-light-2);
     width: 100%;
     text-align: center;
@@ -87,14 +87,14 @@
 .title span {
     display: inline-flex;
     position: relative;
-    left: 12px;
+    left: clamp(4px, 1.5vw, 12px);
     flex-direction: column;
     width: fit-content;
     height: fit-content;
     align-items: center;
 }
 .title span svg {
-    font-size: 3em;
+    width: clamp(75%, 24vw, 85%);
 }
 .step .description {
     position: relative;
@@ -102,7 +102,7 @@
     text-align: center;
     color: var(--color-neutral-light-2);
     font-weight: 400;
-    font-size: 1.5em;
+    font-size: clamp(1.25em, 2vw, 1.5em);
 }
 .step .taskswrapper {
     display: flex;
@@ -114,9 +114,19 @@
     align-items: center;
     margin-top: 4rem;
 }
-.taskswrapper svg {
+@media only screen and (max-width: 1280px) {
+    .step .taskswrapper {
+        flex-direction: column;
+    }
+}
+.taskswrapper .taskconnector {
     font-size: 8em;
     color: var(--color-neutral-light-2);
+}
+@media only screen and (max-width: 1280px) {
+    .taskswrapper .taskconnector {
+        transform: rotate(90deg);
+    }
 }
 .taskswrapper .taskcard {
     display: flex;
@@ -131,10 +141,20 @@
     gap: 2rem;
     border: 2px solid var(--color-neutral-light-2);
     border-radius: 1.5rem;
+
+    transition: background-color 0.4s ease-out;
+}
+.taskcard:hover {
+    background-color: var(--color-neutral-light-2);
 }
 .taskcard svg {
-    font-size: 4em;
+    font-size: clamp(2em, 4vw, 4em);
     color: var(--color-neutral-light-2);
+
+    transition: background-color 0.4s ease-out;
+}
+.taskcard:hover svg {
+    color: var(--neutral-dark-absolute);
 }
 .taskcard .taskcardcontent {
     display: flex;
@@ -146,12 +166,33 @@
     gap: 12px;
 }
 .taskcardcontent h5 {
-    font-weight: 400;
+    font-weight: 600;
     font-size: 1em;
     color: var(--color-neutral-light-2);
+
+    transition: background-color 0.4s ease-out;
 }
 .taskcardcontent p {
     font-weight: 300;
     font-size: 1em;
     color: var(--color-neutral-light-2);
+
+    transition: background-color 0.4s ease-out;
+}
+.taskcard:hover .taskcardcontent h5 {
+    color: var(--neutral-dark-absolute);
+}
+.taskcard:hover .taskcardcontent p {
+    color: var(--neutral-dark-absolute);
+}
+.step .imagecontainer {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: clamp(16rem, 20vw, 24rem);
+    height: clamp(16rem, 20vw, 24rem);
+    align-items: center;
+}
+.imagecontainer .stepimage {
+    object-fit: contain;
 }
