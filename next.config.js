@@ -12,11 +12,11 @@ const corsHeaders = [
     {
         key: "Access-Control-Allow-Headers",
         value: "Content-Type, Authorization, x-itersv-origin",
-      },
-      {
+    },
+    {
         key: "Access-Control-Allow-Credentials",
         value: "true",
-      },
+    },
 ];
 
 async function headers() {

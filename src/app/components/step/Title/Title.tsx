@@ -71,7 +71,7 @@ const Title = ({
           </RadialTextGradient>
           <svg
             width="100"
-            height="auto"
+            height="100%"
             viewBox={lineDimensions}
             fill="none"
             xmlns="http://www.w3.org/2000/svg"

@@ -1,10 +1,19 @@
 import React from 'react'
 
-type Props = {}
+import styles from '../../../styles/footer.module.css'
 
-const ExternalLink = (props: Props) => {
+type Props = {
+  linkText: string;
+  linkUrl: string;
+  ariaLabel: string;
+}
+
+const ExternalLink = ({ linkText, linkUrl, ariaLabel }: Props) => {
   return (
-    <div>ExternalLink</div>
+    <a className={styles.externallink} href={linkUrl} aria-label={ariaLabel} rel="noopener noreferrer" target="_blank">
+      {linkText}
+      <div></div>
+    </a>
   )
 }
 

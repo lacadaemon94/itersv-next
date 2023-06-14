@@ -1,0 +1,167 @@
+.contact {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 100%;
+    max-width: 90rem;
+    height: fit-content;
+    align-items: center;
+    margin: auto;
+    padding: 4.5rem 2rem;
+    z-index: 3;
+
+    overflow: hidden;
+}
+.contact .pagetitle {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 100%;
+    align-items: center;
+    gap: 12px;
+}
+.pagetitle h2 {
+    font-size: clamp(1.5em, 3vw, 4em);
+    font-weight: 800;
+    color: var(--color-neutral-light-2);
+    text-align: center;
+}
+.pagetitle p {
+    font-size: clamp(1em, 2vw, 1.5em);
+    font-weight: 400;
+    color: var(--color-neutral-light-2);
+    text-align: center;
+}
+.contact .contentcontainer {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    height: fit-content;
+    justify-content: space-between;
+    gap: 5rem;
+
+    margin-top: 6rem;
+}
+.contentcontainer .contactcard {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: fit-content;
+    height: fit-content;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 35rem;
+    height: 35rem;
+    padding: 2rem;
+    background-color: var(--color-neutral-light);
+    border-radius: 1.5rem;
+
+    overflow: hidden;
+}
+.contactcard .cardtitle {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 100%;
+    align-items: flex-start;
+    gap: 8px;
+}
+.cardtitle h3 {
+    font-size: clamp(1.25em, 1.75vw, 1.5em);
+    font-weight: 800;
+    color: var(--color-neutral-dark);
+}
+.cardtitle p {
+    font-size: 1em;
+    font-weight: 300;
+    color: var(--color-neutral-dark);
+}
+.contactcard .uppersection {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 100%;
+    align-items: flex-start;
+    gap: 3rem;
+}
+.contactcard .contactoptions {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 100%;
+    align-items: flex-start;
+    gap: 2rem;
+}
+.contactoptions .option {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: fit-content;
+    align-items: center;
+    gap: 8px;
+}
+.option svg {
+    font-size: clamp(1.25em, 1.5vw, 1.5em);
+    color: var(--color-neutral-dark);
+
+    transition: transform 0.2s ease-out;
+}
+.option:hover svg {
+    transform: rotate(15deg);
+}
+.option a {
+    display: inline-flex;
+    position: relative;
+    flex-direction: column;
+    font-size: 1em;
+    font-weight: 300;
+    color: var(--color-neutral-dark);
+    text-decoration: none;
+    appearance: none;
+}
+.option a div {
+    position: relative;
+    width: 0%;
+    height: 1px;
+    background-color: var(--color-neutral-dark);
+
+    transition: width 0.2s ease-out;
+}
+.option:hover a div {
+    width: 100%;
+}
+.contactcard .cardfooter {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: fit-content;
+    align-items: center;
+    gap: 1rem;
+}
+.cardfooter a {
+    font-size: 1.25em;
+    color: var(--color-neutral-dark);
+    text-decoration: none;
+    appearance: none;
+
+    transition: color 0.3s ease-out
+}
+.cardfooter a:hover  {
+    color: var(--color-primary);
+}
+.contactcard .cardillustration {
+    display: flex;
+    position: absolute;
+    right: -12rem;
+    bottom: -12rem;
+}
