@@ -1,167 +1,514 @@
 .contact {
-    display: flex;
-    position: relative;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    width: 100%;
-    max-width: 90rem;
-    height: fit-content;
-    align-items: center;
-    margin: auto;
-    padding: 4.5rem 2rem;
-    z-index: 3;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 100%;
+  max-width: 90rem;
+  height: fit-content;
+  align-items: center;
+  margin: auto;
+  padding: 4.5rem 2rem;
+  z-index: 3;
 
-    overflow: hidden;
+  overflow: hidden;
+}
+@media only screen and (max-width: 1280px) {
+  .contact {
+    max-width: 72rem;
+  }
 }
 .contact .pagetitle {
-    display: flex;
-    position: relative;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    width: 100%;
-    align-items: center;
-    gap: 12px;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 100%;
+  align-items: center;
+  gap: 12px;
 }
 .pagetitle h2 {
-    font-size: clamp(1.5em, 3vw, 4em);
-    font-weight: 800;
-    color: var(--color-neutral-light-2);
-    text-align: center;
+  font-size: clamp(1.5em, 3vw, 4em);
+  font-weight: 800;
+  color: var(--color-neutral-light-2);
+  text-align: center;
 }
 .pagetitle p {
-    font-size: clamp(1em, 2vw, 1.5em);
-    font-weight: 400;
-    color: var(--color-neutral-light-2);
-    text-align: center;
+  font-size: clamp(1em, 2vw, 1.5em);
+  font-weight: 400;
+  color: var(--color-neutral-light-2);
+  text-align: center;
 }
 .contact .contentcontainer {
-    display: flex;
-    position: relative;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    width: 100%;
-    height: fit-content;
-    justify-content: space-between;
-    gap: 5rem;
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+  height: fit-content;
+  justify-content: space-between;
+  gap: 5rem;
 
-    margin-top: 6rem;
+  margin-top: 6rem;
+}
+@media only screen and (max-width: 1280px) {
+  .contact .contentcontainer {
+    flex-direction: column;
+  }
 }
 .contentcontainer .contactcard {
-    display: flex;
-    position: relative;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    width: fit-content;
-    height: fit-content;
-    align-items: flex-start;
-    justify-content: space-between;
-    width: 35rem;
-    height: 35rem;
-    padding: 2rem;
-    background-color: var(--color-neutral-light);
-    border-radius: 1.5rem;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: fit-content;
+  height: fit-content;
+  min-width: 35rem;
+  min-height: 35rem;
+  padding: 2rem;
+  background-color: var(--color-neutral-light);
+  border-radius: 1.5rem;
 
-    overflow: hidden;
+  overflow: hidden;
+}
+@media only screen and (max-width: 1280px) {
+  .contentcontainer .contactcard {
+    width: 100%;
+    min-width: 15rem;
+    order: 1;
+  }
 }
 .contactcard .cardtitle {
-    display: flex;
-    position: relative;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    width: 100%;
-    align-items: flex-start;
-    gap: 8px;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 100%;
+  align-items: flex-start;
+  gap: 8px;
 }
 .cardtitle h3 {
-    font-size: clamp(1.25em, 1.75vw, 1.5em);
-    font-weight: 800;
-    color: var(--color-neutral-dark);
+  font-size: clamp(1.25em, 1.75vw, 1.5em);
+  font-weight: 800;
+  color: var(--color-neutral-dark);
 }
 .cardtitle p {
-    font-size: 1em;
-    font-weight: 300;
-    color: var(--color-neutral-dark);
+  font-size: 1em;
+  font-weight: 300;
+  color: var(--color-neutral-dark);
 }
 .contactcard .uppersection {
-    display: flex;
-    position: relative;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    width: 100%;
-    align-items: flex-start;
-    gap: 3rem;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 100%;
+  align-items: flex-start;
+  gap: 3rem;
 }
 .contactcard .contactoptions {
-    display: flex;
-    position: relative;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    width: 100%;
-    align-items: flex-start;
-    gap: 2rem;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 100%;
+  align-items: flex-start;
+  gap: 2rem;
 }
 .contactoptions .option {
-    display: flex;
-    position: relative;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    width: fit-content;
-    align-items: center;
-    gap: 8px;
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: fit-content;
+  align-items: center;
+  gap: 8px;
 }
 .option svg {
-    font-size: clamp(1.25em, 1.5vw, 1.5em);
-    color: var(--color-neutral-dark);
+  font-size: clamp(1.25em, 1.5vw, 1.5em);
+  color: var(--color-neutral-dark);
 
-    transition: transform 0.2s ease-out;
+  transition: transform 0.2s ease-out;
 }
 .option:hover svg {
-    transform: rotate(15deg);
+  transform: rotate(15deg);
 }
 .option a {
-    display: inline-flex;
-    position: relative;
-    flex-direction: column;
-    font-size: 1em;
-    font-weight: 300;
-    color: var(--color-neutral-dark);
-    text-decoration: none;
-    appearance: none;
+  display: inline-flex;
+  position: relative;
+  flex-direction: column;
+  font-size: 1em;
+  font-weight: 300;
+  color: var(--color-neutral-dark);
+  text-decoration: none;
+  appearance: none;
 }
 .option a div {
-    position: relative;
-    width: 0%;
-    height: 1px;
-    background-color: var(--color-neutral-dark);
+  position: relative;
+  width: 0%;
+  height: 1px;
+  background-color: var(--color-neutral-dark);
 
-    transition: width 0.2s ease-out;
+  transition: width 0.2s ease-out;
 }
 .option:hover a div {
-    width: 100%;
+  width: 100%;
 }
 .contactcard .cardfooter {
-    display: flex;
-    position: relative;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    width: fit-content;
-    align-items: center;
-    gap: 1rem;
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: fit-content;
+  align-items: center;
+  gap: 1rem;
 }
 .cardfooter a {
-    font-size: 1.25em;
-    color: var(--color-neutral-dark);
-    text-decoration: none;
-    appearance: none;
+  font-size: 1.25em;
+  color: var(--color-neutral-dark);
+  text-decoration: none;
+  appearance: none;
 
-    transition: color 0.3s ease-out
+  transition: color 0.3s ease-out;
 }
-.cardfooter a:hover  {
-    color: var(--color-primary);
+.cardfooter a:hover {
+  color: var(--color-primary);
 }
 .contactcard .cardillustration {
+  display: flex;
+  position: absolute;
+  right: -12rem;
+  bottom: -12rem;
+}
+@media only screen and (max-width: 920px) {
+  .contactcard .cardillustration {
+    width: 15%;
+    height: 15%;
+    right: 6rem;
+    bottom: 7rem;
+  }
+}
+.contentcontainer .formcontainer {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+.formcontainer .form {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 100%;
+  height: 100%;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 3rem;
+}
+.form .row {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+  height: fit-content;
+  align-items: flex-start;
+  gap: 3rem;
+}
+@media only screen and (max-width: 920px) {
+  .form .row {
+    flex-direction: column;
+  }
+}
+.row .inputwrapper {
+  position: relative;
+  width: 100%;
+}
+.inputwrapper .formfield {
+  border: solid 1px var(--color-neutral-light-2);
+  border-radius: 1rem;
+  background: none;
+  padding: 1rem;
+  font-size: 1rem;
+  color: var(--color-neutral-light-2);
+  transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 400;
+  font-size: 1.25em;
+  text-transform: capitalize;
+  width: 100%;
+}
+.inputwrapper .inputlabel {
+  position: absolute;
+  left: 16px;
+  color: var(--color-neutral-light-2);
+  pointer-events: none;
+  transform: translateY(1rem);
+  transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 300;
+  font-size: 1.25em;
+}
+.formfield:focus,
+.formfield:valid {
+  outline: none;
+  border: 2px solid var(--color-neutral-light-2);
+}
+.formfield:focus ~ label,
+.formfield:valid ~ label {
+  transform: translateY(-50%) scale(0.7);
+  background-color: var(--neutral-dark-absolute);
+  padding: 0 6px;
+  color: var(--color-neutral-light-2);
+}
+.form .fieldset {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  position: relative;
+  width: 100%;
+  height: fit-content;
+  align-items: flex-start;
+  justify-content: space-between;
+  border: none;
+  box-shadow: none;
+  appearance: none;
+  gap: 1.5rem;
+}
+@media only screen and (max-width: 920px) {
+  .form .fieldset {
+    flex-direction: column;
+  }
+}
+.fieldset legend {
+  display: flex;
+  position: relative;
+  flex: row;
+  flex-wrap: nowrap;
+  width: fit-content;
+  height: fit-content;
+  color: var(--color-neutral-light-2);
+  font-size: 1.25em;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+.fieldset input {
+  display: none;
+}
+.fieldset label {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 8px;
+  align-items: center;
+
+  cursor: pointer;
+}
+.fieldset label p {
+  color: var(--color-neutral-light-2);
+  font-weight: 300;
+  font-size: 1em;
+}
+.fieldset label button {
+  display: flex;
+  position: relative;
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  border: 1px solid var(--color-neutral-light-2);
+  outline: none;
+  box-shadow: none;
+  appearance: none;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+.fieldset label button div {
+  scale: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background-color: var(--color-neutral-light-2);
+
+  transition: scale 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+.fieldset label:hover button div {
+  scale: 1;
+}
+.fieldset input[type="radio"]:checked + label button div {
+  scale: 1;
+}
+.form .messagewrapper {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 8rem;
+}
+@media only screen and (max-width: 920px) {
+  .form .messagewrapper {
+    height: fit-content;
+  }
+}
+.messagewrapper textarea {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--color-neutral-light-2);
+  border-radius: 16px;
+  outline: none;
+  box-shadow: none;
+  appearance: none;
+  padding: 1rem;
+  color: var(--color-neutral-light-2);
+  font-size: 1em;
+  font-weight: 400;
+  resize: none;
+}
+@media only screen and (max-width: 920px) {
+  .messagewrapper textarea {
+    height: 15rem;
+  }
+}
+.messagewrapper textarea::placeholder {
+  font-size: 1em;
+  color: var(--color-neutral-light-2);
+  font-weight: 300;
+}
+.messagewrapper textarea:focus {
+  outline: none;
+  border: 2px solid var(--color-neutral-light-2);
+}
+.messagewrapper .textareacounter {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  font-size: 12px;
+  font-weight: 300;
+}
+.form .buttonwrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  position: relative;
+  width: 100%;
+  height: fit-content;
+  align-items: center;
+  justify-content: center;
+}
+.buttonwrapper .sendbutton {
+  display: flex;
+  flex: row;
+  flex-wrap: nowrap;
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--color-neutral-light-2);
+  border: 1px solid var(--color-neutral-light-2);
+  border-radius: 12px;
+  font-size: 1em;
+  font-weight: 400;
+  text-transform: capitalize;
+  outline: none;
+  box-shadow: none;
+  appearance: none;
+  padding: 12px;
+
+  cursor: pointer;
+  transition: background-color 0.3s ease-out;
+}
+.buttonwrapper .sendbutton:hover {
+    background-color: var(--color-neutral-light-2);
+}
+.buttonwrapper .sendbutton:hover .send {
+    color: var(--neutral-dark-absolute);
+}
+.buttonwrapper .sendbutton:hover .sent {
+    color: var(--neutral-dark-absolute);
+}
+.buttonwrapper .sendbutton:hover .sending {
+    color: var(--neutral-dark-absolute);
+}
+.buttonwrapper .sendbutton:hover p {
+    color: var(--neutral-dark-absolute);
+}
+.loader {
+  border: 3px solid var(--color-neutral-light-2);
+  border-left-color: transparent;
+  border-radius: 50%;
+}
+
+.loader {
+  border: 3px solid var(--color-neutral-light-2);
+  border-left-color: transparent;
+  width: 20px;
+  height: 20px;
+}
+
+.loader {
+  border: 3px solid var(--color-neutral-light-2);
+  border-left-color: transparent;
+  width: 20px;
+  height: 20px;
+  animation: spin89345 0.6s linear infinite;
+}
+
+@keyframes spin89345 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.sendbutton[data-form-status="enviar"] .sending {
+    display: none;
+}
+.sendbutton[data-form-status="enviar"] .sent {
+    display: none;
+}
+.sendbutton[data-form-status="enviando..."] .send {
+    display: none;
+}
+.sendbutton[data-form-status="enviando..."] .sent {
+    display: none;
+}
+.sendbutton[data-form-status="enviando..."] .sending {
     display: flex;
-    position: absolute;
-    right: -12rem;
-    bottom: -12rem;
+}
+.sendbutton[data-form-status="enviado"] .send {
+    display: none;
+}
+.sendbutton[data-form-status="enviado"] .sent {
+    display: flex;
+}
+.sendbutton[data-form-status="enviado"] .sending {
+    display: none;
+}
+.sendbutton[data-form-status="enviado"] {
+  background-color: var(--color-neutral-light);
+  border-color: var(--color-neutral-light);
+  cursor: unset;
+}
+.buttonwrapper .sendbutton[data-form-status="enviado"]:hover {
+  background-color: var(--color-neutral-light);
+  border-color: var(--color-neutral-light);
+}
+.sendbutton[data-form-status="enviado"] p {
+  color: var(--color-semantic-success);
+}
+.sendbutton[data-form-status="enviado"] svg {
+  color: var(--color-semantic-success);
+}
+.buttonwrapper .sendbutton[data-form-status="enviado"]:hover  p {
+  color: var(--color-semantic-success);
+}
+.buttonwrapper .sendbutton[data-form-status="enviado"]:hover  svg {
+  color: var(--color-semantic-success);
 }

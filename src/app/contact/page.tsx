@@ -18,6 +18,7 @@ import BubblesLight from "../../assets/images/CantactBubbles_Light.png";
 import BubblesDark from "../../assets/images/CantactBubbles_Dark.png";
 import { PageTitle } from "../components/pagetitle/PageTitle";
 import { ContactCard } from "../components/contactcard/ContactCard";
+import { Form } from "../components/form/Form";
 
 export default function page() {
   return (
@@ -57,6 +58,7 @@ export default function page() {
           cardFooterAriaLabelThree="Twitter"
           cardFooterAriaLabelFour="WhatsApp"
         />
+        <Form />
       </div>
     </div>
   );

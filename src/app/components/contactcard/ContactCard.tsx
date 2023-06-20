@@ -69,7 +69,22 @@ export const ContactCard = ({
   const isLightTheme = useContext(SessionContext);
 
   return (
-    <div className={styles.contactcard}>
+    <motion.div 
+      className={styles.contactcard}
+      initial={{ 
+        opacity: 0,
+        x: -40,
+       }}
+       whileInView={{
+        opacity: 1,
+        x: 0,
+       }}
+       viewport={{ once: true }}
+       transition={{
+        type: 'spring',
+        duration: 1.5,
+       }}
+    >
       <div className={styles.uppersection}>
         <div className={styles.cardtitle}>
           <h3>{cardTitle}</h3>
@@ -160,6 +175,6 @@ export const ContactCard = ({
           className={styles.illustration}
         />
       </div>
-    </div>
+    </motion.div>
   );
 };
