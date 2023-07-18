@@ -366,6 +366,7 @@
   font-size: 1em;
   font-weight: 400;
   resize: none;
+  background: none;
 }
 @media only screen and (max-width: 920px) {
   .messagewrapper textarea {
