@@ -47,7 +47,7 @@ async function headers() {
                 },
                 {
                     key: "Content-Security-Policy",
-                    value: "default-src 'self' https://itersv.com https://www.itersv.com; script-src 'self' 'unsafe-inline' https://itersv.com https://www.itersv.com; style-src 'self' 'unsafe-inline' https://itersv.com https://www.itersv.com https://www.gstatic.com; img-src 'self' https://itersv.com https://www.itersv.com data:; connect-src https://itersv.com https://www.itersv.com 'self'; manifest-src 'self' https://itersv.com https://www.itersv.com; script-src-elem 'self' 'unsafe-inline' https://translate.google.com https://translate.googleapis.com",
+                    value: "default-src 'self' https://itersv.com https://www.itersv.com; script-src 'self' 'unsafe-inline' https://itersv.com https://www.itersv.com; style-src 'self' 'unsafe-inline' https://itersv.com https://www.itersv.com https://www.gstatic.com; img-src 'self' https://itersv.com https://www.itersv.com https://fonts.gstatic.com https://www.gstatic.com data:; connect-src https://itersv.com https://www.itersv.com https://translate.googleapis.com 'self'; manifest-src 'self' https://itersv.com https://www.itersv.com; script-src-elem 'self' 'unsafe-inline' https://translate.google.com https://translate.googleapis.com https://translate-pa.googleapis.com",
                 }
             ],
         },
