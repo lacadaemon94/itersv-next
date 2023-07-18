@@ -37,7 +37,7 @@ export const metadata = {
     { media: "(prefers-color-scheme: light)", color: "#FFFFFF" },
     { media: "(prefers-color-scheme: dark)", color: "#040415" },
   ],
-  manifest: "https://itersv.com/manifest.json",
+  manifest: "https://www.itersv.com/manifest.json",
 };
 
 export default function RootLayout({
