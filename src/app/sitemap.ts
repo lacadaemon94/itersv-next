@@ -7,7 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
     },
     {
-      url: 'https://acme.com/contact',
+      url: 'https://itersv.com/contact',
       lastModified: new Date(),
     },
   ]
