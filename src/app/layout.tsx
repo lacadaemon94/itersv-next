@@ -24,11 +24,11 @@ export const metadata = {
   colorScheme: "dark",
   creator: "Javier Flores",
   robots: {
-    index: false,
+    index: true,
     follow: true,
     nocache: true,
     googleBot: {
-      index: false,
+      index: true,
       follow: true,
       nocache: true,
     },
