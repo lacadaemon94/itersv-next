@@ -29,20 +29,12 @@ export const metadata = {
     description: 'Lleva tus sueños a la era Digital, con las mejores prácticas en Diseño y Desarrollo de Web Apps en la región.',
     url: 'https://itersv.com',
     siteName: 'Itersv',
-    images: [
-      {
-        url: 'https://itersv.com/twitter-card.png',
-      }
-    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Itersv',
     description: 'Lleva tus sueños a la era Digital, con las mejores prácticas en Diseño y Desarrollo de Web Apps en la región.',
     site: '@Iter_sv',
-    images: {
-      url: 'https://itersv.com/twitter-card.png',
-    },
   },
   robots: {
     index: true,
