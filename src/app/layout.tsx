@@ -30,7 +30,7 @@ export const metadata = {
     siteName: 'Itersv',
     images: [
       {
-        url: 'https://www.itersv.com/twitter_card.png',
+        url: 'https://www.itersv.com/twitter-card.png',
       }
     ],
   },
@@ -42,7 +42,7 @@ export const metadata = {
     creator: '@Iter_sv',
     creatorId: '1467726470533754880',
     images: {
-      url: 'https://www.itersv.com/twitter_card.png',
+      url: 'https://www.itersv.com/twitter-card.png',
     },
   },
   robots: {
