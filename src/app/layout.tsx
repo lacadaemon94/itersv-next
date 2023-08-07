@@ -23,6 +23,39 @@ export const metadata = {
   authors: [{ name: "Javier Flores", url: "https://zjavier.com" }],
   colorScheme: "dark",
   creator: "Javier Flores",
+  openGraph: {
+    title: 'Itersv | Aventuras Digitales - Diseño, Desarrolo y Lanzamiento',
+    description: 'Lleva tus sueños a la era Digital, con las mejores prácticas en Diseño y Desarrollo de Web Apps en la región.',
+    url: 'https://www.itersv.com',
+    siteName: 'Itersv',
+    images: [
+      {
+        url: 'https://www.itersv.com/twitter_og_800x600.png',
+        width: 800,
+        height: 600,
+      },
+      {
+        url: 'https://www.itersv.com/og_1200x630.png',
+        width: 1200,
+        height: 630,
+        alt: 'Itersv',
+      },
+    ],
+    locale: 'es_SV',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Itersv',
+    description: 'Lleva tus sueños a la era Digital, con las mejores prácticas en Diseño y Desarrollo de Web Apps en la región.',
+    site: '1506613512830742542',
+    creator: '@Iter_sv',
+    creatorId: '1467726470533754880',
+    images: {
+      url: 'https://www.itersv.com/twitter_og_1800x1600.png',
+      alt: 'Itersv',
+    },
+  },
   robots: {
     index: true,
     follow: true,
