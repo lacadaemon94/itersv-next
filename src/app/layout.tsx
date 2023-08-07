@@ -10,6 +10,7 @@ export const metadata = {
   title: "Itersv | Aventuras Digitales - Diseño, Desarrolo y Lanzamiento ",
   description:
     "Lleva tus sueños a la era Digital, con las mejores prácticas en Diseño y Desarrollo de Web Apps en la región.",
+  metadataBase: new URL('https://itersv.com/'),
   applicationName: "Itersv",
   generator: "Next.js",
   keywords: [
@@ -26,11 +27,11 @@ export const metadata = {
   openGraph: {
     title: 'Itersv | Aventuras Digitales - Diseño, Desarrolo y Lanzamiento',
     description: 'Lleva tus sueños a la era Digital, con las mejores prácticas en Diseño y Desarrollo de Web Apps en la región.',
-    url: 'https://www.itersv.com',
+    url: 'https://itersv.com',
     siteName: 'Itersv',
     images: [
       {
-        url: 'https://www.itersv.com/twitter-card.png',
+        url: 'https://itersv.com/twitter-card.png',
       }
     ],
   },
@@ -38,11 +39,9 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Itersv',
     description: 'Lleva tus sueños a la era Digital, con las mejores prácticas en Diseño y Desarrollo de Web Apps en la región.',
-    siteId: '1506613512830742542',
-    creator: '@Iter_sv',
-    creatorId: '1467726470533754880',
+    site: '@Iter_sv',
     images: {
-      url: 'https://www.itersv.com/twitter-card.png',
+      url: 'https://itersv.com/twitter-card.png',
     },
   },
   robots: {
