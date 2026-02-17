@@ -36,6 +36,11 @@ export const metadata = {
     description: 'Lleva tus sueños a la era Digital, con las mejores prácticas en Diseño y Desarrollo de Web Apps en la región.',
     site: '@Iter_sv',
   },
+  verification: {
+    other: {
+      "facebook-domain-verification": "xrcwmdjjk160w4jkg4o4h0umv8iunu",
+    },
+  },
   robots: {
     index: true,
     follow: true,
