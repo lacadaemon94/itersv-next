@@ -4,7 +4,6 @@ import {
   ArrowLeft01Icon,
   ArrowRight01Icon,
   ArrowUpRight01Icon,
-  Cancel01Icon,
   CheckIcon,
   ChevronDownIcon,
   Facebook01Icon,
@@ -18,13 +17,16 @@ import {
 } from "@hugeicons/core-free-icons";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import Link from "next/link";
+import { useState } from "react";
 
 import { AppIcon } from "@/components/app-icon";
 import { useSitePreferences } from "@/components/site-preferences";
+import { StrategyCallModal } from "@/components/strategy-call-modal";
 import { getCaseStudyPath, getHomePath } from "@/lib/i18n";
 import {
   caseStudyContent,
   caseStudySlugs,
+  landingContent,
   socialLinks,
   type CaseStudySlug,
   type SocialPlatform,
@@ -118,7 +120,7 @@ function IterMark() {
   return (
     <svg
       aria-hidden="true"
-      className="h-[38px] w-[92px]"
+      className="h-8 w-[82px] sm:h-[38px] sm:w-[92px]"
       viewBox="0 0 116 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -145,6 +147,7 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
   const nextSlug =
     caseStudySlugs[(caseStudySlugs.indexOf(slug) + 1) % caseStudySlugs.length];
   const nextStudy = caseStudyContent[nextSlug][locale];
+  const [contactOpen, setContactOpen] = useState(false);
 
   const copy =
     locale === "en"
@@ -217,7 +220,7 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
       />
 
       <nav className="fixed left-0 right-0 top-0 z-50 border-b border-[var(--border)] bg-[var(--nav-bg)] backdrop-blur-[18px]">
-        <div className="mx-auto flex max-w-[1200px] items-center gap-5 whitespace-nowrap px-6 py-[14px] max-lg:justify-between max-sm:px-[18px]">
+        <div className="mx-auto flex max-w-[1200px] items-center gap-3 whitespace-nowrap px-4 py-[12px] max-lg:justify-between sm:gap-5 sm:px-6 sm:py-[14px]">
           <Link href={homePath} className="flex items-center text-[var(--text)]" aria-label="Iter">
             <IterMark />
           </Link>
@@ -280,7 +283,7 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
           <Link
             href={homePath}
             scroll
-            className="inline-flex items-center gap-1.5 rounded-[10px] bg-[var(--accent)] px-4 py-2.5 text-[13px] font-semibold"
+            className="inline-flex items-center gap-1.5 rounded-[10px] bg-[var(--accent)] px-3 py-2.5 text-[12px] font-semibold sm:px-4 sm:text-[13px]"
             style={{ color: "var(--accent-ink)" }}
           >
             <AppIcon aria-hidden="true" icon={ArrowLeft01Icon} size={13} strokeWidth={2.4} />
@@ -291,13 +294,13 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
 
       <main>
         <motion.section
-          className="relative z-[1] px-6 pb-10 pt-[120px] max-sm:px-4"
+          className="relative z-[1] px-4 pb-8 pt-[104px] sm:px-6 sm:pb-10 sm:pt-[120px]"
           initial={prefersReducedMotion ? undefined : "hidden"}
           animate={prefersReducedMotion ? undefined : "show"}
           variants={caseHeroSectionVariants}
         >
           <div className="mx-auto max-w-[1200px]">
-            <div className="mb-7 flex items-center gap-2.5 font-[family:var(--font-mono)] text-[11.5px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
+            <div className="mb-5 flex min-w-0 items-center gap-2 overflow-x-auto whitespace-nowrap pb-1 font-[family:var(--font-mono)] text-[10.5px] uppercase tracking-[0.12em] text-[var(--text-muted)] sm:mb-7 sm:gap-2.5 sm:text-[11.5px]">
               <Link href={homePath}>Iter</Link>
               <span>/</span>
               <Link href={`${homePath}#cases`}>cases</Link>
@@ -306,7 +309,7 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
             </div>
 
             <motion.div
-              className="relative aspect-[21/9] overflow-hidden rounded-[28px] border border-[var(--border-strong)] max-[920px]:aspect-[4/3] max-[920px]:rounded-[22px] max-[680px]:aspect-[5/4] max-[680px]:rounded-[18px]"
+              className="relative aspect-[21/9] overflow-hidden rounded-[28px] border border-[var(--border-strong)] max-[920px]:aspect-[4/3] max-[920px]:rounded-[22px] max-[680px]:aspect-auto max-[680px]:min-h-[420px] max-[680px]:rounded-[18px]"
               variants={caseCoverVariants}
             >
               <motion.div
@@ -331,19 +334,19 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
               />
 
               <motion.div
-                className="absolute left-8 top-7 flex items-center gap-2.5 max-[680px]:left-[18px]"
+                className="absolute left-8 top-7 flex items-center gap-2.5 pr-4 max-[680px]:left-[18px] max-[680px]:top-[18px]"
                 variants={caseCoverContentVariants}
               >
                 <span className="relative inline-block size-2">
                   <span className="absolute inset-0 rounded-full bg-[#1FFFC7] [animation:iter-pulse_2.4s_ease-in-out_infinite]" />
                   <span className="absolute inset-[2px] rounded-full bg-[#1FFFC7]" />
                 </span>
-                <span className="font-[family:var(--font-mono)] text-[11.5px] uppercase tracking-[0.14em] text-white/90">
+                <span className="font-[family:var(--font-mono)] text-[11.5px] uppercase tracking-[0.14em] text-white/90 max-[420px]:text-[10.5px]">
                   {study.kicker}
                 </span>
               </motion.div>
 
-              <motion.div className="absolute bottom-9 right-10 font-[family:var(--font-display)] text-[220px] font-bold leading-[0.82] tracking-[-0.06em] text-white/95 max-[920px]:bottom-6 max-[920px]:right-6 max-[920px]:text-[clamp(96px,22vw,160px)] max-[680px]:bottom-4 max-[680px]:right-[18px] max-[680px]:text-[clamp(72px,22vw,120px)]"
+              <motion.div className="absolute bottom-9 right-10 font-[family:var(--font-display)] text-[220px] font-bold leading-[0.82] tracking-[-0.06em] text-white/95 max-[920px]:bottom-6 max-[920px]:right-6 max-[920px]:text-[clamp(96px,22vw,160px)] max-[680px]:bottom-auto max-[680px]:right-[18px] max-[680px]:top-[86px] max-[680px]:text-[clamp(76px,25vw,118px)]"
                 variants={caseCoverNumberVariants}
               >
                 0{study.num}
@@ -355,10 +358,10 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
                 case /02
               </motion.div>
 
-              <motion.div className="absolute bottom-10 left-10 right-80 max-[920px]:bottom-6 max-[920px]:left-6 max-[920px]:right-6 max-[680px]:bottom-4 max-[680px]:left-[18px] max-[680px]:right-[18px]"
+              <motion.div className="absolute bottom-10 left-10 right-80 max-[920px]:bottom-6 max-[920px]:left-6 max-[920px]:right-6 max-[680px]:bottom-[22px] max-[680px]:left-[18px] max-[680px]:right-[18px]"
                 variants={caseCoverContentVariants}
               >
-                <div className="text-balance font-[family:var(--font-display)] text-[clamp(36px,5vw,64px)] font-bold leading-none tracking-[-0.03em] text-white/95">
+                <div className="text-balance font-[family:var(--font-display)] text-[clamp(32px,10vw,64px)] font-bold leading-[0.98] tracking-[-0.03em] text-white/95 max-[680px]:text-center">
                   {study.title}
                 </div>
               </motion.div>
@@ -367,12 +370,12 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
         </motion.section>
 
         <section className="relative z-[1] px-6 py-10 max-sm:px-4">
-          <div className="mx-auto grid max-w-[1200px] grid-cols-[1.4fr_1fr] items-start gap-16 max-[920px]:grid-cols-1 max-[920px]:gap-8">
-            <div>
-              <p className="mb-7 max-w-[640px] text-[22px] leading-[1.5] text-[var(--text)]">
+          <div className="mx-auto grid max-w-[1200px] grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] items-start gap-16 max-[920px]:grid-cols-1 max-[920px]:gap-8">
+            <div className="max-[920px]:text-center">
+              <p className="mb-6 max-w-[640px] text-[18px] leading-[1.55] text-[var(--text)] max-[920px]:mx-auto sm:mb-7 sm:text-[22px]">
                 {study.summary}
               </p>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 max-[920px]:justify-center">
                 {study.stack.map((item) => (
                   <span
                     key={item}
@@ -384,11 +387,11 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
               </div>
             </div>
 
-            <div className="flex flex-col gap-[18px] rounded-[18px] border border-[var(--border)] bg-[var(--surface)] p-6">
+            <div className="flex flex-col gap-[18px] rounded-[18px] border border-[var(--border)] bg-[var(--surface)] p-5 sm:p-6">
               {study.meta.map((item) => (
                 <div
                   key={item.k}
-                  className="grid grid-cols-[1fr_1.4fr] items-baseline gap-4"
+                  className="grid gap-1.5 sm:grid-cols-[1fr_1.4fr] sm:items-baseline sm:gap-4"
                 >
                   <div className="font-[family:var(--font-mono)] text-[11px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
                     {item.k}
@@ -398,12 +401,12 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
                   </div>
                 </div>
               ))}
-              <div className="mt-1.5 flex gap-2">
+              <div className="mt-1.5 grid grid-cols-2 gap-2">
                 <Link
                   href={study.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 items-center justify-center gap-2 rounded-[10px] bg-[var(--accent)] px-[14px] py-2.5 text-center text-[13px] font-semibold"
+                  className="items-center justify-center gap-2 rounded-[10px] bg-[var(--accent)] px-[14px] py-2.5 text-center text-[13px] font-semibold"
                   style={{ color: "var(--accent-ink)" }}
                 >
                   <span>{copy.live}</span>
@@ -419,7 +422,7 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
                   href={study.code}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex flex-1 items-center justify-center gap-2 rounded-[10px] border border-[var(--border)] bg-[var(--surface-strong)] px-[14px] py-2.5 text-[13px] font-medium text-[var(--text)]"
+                  className="flex items-center justify-center gap-2 rounded-[10px] border border-[var(--border)] bg-[var(--surface-strong)] px-[14px] py-2.5 text-[13px] font-medium text-[var(--text)]"
                 >
                   <AppIcon aria-hidden="true" icon={GithubIcon} size={12} strokeWidth={2.1} />
                   <span>{copy.code}</span>
@@ -441,7 +444,7 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
               {study.heroStats.map((stat) => (
                 <motion.div
                   key={stat.k}
-                  className="bg-[var(--bg)] px-6 py-7"
+                  className="bg-[var(--bg)] px-6 py-7 text-center"
                   variants={caseStatVariants}
                 >
                   <div className="mb-2.5 font-[family:var(--font-mono)] text-[11px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
@@ -460,7 +463,7 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
         </section>
 
         <section className="relative z-[1] px-6 pb-20 pt-[60px] max-sm:px-4">
-          <div className="mx-auto grid max-w-[1200px] grid-cols-[240px_1fr] gap-16 max-[920px]:grid-cols-1 max-[920px]:gap-8">
+          <div className="mx-auto grid max-w-[1200px] grid-cols-[240px_minmax(0,1fr)] gap-16 max-[920px]:grid-cols-1 max-[920px]:gap-8">
             <motion.aside
               className="sticky top-[100px] h-fit max-[920px]:hidden"
               initial={prefersReducedMotion ? undefined : "hidden"}
@@ -491,7 +494,7 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
               </motion.ul>
             </motion.aside>
 
-            <div className="max-w-[720px]">
+            <div className="w-full min-w-0 max-w-[720px] max-[920px]:mx-auto max-[680px]:text-center">
               <section id="problem" className="mb-14">
                 <div className="mb-3 font-[family:var(--font-mono)] text-xs uppercase tracking-[0.14em] text-[var(--accent)]">
                   {copy.problem}
@@ -522,7 +525,7 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
                   <div className="mb-6 font-[family:var(--font-mono)] text-[10.5px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
                     {study.architecture} . {study.archCaption}
                   </div>
-                  <div className="flex items-center justify-between gap-3 overflow-x-auto pb-2 max-[920px]:justify-start">
+                  <div className="iter-scrollbar-none flex min-w-0 items-center justify-between gap-3 overflow-x-auto pb-2 max-[920px]:justify-start">
                     {study.archNodes.map((node, index) => (
                       <div key={node.label} className="flex flex-none items-center gap-3">
                         <div className="flex min-w-[88px] flex-col items-center gap-2">
@@ -566,12 +569,12 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
                   {study.buildSteps.map((step) => (
                     <li
                       key={step.num}
-                      className="grid grid-cols-[36px_1fr] gap-[18px] items-start"
+                      className="grid min-w-0 grid-cols-[36px_minmax(0,1fr)] items-start gap-[18px] max-[680px]:grid-cols-1 max-[680px]:justify-items-center"
                     >
                       <div className="flex size-9 items-center justify-center rounded-[10px] bg-[var(--accent-soft)] font-[family:var(--font-mono)] text-xs font-bold text-[var(--accent)]">
                         {step.num}
                       </div>
-                      <div>
+                      <div className="min-w-0">
                         <div className="mb-1 font-[family:var(--font-display)] text-[17px] font-bold tracking-[-0.015em] text-[var(--text)]">
                           {step.title}
                         </div>
@@ -610,7 +613,7 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
                   </div>
                   <div className="grid grid-cols-2 gap-px bg-[var(--border)] max-[680px]:grid-cols-1">
                     {study.impactAreas.map((area) => (
-                      <div key={area.k} className="bg-[var(--surface)] px-6 py-5">
+                      <div key={area.k} className="bg-[var(--surface)] px-6 py-5 max-[680px]:text-center">
                         <div className="mb-2 font-[family:var(--font-mono)] text-[10.5px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
                           {area.k}
                         </div>
@@ -637,7 +640,7 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
                   {study.takeaways.map((item) => (
                     <li
                       key={item}
-                      className="grid grid-cols-[22px_1fr] gap-[14px] items-start text-base leading-[1.55] text-[var(--text)]"
+                      className="grid min-w-0 grid-cols-[22px_minmax(0,1fr)] items-start gap-[14px] text-base leading-[1.55] text-[var(--text)] max-[680px]:grid-cols-1 max-[680px]:justify-items-center"
                     >
                       <span className="mt-0.5 inline-flex size-5 items-center justify-center rounded-full bg-[var(--accent-soft)] text-[var(--accent)]">
                         <AppIcon aria-hidden="true" icon={CheckIcon} size={11} strokeWidth={3.1} />
@@ -657,7 +660,7 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
               <Link
                 href={getCaseStudyPath(nextStudy.slug, locale)}
                 scroll
-                className="block overflow-hidden rounded-3xl border border-[var(--border)] bg-[var(--surface)] p-7 transition hover:border-[var(--border-strong)]"
+                className="block overflow-hidden rounded-3xl border border-[var(--border)] bg-[var(--surface)] p-7 transition hover:border-[var(--border-strong)] max-[920px]:text-center"
               >
                 <div className="mb-[18px] font-[family:var(--font-mono)] text-[11px] uppercase tracking-[0.14em] text-[var(--text-muted)]">
                   {copy.nextCase}
@@ -674,9 +677,10 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
                 </div>
               </Link>
 
-              <Link
-                href={`${homePath}#contact`}
-                className="relative flex flex-col justify-between overflow-hidden rounded-3xl border border-[var(--border-strong)] bg-[var(--bg-elevated)] p-7"
+              <button
+                type="button"
+                onClick={() => setContactOpen(true)}
+                className="relative flex flex-col justify-between overflow-hidden rounded-3xl border border-[var(--border-strong)] bg-[var(--bg-elevated)] p-7 text-left max-[920px]:text-center"
               >
                 <div className="absolute right-[-100px] top-[-100px] size-80 bg-[radial-gradient(circle,var(--accent-glow),transparent_65%)] opacity-55 blur-[40px]" />
                 <div className="relative">
@@ -691,7 +695,7 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
                   </p>
                 </div>
                 <div
-                  className="relative inline-flex self-start rounded-xl bg-[var(--accent)] px-[18px] py-3 text-sm font-semibold"
+                  className="relative inline-flex self-start rounded-xl bg-[var(--accent)] px-[18px] py-3 text-sm font-semibold max-[920px]:self-center"
                   style={{ color: "var(--accent-ink)" }}
                 >
                   <span>{copy.ctaBtn}</span>
@@ -703,11 +707,18 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
                     className="ml-2 inline"
                   />
                 </div>
-              </Link>
+              </button>
             </div>
           </div>
         </section>
       </main>
+
+      <StrategyCallModal
+        copy={landingContent[locale].contact}
+        locale={locale}
+        open={contactOpen}
+        onClose={() => setContactOpen(false)}
+      />
 
       <footer className="relative z-[1] border-t border-[var(--border)] px-6 py-8 max-sm:px-4">
         <div className="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-3 font-[family:var(--font-mono)] text-[11.5px] tracking-[0.04em] text-[var(--text-muted)]">

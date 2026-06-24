@@ -28,7 +28,7 @@ import {
   type Variants,
 } from "framer-motion";
 import Link from "next/link";
-import { useMemo, useState, type PointerEvent } from "react";
+import { useEffect, useMemo, useState, type PointerEvent } from "react";
 
 import { AppIcon } from "@/components/app-icon";
 import { SiteHeader } from "@/components/site-header";
@@ -150,7 +150,7 @@ function HeroOrb({ prefersReducedMotion }: { prefersReducedMotion: boolean }) {
 
   return (
     <motion.div
-      className="relative aspect-square w-full max-w-[460px] justify-self-end max-lg:mx-auto max-lg:max-w-[380px] max-sm:max-w-[300px]"
+      className="relative aspect-square w-full max-w-[460px] justify-self-end max-lg:order-first max-lg:mx-auto max-lg:max-w-[300px] max-sm:max-w-[220px]"
       initial={prefersReducedMotion ? undefined : { opacity: 0, y: 26, scale: 0.94 }}
       animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.9, delay: 0.36, ease: [0.22, 1, 0.36, 1] }}
@@ -545,6 +545,18 @@ export function LandingPage() {
   };
   const footerLinkHoverState = prefersReducedMotion ? "rest" : "hover";
 
+  useEffect(() => {
+    if (!contactOpen) {
+      return;
+    }
+
+    document.documentElement.classList.add("iter-modal-open");
+
+    return () => {
+      document.documentElement.classList.remove("iter-modal-open");
+    };
+  }, [contactOpen]);
+
   return (
     <div className="iter-shell">
       <div className="iter-grid" />
@@ -559,9 +571,9 @@ export function LandingPage() {
       <main>
         <section id="hero" className="relative z-[1] px-[18px] pb-12 pt-[120px] sm:px-[22px] sm:pb-[60px] sm:pt-[130px] lg:px-7 lg:pb-20 lg:pt-40">
           <div className="mx-auto grid max-w-[1320px] gap-12 lg:grid-cols-[1.618fr_1fr] lg:items-center lg:gap-16">
-            <div>
+            <div className="max-lg:text-center">
               <motion.div
-                className="mb-7 inline-flex items-center gap-2.5 rounded-full border border-[var(--border)] bg-[var(--surface)] px-3 py-[6px] font-[family:var(--font-mono)] text-xs tracking-[0.04em] text-[var(--text-dim)]"
+                className="mb-6 inline-flex max-w-full flex-wrap items-center gap-x-2.5 gap-y-1 rounded-2xl border border-[var(--border)] bg-[var(--surface)] px-3 py-[7px] font-[family:var(--font-mono)] text-xs tracking-[0.04em] text-[var(--text-dim)] max-lg:mx-auto max-lg:justify-center sm:mb-7 sm:rounded-full sm:py-[6px]"
                 initial={prefersReducedMotion ? undefined : { opacity: 0, y: 16 }}
                 animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
                 transition={{ duration: 0.62, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
@@ -571,11 +583,11 @@ export function LandingPage() {
                   <span className="absolute inset-[2px] rounded-full bg-[var(--accent)]" />
                 </span>
                 <span>{copy.hero.eyebrow}</span>
-                <span className="opacity-40">·</span>
-                <span>{copy.hero.meta}</span>
+                <span className="opacity-40 max-[520px]:hidden">·</span>
+                <span className="max-[520px]:basis-full max-[520px]:pl-[18px]">{copy.hero.meta}</span>
               </motion.div>
 
-              <h1 className="m-0 font-[family:var(--font-display)] text-[clamp(48px,6.4vw,92px)] font-bold leading-[0.96] tracking-[-0.035em] text-[var(--text)]">
+              <h1 className="m-0 font-[family:var(--font-display)] text-[clamp(42px,12vw,92px)] font-bold leading-[0.96] tracking-[-0.035em] text-[var(--text)]">
                 <motion.span
                   className="block"
                   initial={prefersReducedMotion ? undefined : { opacity: 0, y: 24 }}
@@ -595,7 +607,7 @@ export function LandingPage() {
               </h1>
 
               <motion.p
-                className="mb-9 mt-6 max-w-[560px] text-[19px] leading-[1.55] text-[var(--text-dim)]"
+                className="mb-8 mt-5 max-w-[560px] text-[17px] leading-[1.55] text-[var(--text-dim)] max-lg:mx-auto sm:mb-9 sm:mt-6 sm:text-[19px]"
                 initial={prefersReducedMotion ? undefined : { opacity: 0, y: 18 }}
                 animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
                 transition={{ duration: 0.62, delay: 0.42, ease: [0.22, 1, 0.36, 1] }}
@@ -604,7 +616,7 @@ export function LandingPage() {
               </motion.p>
 
               <motion.div
-                className="mb-14 flex flex-wrap gap-3"
+                className="mb-10 flex flex-col gap-3 min-[520px]:flex-row min-[520px]:flex-wrap max-lg:justify-center sm:mb-14"
                 initial={prefersReducedMotion ? undefined : "hidden"}
                 animate={prefersReducedMotion ? undefined : "show"}
                 variants={{
@@ -628,7 +640,7 @@ export function LandingPage() {
                 >
                   <Link
                     href="#plans"
-                    className="inline-flex items-center gap-2.5 rounded-xl bg-[var(--accent)] px-[22px] py-[14px] text-[15px] font-semibold tracking-[-0.01em] shadow-[0_0_0_1px_var(--accent),0_16px_32px_-12px_var(--accent-glow)] transition hover:-translate-y-px"
+                    className="inline-flex w-full items-center justify-center gap-2.5 rounded-xl bg-[var(--accent)] px-[18px] py-[13px] text-[15px] font-semibold tracking-[-0.01em] shadow-[0_0_0_1px_var(--accent),0_16px_32px_-12px_var(--accent-glow)] transition hover:-translate-y-px min-[520px]:w-auto min-[520px]:px-[22px] min-[520px]:py-[14px]"
                     style={{ color: "var(--accent-ink)" }}
                   >
                     <span>{copy.hero.ctaA}</span>
@@ -643,7 +655,7 @@ export function LandingPage() {
                   </Link>
                 </motion.div>
                 <motion.div
-                  className="inline-flex items-center gap-2.5 rounded-xl border border-[var(--border-strong)] bg-[var(--surface)] px-[22px] py-[14px] text-[15px] font-medium text-[var(--text)] transition hover:border-[var(--text)] hover:bg-[var(--surface-strong)]"
+                  className="inline-flex w-full items-center justify-center gap-2.5 rounded-xl border border-[var(--border-strong)] bg-[var(--surface)] px-[18px] py-[13px] text-[15px] font-medium text-[var(--text)] transition hover:border-[var(--text)] hover:bg-[var(--surface-strong)] min-[520px]:w-auto min-[520px]:px-[22px] min-[520px]:py-[14px]"
                   variants={{
                     hidden: { opacity: 0, y: 18 },
                     show: { opacity: 1, y: 0 },
@@ -654,7 +666,7 @@ export function LandingPage() {
                 >
                   <Link
                     href="#cases"
-                    className="-m-[14px] inline-flex items-center gap-2.5 px-[22px] py-[14px]"
+                    className="-m-[13px] inline-flex w-[calc(100%+26px)] items-center justify-center gap-2.5 px-[18px] py-[13px] min-[520px]:-m-[14px] min-[520px]:w-auto min-[520px]:px-[22px] min-[520px]:py-[14px]"
                   >
                     <motion.span
                       className="flex size-[22px] items-center justify-center rounded-full bg-[var(--accent)] text-[#0A0B10]"
@@ -674,7 +686,7 @@ export function LandingPage() {
               </motion.div>
 
               <motion.div
-                className="grid gap-px overflow-hidden rounded-[14px] border border-[var(--border)] bg-[var(--border)] sm:grid-cols-2 lg:grid-cols-4"
+                className="grid gap-px overflow-hidden rounded-[14px] border border-[var(--border)] bg-[var(--border)] text-center sm:grid-cols-2 lg:grid-cols-4 lg:text-left"
                 initial={prefersReducedMotion ? undefined : "hidden"}
                 animate={prefersReducedMotion ? undefined : "show"}
                 variants={{
@@ -741,7 +753,7 @@ export function LandingPage() {
         <section id="services" className="relative z-[1] px-[18px] py-[72px] sm:px-[22px] sm:py-[88px] lg:px-7 lg:py-[120px]">
           <div className="mx-auto max-w-[1320px]">
             <motion.div
-              className="mb-14 grid items-end gap-5 lg:grid-cols-[1fr_1.4fr] lg:gap-16"
+              className="mb-14 grid items-end gap-5 max-lg:text-center lg:grid-cols-[1fr_1.4fr] lg:gap-16"
               initial={prefersReducedMotion ? undefined : "hidden"}
               whileInView={prefersReducedMotion ? undefined : "show"}
               viewport={{ once: true, amount: 0.36 }}
@@ -751,11 +763,11 @@ export function LandingPage() {
                 <div className="mb-[14px] font-[family:var(--font-mono)] text-xs uppercase tracking-[0.14em] text-[var(--accent)]">
                   {copy.offers.eyebrow}
                 </div>
-                <h2 className="m-0 max-w-[620px] font-[family:var(--font-display)] text-[clamp(34px,4.2vw,56px)] font-bold leading-[1] tracking-[-0.03em] text-balance">
+                <h2 className="m-0 max-w-[620px] font-[family:var(--font-display)] text-[clamp(34px,4.2vw,56px)] font-bold leading-[1] tracking-[-0.03em] text-balance max-lg:mx-auto">
                   {copy.offers.title}
                 </h2>
               </div>
-              <p className="m-0 max-w-[520px] justify-self-end text-[18px] leading-[1.55] text-[var(--text-dim)]">
+              <p className="m-0 max-w-[520px] justify-self-end text-[18px] leading-[1.55] text-[var(--text-dim)] max-lg:mx-auto">
                 {copy.offers.sub}
               </p>
             </motion.div>
@@ -768,18 +780,18 @@ export function LandingPage() {
               variants={sectionStaggerVariants}
             >
               <motion.article
-                className="relative overflow-hidden rounded-[28px] border border-[var(--border)] bg-[var(--surface)] p-10 transition hover:-translate-y-0.5 hover:border-[var(--border-strong)] lg:row-span-2"
+                className="relative overflow-hidden rounded-[28px] border border-[var(--border)] bg-[var(--surface)] p-7 transition hover:-translate-y-0.5 hover:border-[var(--border-strong)] max-sm:text-center sm:p-10 lg:row-span-2"
                 variants={sectionCardVariants}
                 whileHover={prefersReducedMotion ? undefined : { y: -4, scale: 1.003 }}
                 transition={{ duration: 0.24, ease: landingMotionEase }}
               >
                 <div className="absolute right-[-120px] top-[-120px] size-[380px] bg-[radial-gradient(circle,var(--accent-glow),transparent_65%)] opacity-35 blur-[20px]" />
                 <div className="relative flex h-full flex-col gap-7">
-                  <div className="flex items-start justify-between">
-                    <div className="flex items-center gap-3 font-[family:var(--font-mono)] text-[11.5px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
+                  <div className="flex items-start justify-between gap-5 max-sm:flex-col max-sm:items-center max-sm:justify-center">
+                    <div className="flex min-w-0 items-center justify-center gap-3 font-[family:var(--font-mono)] text-[11.5px] uppercase tracking-[0.12em] text-[var(--text-muted)] max-[380px]:gap-2 max-[380px]:text-[10.5px]">
                       <span>{copy.offers.cards[0].num}</span>
-                      <span className="h-px w-6 bg-[var(--text-muted)]" />
-                      <span>{copy.offers.cards[0].tag}</span>
+                      <span className="h-px w-6 bg-[var(--text-muted)] max-[380px]:w-4" />
+                      <span className="min-w-0 truncate">{copy.offers.cards[0].tag}</span>
                     </div>
                     <OfferIcons index={0} />
                   </div>
@@ -788,10 +800,10 @@ export function LandingPage() {
                     <h3 className="mb-[14px] font-[family:var(--font-display)] text-[clamp(28px,3vw,38px)] font-bold leading-[1.05] tracking-[-0.025em]">
                       {copy.offers.cards[0].title}
                     </h3>
-                    <p className="mb-[22px] max-w-[520px] text-[16.5px] leading-[1.55] text-[var(--text-dim)]">
+                    <p className="mb-[22px] max-w-[520px] text-[16.5px] leading-[1.55] text-[var(--text-dim)] max-sm:mx-auto">
                       {copy.offers.cards[0].body}
                     </p>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2 max-sm:justify-center">
                       {copy.offers.cards[0].stack.map((item) => (
                         <span
                           key={item}
@@ -828,16 +840,16 @@ export function LandingPage() {
               {copy.offers.cards.slice(1, 3).map((card, index) => (
                 <motion.article
                   key={card.title}
-                  className="relative flex flex-col overflow-hidden rounded-[28px] border border-[var(--border)] bg-[var(--surface)] p-8 transition hover:-translate-y-0.5 hover:border-[var(--border-strong)]"
+                  className="relative flex flex-col overflow-hidden rounded-[28px] border border-[var(--border)] bg-[var(--surface)] p-8 transition hover:-translate-y-0.5 hover:border-[var(--border-strong)] max-sm:text-center"
                   variants={sectionCardVariants}
                   whileHover={prefersReducedMotion ? undefined : { y: -4, scale: 1.004 }}
                   transition={{ duration: 0.24, ease: landingMotionEase }}
                 >
-                  <div className="mb-6 flex items-start justify-between">
-                    <div className="flex items-center gap-3 font-[family:var(--font-mono)] text-[11.5px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
+                  <div className="mb-6 flex items-start justify-between gap-5 max-sm:flex-col max-sm:items-center max-sm:justify-center">
+                    <div className="flex min-w-0 items-center justify-center gap-3 font-[family:var(--font-mono)] text-[11.5px] uppercase tracking-[0.12em] text-[var(--text-muted)] max-[380px]:gap-2 max-[380px]:text-[10.5px]">
                       <span>{card.num}</span>
-                      <span className="h-px w-[18px] bg-[var(--text-muted)]" />
-                      <span>{card.tag}</span>
+                      <span className="h-px w-[18px] bg-[var(--text-muted)] max-[380px]:w-4" />
+                      <span className="min-w-0 truncate">{card.tag}</span>
                     </div>
                     <OfferIcons index={index + 1} />
                   </div>
@@ -849,7 +861,7 @@ export function LandingPage() {
                     <p className="mb-4 text-[14.5px] leading-[1.55] text-[var(--text-dim)]">
                       {card.body}
                     </p>
-                    <div className="flex flex-wrap gap-1.5">
+                    <div className="flex flex-wrap gap-1.5 max-sm:justify-center">
                       {card.stack.map((item) => (
                         <span
                           key={item}
@@ -864,13 +876,13 @@ export function LandingPage() {
               ))}
 
               <motion.article
-                className="grid gap-8 overflow-hidden rounded-[28px] border border-[var(--border)] bg-[var(--surface)] px-9 py-8 transition hover:-translate-y-0.5 hover:border-[var(--border-strong)] lg:col-span-2 lg:grid-cols-[1fr_auto] lg:items-center"
+                className="grid gap-8 overflow-hidden rounded-[28px] border border-[var(--border)] bg-[var(--surface)] px-9 py-8 transition hover:-translate-y-0.5 hover:border-[var(--border-strong)] max-sm:text-center lg:col-span-2 lg:grid-cols-[1fr_auto] lg:items-center"
                 variants={sectionCardVariants}
                 whileHover={prefersReducedMotion ? undefined : { y: -4, scale: 1.002 }}
                 transition={{ duration: 0.24, ease: landingMotionEase }}
               >
                 <div>
-                  <div className="mb-[14px] flex items-center gap-3 font-[family:var(--font-mono)] text-[11.5px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
+                  <div className="mb-[14px] flex items-center gap-3 font-[family:var(--font-mono)] text-[11.5px] uppercase tracking-[0.12em] text-[var(--text-muted)] max-sm:justify-center">
                     <span>{copy.offers.cards[3].num}</span>
                     <span className="h-px w-[18px] bg-[var(--text-muted)]" />
                     <span>{copy.offers.cards[3].tag}</span>
@@ -878,11 +890,11 @@ export function LandingPage() {
                   <h3 className="mb-2.5 font-[family:var(--font-display)] text-[28px] font-bold leading-[1.1] tracking-[-0.025em]">
                     {copy.offers.cards[3].title}
                   </h3>
-                  <p className="max-w-[640px] text-[15.5px] leading-[1.55] text-[var(--text-dim)]">
+                  <p className="max-w-[640px] text-[15.5px] leading-[1.55] text-[var(--text-dim)] max-sm:mx-auto">
                     {copy.offers.cards[3].body}
                   </p>
                 </div>
-                <div className="flex flex-wrap items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2 max-sm:justify-center">
                   {copy.offers.cards[3].stack.map((item) => (
                     <span
                       key={item}
@@ -900,7 +912,7 @@ export function LandingPage() {
         <section id="cases" className="relative z-[1] bg-[linear-gradient(180deg,transparent,var(--bg-elevated),transparent)] px-[18px] py-[72px] sm:px-[22px] sm:py-[88px] lg:px-7 lg:py-[120px]">
           <div className="mx-auto max-w-[1320px]">
             <motion.div
-              className="mb-14 grid items-end gap-5 lg:grid-cols-[1fr_1.4fr] lg:gap-16"
+              className="mb-14 grid items-end gap-5 max-lg:text-center lg:grid-cols-[1fr_1.4fr] lg:gap-16"
               initial={prefersReducedMotion ? undefined : "hidden"}
               whileInView={prefersReducedMotion ? undefined : "show"}
               viewport={{ once: true, amount: 0.36 }}
@@ -910,11 +922,11 @@ export function LandingPage() {
                 <div className="mb-[14px] font-[family:var(--font-mono)] text-xs uppercase tracking-[0.14em] text-[var(--accent)]">
                   {copy.cases.eyebrow}
                 </div>
-                <h2 className="m-0 text-[clamp(34px,4.2vw,56px)] font-[family:var(--font-display)] font-bold leading-[1] tracking-[-0.03em] text-balance">
+                <h2 className="m-0 text-[clamp(34px,4.2vw,56px)] font-[family:var(--font-display)] font-bold leading-[1] tracking-[-0.03em] text-balance max-lg:mx-auto">
                   {copy.cases.title}
                 </h2>
               </div>
-              <p className="m-0 max-w-[520px] justify-self-end text-[18px] leading-[1.55] text-[var(--text-dim)]">
+              <p className="m-0 max-w-[520px] justify-self-end text-[18px] leading-[1.55] text-[var(--text-dim)] max-lg:mx-auto">
                 {copy.cases.sub}
               </p>
             </motion.div>
@@ -957,14 +969,14 @@ export function LandingPage() {
                     <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,transparent_50%,rgba(0,0,0,0.4))]" />
                   </div>
 
-                  <div className="flex flex-col gap-4 p-7">
+                  <div className="flex flex-col gap-4 p-7 max-sm:text-center">
                     <h3 className="m-0 font-[family:var(--font-display)] text-[26px] font-bold leading-[1.1] tracking-[-0.02em]">
                       {item.title}
                     </h3>
                     <p className="m-0 text-[15.5px] leading-[1.55] text-[var(--text-dim)]">
                       {item.summary}
                     </p>
-                    <div className="flex flex-wrap gap-1.5">
+                    <div className="flex flex-wrap gap-1.5 max-sm:justify-center">
                       {item.stack.map((stack) => (
                         <span
                           key={stack}
@@ -995,11 +1007,11 @@ export function LandingPage() {
                       </div>
                     ) : null}
 
-                    <div className="mt-1 flex flex-wrap items-center gap-2.5">
+                    <div className="mt-1 grid grid-cols-2 items-center gap-2.5 sm:flex sm:flex-wrap">
                       <Link
                         href={item.live}
                         target="_blank"
-                        className="inline-flex items-center gap-2 rounded-[10px] bg-[var(--accent)] px-[14px] py-[9px] text-[13px] font-semibold tracking-[-0.005em]"
+                        className="inline-flex items-center justify-center gap-2 rounded-[10px] bg-[var(--accent)] px-[14px] py-[9px] text-[13px] font-semibold tracking-[-0.005em]"
                         style={{ color: "var(--accent-ink)" }}
                       >
                         <span>{copy.cases.live}</span>
@@ -1008,7 +1020,7 @@ export function LandingPage() {
                       <Link
                         href={item.code}
                         target="_blank"
-                        className="inline-flex items-center gap-2 rounded-[10px] border border-[var(--border)] bg-[var(--surface-strong)] px-[14px] py-[9px] text-[13px] font-medium text-[var(--text)]"
+                        className="inline-flex items-center justify-center gap-2 rounded-[10px] border border-[var(--border)] bg-[var(--surface-strong)] px-[14px] py-[9px] text-[13px] font-medium text-[var(--text)]"
                       >
                         <AppIcon aria-hidden="true" icon={GithubIcon} size={13} strokeWidth={2.1} />
                         <span>{copy.cases.code}</span>
@@ -1016,7 +1028,7 @@ export function LandingPage() {
                       <Link
                         href={getCaseStudyPath(item.slug, locale)}
                         scroll
-                        className="inline-flex items-center gap-1.5 px-1 py-[9px] text-[13px] font-medium text-[var(--text-dim)]"
+                        className="inline-flex items-center justify-center gap-1.5 rounded-[10px] border border-transparent px-1 py-[9px] text-[13px] font-medium text-[var(--text-dim)] sm:justify-start"
                       >
                         <span>{copy.cases.read}</span>
                         <AppIcon aria-hidden="true" icon={ArrowRight01Icon} size={12} strokeWidth={2.4} />
@@ -1026,7 +1038,7 @@ export function LandingPage() {
                         onClick={() =>
                           setExpandedCase(expandedCase === index ? null : index)
                         }
-                        className="ml-auto inline-flex items-center gap-1.5 rounded-[10px] border border-[var(--border)] px-3 py-[9px] text-[12.5px] font-medium text-[var(--text-dim)] transition hover:border-[var(--border-strong)] hover:text-[var(--text)]"
+                        className="inline-flex items-center justify-center gap-1.5 rounded-[10px] border border-[var(--border)] px-3 py-[9px] text-[12.5px] font-medium text-[var(--text-dim)] transition hover:border-[var(--border-strong)] hover:text-[var(--text)] sm:ml-auto"
                       >
                         <span>
                           {expandedCase === index
@@ -1083,7 +1095,7 @@ export function LandingPage() {
               {copy.plans.items.map((plan) => (
                 <motion.article
                   key={plan.title}
-                  className={`relative flex flex-col rounded-3xl border p-8 transition hover:-translate-y-[3px] ${
+                  className={`relative flex flex-col rounded-3xl border p-8 transition hover:-translate-y-[3px] max-sm:text-center ${
                     plan.featured
                       ? "border-transparent bg-[var(--bg-elevated)]"
                       : "border-[var(--border)] bg-[var(--surface)]"
@@ -1127,7 +1139,7 @@ export function LandingPage() {
                   <p className="mb-6 min-h-[44px] text-[14.5px] leading-[1.55] text-[var(--text-dim)]">
                     {plan.for}
                   </p>
-                  <div className="mb-6 flex items-baseline gap-2 border-b border-dashed border-[var(--border)] pb-6">
+                  <div className="mb-6 flex items-baseline gap-2 border-b border-dashed border-[var(--border)] pb-6 max-sm:justify-center">
                     <span className="font-[family:var(--font-display)] text-4xl font-bold tracking-[-0.03em]">
                       {plan.price}
                     </span>
@@ -1142,7 +1154,7 @@ export function LandingPage() {
                     {plan.includes.map((item) => (
                       <motion.li
                         key={item}
-                        className="flex items-start gap-2.5 text-[14.5px] leading-[1.45] text-[var(--text)]"
+                        className="flex items-start gap-2.5 text-[14.5px] leading-[1.45] text-[var(--text)] max-sm:justify-center"
                         variants={sectionListItemVariants}
                       >
                         <span className="mt-[3px] inline-flex size-4 items-center justify-center rounded-full bg-[var(--accent-soft)] text-[var(--accent)]">
@@ -1185,7 +1197,7 @@ export function LandingPage() {
         <section id="credibility" className="relative z-[1] px-[18px] py-[72px] sm:px-[22px] sm:py-[88px] lg:px-7 lg:py-[120px]">
           <div className="mx-auto max-w-[1320px]">
             <motion.div
-              className="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-20"
+              className="grid gap-12 max-lg:text-center lg:grid-cols-[1fr_1.2fr] lg:gap-20"
               initial={prefersReducedMotion ? undefined : "hidden"}
               whileInView={prefersReducedMotion ? undefined : "show"}
               viewport={{ once: true, amount: 0.22 }}
@@ -1195,10 +1207,10 @@ export function LandingPage() {
                 <div className="mb-[14px] font-[family:var(--font-mono)] text-xs uppercase tracking-[0.14em] text-[var(--accent)]">
                   {copy.trust.eyebrow}
                 </div>
-                <h2 className="mb-[22px] max-w-[560px] text-[clamp(32px,3.8vw,48px)] font-[family:var(--font-display)] font-bold leading-[1.05] tracking-[-0.03em] text-balance">
+                <h2 className="mb-[22px] max-w-[560px] text-[clamp(32px,3.8vw,48px)] font-[family:var(--font-display)] font-bold leading-[1.05] tracking-[-0.03em] text-balance max-lg:mx-auto">
                   {copy.trust.title}
                 </h2>
-                <p className="mb-8 max-w-[480px] text-[17px] leading-[1.6] text-[var(--text-dim)]">
+                <p className="mb-8 max-w-[480px] text-[17px] leading-[1.6] text-[var(--text-dim)] max-lg:mx-auto">
                   {copy.trust.body}
                 </p>
 
@@ -1225,7 +1237,7 @@ export function LandingPage() {
 
               <motion.div variants={sectionCardVariants}>
                 <motion.div
-                  className="mb-4 flex items-center gap-3 font-[family:var(--font-mono)] text-[11px] uppercase tracking-[0.14em] text-[var(--text-muted)]"
+                  className="mb-4 flex items-center gap-3 font-[family:var(--font-mono)] text-[11px] uppercase tracking-[0.14em] text-[var(--text-muted)] max-lg:justify-center"
                   variants={sectionListItemVariants}
                 >
                   <span>{copy.trust.stackLabel}</span>
@@ -1297,23 +1309,23 @@ export function LandingPage() {
                 }}
               />
               <motion.div
-                className="relative grid gap-7 lg:grid-cols-[1.4fr_1fr] lg:items-end lg:gap-14"
+                className="relative grid gap-7 max-lg:text-center lg:grid-cols-[1.4fr_1fr] lg:items-end lg:gap-14"
                 variants={sectionStaggerVariants}
               >
                 <motion.div variants={sectionListItemVariants}>
                   <div className="mb-[18px] font-[family:var(--font-mono)] text-xs uppercase tracking-[0.14em] text-[var(--accent)]">
                     {copy.cta.eyebrow}
                   </div>
-                  <h2 className="max-w-[760px] text-[clamp(34px,4.4vw,60px)] font-[family:var(--font-display)] font-bold leading-[1.05] tracking-[-0.03em] text-balance">
+                  <h2 className="max-w-[760px] text-[clamp(34px,4.4vw,60px)] font-[family:var(--font-display)] font-bold leading-[1.05] tracking-[-0.03em] text-balance max-lg:mx-auto">
                     {copy.cta.title}
                   </h2>
                 </motion.div>
                 <motion.div variants={sectionListItemVariants}>
-                  <p className="mb-6 text-base leading-[1.55] text-[var(--text-dim)]">
+                  <p className="mb-6 text-base leading-[1.55] text-[var(--text-dim)] max-lg:mx-auto max-lg:max-w-[620px]">
                     {copy.cta.sub}
                   </p>
                   <motion.div
-                    className="flex flex-wrap gap-3"
+                    className="flex flex-wrap gap-3 max-lg:justify-center"
                     variants={sectionStaggerVariants}
                   >
                     <motion.button
@@ -1354,7 +1366,7 @@ export function LandingPage() {
       <AnimatePresence>
         {contactOpen ? (
           <motion.div
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 px-6 backdrop-blur-[14px]"
+            className="iter-scrollbar-none fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto bg-black/70 px-4 py-5 backdrop-blur-[14px] sm:px-6 sm:py-8"
             onClick={() => setContactOpen(false)}
             initial={prefersReducedMotion ? undefined : { opacity: 0 }}
             animate={prefersReducedMotion ? undefined : { opacity: 1 }}
@@ -1384,7 +1396,7 @@ export function LandingPage() {
               />
             </motion.div>
             <motion.div
-              className="relative max-h-[92vh] w-full max-w-[540px] overflow-y-auto rounded-3xl border border-[var(--border-strong)] bg-[var(--bg)] p-9"
+              className="iter-scrollbar-none relative my-auto max-h-[calc(100svh-40px)] w-full max-w-[540px] overflow-y-auto rounded-[24px] border border-[var(--border-strong)] bg-[var(--bg)] p-6 sm:max-h-[92vh] sm:rounded-3xl sm:p-9"
               onClick={(event) => event.stopPropagation()}
               initial={
                 prefersReducedMotion
@@ -1420,12 +1432,13 @@ export function LandingPage() {
               <motion.button
                 type="button"
                 onClick={() => setContactOpen(false)}
-                className="absolute right-[18px] top-[18px] flex size-[34px] items-center justify-center rounded-[10px] border border-[var(--border)]"
+                aria-label="Close strategy call modal"
+                className="absolute right-4 top-4 z-20 flex size-10 touch-manipulation items-center justify-center rounded-xl border border-[var(--border)] bg-[var(--surface)] text-[var(--text)] shadow-[0_12px_30px_-18px_rgba(0,0,0,0.8)] sm:right-[18px] sm:top-[18px] sm:size-[38px] sm:rounded-[10px]"
                 whileHover={prefersReducedMotion ? undefined : { rotate: 90, scale: 1.04 }}
                 whileTap={prefersReducedMotion ? undefined : { scale: 0.96 }}
                 transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
               >
-                <AppIcon aria-hidden="true" icon={Cancel01Icon} size={14} strokeWidth={2.1} />
+                <AppIcon aria-hidden="true" icon={Cancel01Icon} size={13} strokeWidth={2.1} />
               </motion.button>
 
               <motion.div
@@ -1445,7 +1458,7 @@ export function LandingPage() {
                 }}
               >
                 <motion.div
-                  className="relative mb-2 font-[family:var(--font-mono)] text-[11px] uppercase tracking-[0.14em] text-[var(--accent)]"
+                  className="relative mb-2 pr-10 font-[family:var(--font-mono)] text-[11px] uppercase tracking-[0.14em] text-[var(--accent)] max-sm:pr-0 max-sm:text-center"
                   variants={{
                     hidden: { opacity: 0, y: 10 },
                     show: { opacity: 1, y: 0 },
@@ -1456,7 +1469,7 @@ export function LandingPage() {
                   {copy.contact.eyebrow}
                 </motion.div>
                 <motion.h3
-                  className="relative mb-2 font-[family:var(--font-display)] text-[28px] font-bold tracking-[-0.025em]"
+                  className="relative mb-2 pr-10 font-[family:var(--font-display)] text-[clamp(30px,9vw,42px)] font-bold leading-[1.1] tracking-[-0.025em] max-sm:pr-0 max-sm:text-center sm:text-[42px]"
                   variants={{
                     hidden: { opacity: 0, y: 12 },
                     show: { opacity: 1, y: 0 },
@@ -1467,7 +1480,7 @@ export function LandingPage() {
                   {copy.contact.title}
                 </motion.h3>
                 <motion.p
-                  className="relative mb-[26px] text-[15px] leading-[1.55] text-[var(--text-dim)]"
+                  className="relative mb-[26px] text-[15px] leading-[1.55] text-[var(--text-dim)] max-sm:text-center"
                   variants={{
                     hidden: { opacity: 0, y: 12 },
                     show: { opacity: 1, y: 0 },

@@ -45,7 +45,7 @@ function IterMark() {
   return (
     <svg
       aria-hidden="true"
-      className="h-9 w-[92px]"
+      className="h-8 w-[82px] sm:h-9 sm:w-[92px]"
       viewBox="0 0 116 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -96,7 +96,7 @@ export function SiteHeader({
       }
       transition={{ duration: 0.58, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="mx-auto flex max-w-7xl items-center gap-4 px-4 py-3 sm:px-6">
+      <div className="mx-auto flex max-w-7xl items-center gap-2 px-3 py-3 sm:gap-4 sm:px-6">
         <motion.div
           initial={prefersReducedMotion ? undefined : { opacity: 0, x: -12 }}
           animate={prefersReducedMotion ? undefined : { opacity: 1, x: 0 }}
@@ -255,7 +255,7 @@ export function SiteHeader({
             <motion.button
               type="button"
               onClick={onCtaClick}
-              className="iter-accent-ring inline-flex items-center gap-2 rounded-xl bg-[var(--accent)] px-4 py-2 text-sm font-semibold"
+              className="iter-accent-ring inline-flex items-center gap-1.5 whitespace-nowrap rounded-xl bg-[var(--accent)] px-3 py-2 text-xs font-semibold sm:gap-2 sm:px-4 sm:text-sm"
               style={{ color: "var(--accent-ink)" }}
               initial={prefersReducedMotion ? undefined : { opacity: 0, x: 14, scale: 0.96 }}
               animate={prefersReducedMotion ? undefined : { opacity: 1, x: 0, scale: 1 }}
@@ -267,7 +267,10 @@ export function SiteHeader({
                 ease: [0.22, 1, 0.36, 1],
               }}
             >
-              <span>{ctaLabel}</span>
+              <span className="max-[430px]:hidden">{ctaLabel}</span>
+              <span className="hidden max-[430px]:inline">
+                {locale === "es" ? "Llamada" : "Book call"}
+              </span>
               <motion.span
                 initial={false}
                 whileHover={prefersReducedMotion ? undefined : { x: 2.5 }}
@@ -290,10 +293,13 @@ export function SiteHeader({
             >
               <Link
                 href={caseStudyMode ? "/" : "#contact"}
-                className="iter-accent-ring inline-flex items-center gap-2 rounded-xl bg-[var(--accent)] px-4 py-2 text-sm font-semibold"
+                className="iter-accent-ring inline-flex items-center gap-1.5 whitespace-nowrap rounded-xl bg-[var(--accent)] px-3 py-2 text-xs font-semibold sm:gap-2 sm:px-4 sm:text-sm"
                 style={{ color: "var(--accent-ink)" }}
               >
-                <span>{ctaLabel}</span>
+                <span className="max-[430px]:hidden">{ctaLabel}</span>
+                <span className="hidden max-[430px]:inline">
+                  {locale === "es" ? "Llamada" : "Book call"}
+                </span>
                 <motion.span
                   initial={false}
                   whileHover={prefersReducedMotion ? undefined : { x: 2.5 }}

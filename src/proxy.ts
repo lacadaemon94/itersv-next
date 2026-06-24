@@ -2,14 +2,26 @@ import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
 export async function proxy(request: NextRequest) {
+  const pathname = request.nextUrl.pathname;
   const requestHeaders = new Headers(request.headers);
-  requestHeaders.set("x-iter-pathname", request.nextUrl.pathname);
+  requestHeaders.set("x-iter-pathname", pathname);
 
   let response = NextResponse.next({
     request: {
       headers: requestHeaders,
     },
   });
+
+  const shouldRefreshAuth =
+    pathname.startsWith("/admin") ||
+    pathname.startsWith("/api/admin") ||
+    pathname.startsWith("/api/auth") ||
+    pathname.startsWith("/auth") ||
+    pathname.startsWith("/login");
+
+  if (!shouldRefreshAuth) {
+    return response;
+  }
 
   const supabaseUrl = process.env.PRIVATE_SUPABASE_URL;
   const supabaseAnonKey = process.env.PRIVATE_SUPABASE_ANON_KEY;

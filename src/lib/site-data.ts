@@ -170,6 +170,13 @@ export const caseStudySlugs = [
 
 export type CaseStudySlug = (typeof caseStudySlugs)[number];
 
+const caseStudySlugAliases: Record<string, CaseStudySlug> = {
+  "whatsapp-ai-triage-workflow": "whatsapp-ai-triage-engine",
+  "whatsapp-triage-workflow": "whatsapp-ai-triage-engine",
+  "business-systems-sync-workflow": "synccore-revops-engine",
+  "systems-sync-workflow": "synccore-revops-engine",
+};
+
 export const contactEmail = "hola@itersv.com";
 export const contactPhoneHref = "https://wa.me/50360581739";
 
@@ -1151,4 +1158,12 @@ export function getNavLinks(locale: Locale): NavLink[] {
 
 export function isCaseStudySlug(value: string): value is CaseStudySlug {
   return caseStudySlugs.includes(value as CaseStudySlug);
+}
+
+export function resolveCaseStudySlug(value: string): CaseStudySlug | null {
+  if (isCaseStudySlug(value)) {
+    return value;
+  }
+
+  return caseStudySlugAliases[value] ?? null;
 }
