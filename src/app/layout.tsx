@@ -10,18 +10,24 @@ import "./globals.css";
 const bodyFont = Source_Sans_3({
   variable: "--font-body",
   subsets: ["latin"],
+  display: "swap",
+  preload: true,
 });
 
 const displayFont = Ubuntu({
   variable: "--font-display",
   subsets: ["latin"],
   weight: ["400", "500", "700"],
+  display: "swap",
+  preload: true,
 });
 
 const monoFont = Ubuntu_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
   weight: ["400", "700"],
+  display: "swap",
+  preload: true,
 });
 
 export const metadata: Metadata = baseMetadata;
@@ -36,9 +42,13 @@ export default async function RootLayout({
   const locale = pathname === "/es" || pathname.startsWith("/es/") ? "es" : "en";
 
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html
+      lang={locale}
+      className={`${bodyFont.variable} ${displayFont.variable} ${monoFont.variable}`}
+      suppressHydrationWarning
+    >
       <body
-        className={`${bodyFont.variable} ${displayFont.variable} ${monoFont.variable} bg-[var(--bg)] font-[family:var(--font-body)] text-[var(--text)] antialiased`}
+        className="bg-[var(--bg)] font-[family:var(--font-body)] text-[var(--text)] antialiased"
       >
         <HashScrollController />
         {children}
