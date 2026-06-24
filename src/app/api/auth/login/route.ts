@@ -47,7 +47,7 @@ export async function POST(request: NextRequest) {
   }
 
   const origin = getRedirectOrigin(request);
-  const callbackUrl = new URL("/auth/callback", origin);
+  const callbackUrl = new URL("/auth/confirm", origin);
   callbackUrl.searchParams.set("next", next);
 
   const supabase = await createClient();

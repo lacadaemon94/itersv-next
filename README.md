@@ -92,9 +92,24 @@ Supabase Auth should be configured with:
 - Magic-link email login enabled.
 - Site URL set to `https://www.itersv.com`.
 - Redirect URLs for:
+  - `https://www.itersv.com/auth/confirm`
   - `https://www.itersv.com/auth/callback`
+  - `https://itersv.com/auth/confirm`
   - `https://itersv.com/auth/callback`
+  - `http://localhost:3000/auth/confirm`
   - `http://localhost:3000/auth/callback`
+- Magic Link template using `{{ .TokenHash }}` instead of
+  `{{ .ConfirmationURL }}`:
+
+```html
+<h2>Your sign-in link</h2>
+
+<p>Follow the link below to sign in. This link expires shortly and can only be used once.</p>
+<p><a href="{{ .RedirectTo }}&amp;token_hash={{ .TokenHash }}&amp;type=email">Sign in</a></p>
+```
+
+The login route always includes a `next` query parameter in `.RedirectTo`, so
+the template appends the `token_hash` and `type` parameters with `&`.
 - Custom SMTP enabled through the Zoho Mail account so auth emails do not rely
   on Supabase's default SMTP limits.
 
