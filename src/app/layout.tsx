@@ -1,76 +1,47 @@
-import "./styles/app.css";
-import { SessionProvider } from "./utils/SessionProvider";
-import { Topbar } from "./components/topbar/Topbar";
-import { Footer } from "./components/footer/Footer";
-import Ubuntu from "@/assets/fonts/Ubuntu";
+import type { Metadata } from "next";
+import { Source_Sans_3, Ubuntu, Ubuntu_Mono } from "next/font/google";
+import { headers } from "next/headers";
 
-const ubuntu = Ubuntu;
+import { HashScrollController } from "@/components/hash-scroll-controller";
+import { baseMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Itersv | Aventuras Digitales - Diseño, Desarrolo y Lanzamiento ",
-  description:
-    "Lleva tus sueños a la era Digital, con las mejores prácticas en Diseño y Desarrollo de Web Apps en la región.",
-  metadataBase: new URL('https://itersv.com/'),
-  applicationName: "Itersv",
-  generator: "Next.js",
-  keywords: [
-    "Itersv",
-    "Agencia",
-    "Digital",
-    "Web Apps",
-    "Diseño",
-    "Desarrollo",
-  ],
-  authors: [{ name: "Javier Flores", url: "https://zjavier.com" }],
-  colorScheme: "dark",
-  creator: "Javier Flores",
-  openGraph: {
-    title: 'Itersv | Aventuras Digitales - Diseño, Desarrolo y Lanzamiento',
-    description: 'Lleva tus sueños a la era Digital, con las mejores prácticas en Diseño y Desarrollo de Web Apps en la región.',
-    url: 'https://itersv.com',
-    siteName: 'Itersv',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Itersv',
-    description: 'Lleva tus sueños a la era Digital, con las mejores prácticas en Diseño y Desarrollo de Web Apps en la región.',
-    site: '@Iter_sv',
-  },
-  verification: {
-    other: {
-      "facebook-domain-verification": "xrcwmdjjk160w4jkg4o4h0umv8iunu",
-    },
-  },
-  robots: {
-    index: true,
-    follow: true,
-    nocache: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      nocache: true,
-    },
-  },
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#FFFFFF" },
-    { media: "(prefers-color-scheme: dark)", color: "#040415" },
-  ],
-  manifest: "https://www.itersv.com/manifest.json",
-};
+import "./globals.css";
 
-export default function RootLayout({
+const bodyFont = Source_Sans_3({
+  variable: "--font-body",
+  subsets: ["latin"],
+});
+
+const displayFont = Ubuntu({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+});
+
+const monoFont = Ubuntu_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
+
+export const metadata: Metadata = baseMetadata;
+
+export default async function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
+  const requestHeaders = await headers();
+  const pathname = requestHeaders.get("x-iter-pathname") || "/";
+  const locale = pathname === "/es" || pathname.startsWith("/es/") ? "es" : "en";
+
   return (
-    <html lang="es">
-      <body className={ubuntu.className}>
-        <SessionProvider>
-          <Topbar></Topbar>
-          {children}
-          <Footer></Footer>
-        </SessionProvider>
+    <html lang={locale} suppressHydrationWarning>
+      <body
+        className={`${bodyFont.variable} ${displayFont.variable} ${monoFont.variable} bg-[var(--bg)] font-[family:var(--font-body)] text-[var(--text)] antialiased`}
+      >
+        <HashScrollController />
+        {children}
       </body>
     </html>
   );
