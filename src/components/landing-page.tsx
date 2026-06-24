@@ -5,7 +5,6 @@ import {
   ArrowDown01Icon,
   ArrowRight01Icon,
   ArrowUpRight01Icon,
-  CallIcon,
   Cancel01Icon,
   CheckIcon,
   ChevronDownIcon,
@@ -16,6 +15,7 @@ import {
   NewTwitterIcon,
   Shield02Icon,
   SourceCodeIcon,
+  WhatsappIcon,
   WorkflowCircle01Icon,
 } from "@hugeicons/core-free-icons";
 import {
@@ -51,6 +51,7 @@ const socialIcons = {
   facebook: Facebook01Icon,
   instagram: InstagramIcon,
   linkedin: Linkedin01Icon,
+  whatsapp: WhatsappIcon,
 } satisfies Record<SocialPlatform, typeof NewTwitterIcon>;
 
 const sectionHeaderVariants: Variants = {
@@ -1338,7 +1339,7 @@ export function LandingPage() {
                         href={contactPhoneHref}
                         className="inline-flex items-center gap-2.5 rounded-xl border border-[var(--border-strong)] bg-transparent px-[22px] py-[14px] font-[family:var(--font-mono)] text-[14.5px] text-[var(--text)]"
                       >
-                        <AppIcon aria-hidden="true" icon={CallIcon} size={16} />
+                        <AppIcon aria-hidden="true" icon={WhatsappIcon} size={16} />
                         <span>{copy.cta.btn2}</span>
                       </Link>
                     </motion.div>

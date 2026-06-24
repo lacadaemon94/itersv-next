@@ -6,7 +6,12 @@ export type NavLink = {
   label: string;
 };
 
-export type SocialPlatform = "x" | "facebook" | "instagram" | "linkedin";
+export type SocialPlatform =
+  | "x"
+  | "facebook"
+  | "instagram"
+  | "linkedin"
+  | "whatsapp";
 
 export type SocialLink = {
   platform: SocialPlatform;
@@ -166,13 +171,14 @@ export const caseStudySlugs = [
 export type CaseStudySlug = (typeof caseStudySlugs)[number];
 
 export const contactEmail = "hola@itersv.com";
-export const contactPhoneHref = "tel:+50360581739";
+export const contactPhoneHref = "https://wa.me/50360581739";
 
 export const socialLinks: SocialLink[] = [
   { platform: "x", label: "X", href: "https://x.com/iter_ia" },
   { platform: "facebook", label: "Facebook", href: "https://www.facebook.com/Itersv503" },
   { platform: "instagram", label: "Instagram", href: "https://www.instagram.com/iter_airev/" },
   { platform: "linkedin", label: "LinkedIn", href: "https://www.linkedin.com/company/itersv" },
+  { platform: "whatsapp", label: "WhatsApp", href: contactPhoneHref },
 ];
 
 export const stackTools = [

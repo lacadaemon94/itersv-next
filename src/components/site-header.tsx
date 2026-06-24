@@ -2,13 +2,13 @@
 
 import {
   ArrowRight01Icon,
-  CallIcon,
   Facebook01Icon,
   InstagramIcon,
   Linkedin01Icon,
   MoonIcon,
   NewTwitterIcon,
   Sun01Icon,
+  WhatsappIcon,
 } from "@hugeicons/core-free-icons";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
@@ -30,6 +30,7 @@ const socialIcons = {
   facebook: Facebook01Icon,
   instagram: InstagramIcon,
   linkedin: Linkedin01Icon,
+  whatsapp: WhatsappIcon,
 } satisfies Record<SocialPlatform, typeof NewTwitterIcon>;
 
 function ThemeGlyph({ theme }: { theme: ThemeMode }) {
@@ -244,7 +245,7 @@ export function SiteHeader({
                 href={contactPhoneHref}
                 className="hidden items-center gap-2 px-1 font-[family:var(--font-mono)] text-xs tracking-[0.04em] text-[var(--text-dim)] transition hover:text-[var(--text)] xl:inline-flex"
               >
-                <AppIcon aria-hidden="true" icon={CallIcon} size={14} />
+                <AppIcon aria-hidden="true" icon={WhatsappIcon} size={14} />
                 {phoneLabel}
               </Link>
             </motion.div>

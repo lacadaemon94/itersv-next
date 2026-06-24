@@ -14,6 +14,7 @@ import {
   MoonIcon,
   NewTwitterIcon,
   Sun01Icon,
+  WhatsappIcon,
 } from "@hugeicons/core-free-icons";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import Link from "next/link";
@@ -40,6 +41,7 @@ const socialIcons = {
   facebook: Facebook01Icon,
   instagram: InstagramIcon,
   linkedin: Linkedin01Icon,
+  whatsapp: WhatsappIcon,
 } satisfies Record<SocialPlatform, typeof NewTwitterIcon>;
 
 const caseHeroSectionVariants: Variants = {
