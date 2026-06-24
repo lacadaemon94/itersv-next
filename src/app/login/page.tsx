@@ -43,7 +43,11 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
           <div className="mb-5 rounded-[8px] border border-red-400/40 bg-red-500/10 px-4 py-3 text-sm text-red-100">
             {error === "unauthorized"
               ? "That email is not allowed for this admin area."
-              : "The login link could not be completed. Request a fresh link."}
+              : error === "missing_code"
+                ? "The login link did not include an auth code. Request a fresh link."
+                : error === "exchange_failed"
+                  ? "That login link is expired or was already used. Request a fresh link."
+                  : "The login link could not be completed. Request a fresh link."}
           </div>
         ) : null}
 

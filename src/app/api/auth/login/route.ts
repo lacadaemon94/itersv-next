@@ -4,7 +4,13 @@ import { isAllowedAdminEmail, normalizeEmail } from "@/lib/admin-auth";
 import { createClient } from "@/lib/supabase/server";
 
 function getRedirectOrigin(request: NextRequest) {
-  return (process.env.NEXT_PUBLIC_SITE_URL || request.nextUrl.origin).replace(/\/$/, "");
+  const configured = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "");
+
+  if (configured && configured !== "http://localhost:3000") {
+    return configured;
+  }
+
+  return request.nextUrl.origin;
 }
 
 export async function POST(request: NextRequest) {
