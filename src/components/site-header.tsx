@@ -243,7 +243,7 @@ export function SiteHeader({
             >
               <Link
                 href={contactPhoneHref}
-                className="hidden items-center gap-2 px-1 font-[family:var(--font-mono)] text-xs tracking-[0.04em] text-[var(--text-dim)] transition hover:text-[var(--text)] xl:inline-flex"
+                className="hidden items-center gap-2 px-1 iter-mono text-xs tracking-[0.04em] text-[var(--text-dim)] transition hover:text-[var(--text)] xl:inline-flex"
               >
                 <AppIcon aria-hidden="true" icon={WhatsappIcon} size={14} />
                 {phoneLabel}

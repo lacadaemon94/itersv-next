@@ -56,10 +56,10 @@ export function InboxClient({ data }: { data: InboxData }) {
       <header className="border-b border-[var(--border)] px-5 py-4">
         <div className="mx-auto flex max-w-[1320px] items-center justify-between gap-4">
           <div>
-            <p className="font-[family:var(--font-mono)] text-xs uppercase tracking-[0.14em] text-[var(--accent)]">
+            <p className="iter-mono text-xs uppercase tracking-[0.14em] text-[var(--accent)]">
               / iter ops
             </p>
-            <h1 className="font-[family:var(--font-display)] text-2xl font-bold">
+            <h1 className="iter-display text-2xl font-bold">
               WhatsApp Inbox
             </h1>
           </div>
@@ -105,7 +105,7 @@ export function InboxClient({ data }: { data: InboxData }) {
                     <p className="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-dim)]">
                       {conversation.latest_summary || conversation.external_thread_id}
                     </p>
-                    <p className="mt-2 font-[family:var(--font-mono)] text-[10px] uppercase tracking-[0.1em] text-[var(--text-muted)]">
+                    <p className="mt-2 iter-mono text-[10px] uppercase tracking-[0.1em] text-[var(--text-muted)]">
                       {formatDate(conversation.last_message_at)}
                     </p>
                   </a>
@@ -148,7 +148,7 @@ export function InboxClient({ data }: { data: InboxData }) {
                         <p className="whitespace-pre-wrap text-sm leading-6">
                           {message.body || "(media / empty message)"}
                         </p>
-                        <div className="mt-2 flex flex-wrap gap-2 font-[family:var(--font-mono)] text-[10px] uppercase tracking-[0.1em] text-[var(--text-muted)]">
+                        <div className="mt-2 flex flex-wrap gap-2 iter-mono text-[10px] uppercase tracking-[0.1em] text-[var(--text-muted)]">
                           <span>{message.sender_type}</span>
                           <span>{message.delivery_status || "received"}</span>
                           <span>{formatDate(message.created_at)}</span>
@@ -159,7 +159,7 @@ export function InboxClient({ data }: { data: InboxData }) {
                 </div>
 
                 <form onSubmit={sendReply} className="border-t border-[var(--border)] p-4">
-                  <label className="mb-2 block font-[family:var(--font-mono)] text-[11px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
+                  <label className="mb-2 block iter-mono text-[11px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
                     Reply
                   </label>
                   <textarea
@@ -190,7 +190,7 @@ export function InboxClient({ data }: { data: InboxData }) {
               </div>
 
               <aside className="border-t border-[var(--border)] p-4 lg:border-l lg:border-t-0">
-                <h3 className="mb-3 font-[family:var(--font-display)] text-xl font-semibold">
+                <h3 className="mb-3 iter-display text-xl font-semibold">
                   AI Summary
                 </h3>
                 {data.latestSummary ? (

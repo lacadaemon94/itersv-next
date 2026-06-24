@@ -373,7 +373,7 @@ function HeroOrb({ prefersReducedMotion }: { prefersReducedMotion: boolean }) {
       </motion.svg>
 
       <motion.div
-        className="absolute right-[-8px] top-[12%] flex items-center gap-2 rounded-[10px] border border-[var(--border-strong)] bg-[var(--bg)] px-3 py-2 font-[family:var(--font-mono)] text-[11px] text-[var(--text-dim)] shadow-[0_8px_24px_-8px_rgba(0,0,0,0.4)] max-sm:hidden"
+        className="absolute right-[-8px] top-[12%] flex items-center gap-2 rounded-[10px] border border-[var(--border-strong)] bg-[var(--bg)] px-3 py-2 iter-mono text-[11px] text-[var(--text-dim)] shadow-[0_8px_24px_-8px_rgba(0,0,0,0.4)] max-sm:hidden"
         initial={prefersReducedMotion ? undefined : { opacity: 0, x: 16, y: -10 }}
         animate={prefersReducedMotion ? undefined : { opacity: 1, x: 0, y: 0 }}
         transition={{ duration: 0.72, delay: 0.62, ease: [0.22, 1, 0.36, 1] }}
@@ -390,7 +390,7 @@ function HeroOrb({ prefersReducedMotion }: { prefersReducedMotion: boolean }) {
         <span>intent.router → llm</span>
       </motion.div>
       <motion.div
-        className="absolute bottom-[22%] left-[-16px] flex items-center gap-2 rounded-[10px] border border-[var(--border-strong)] bg-[var(--bg)] px-3 py-2 font-[family:var(--font-mono)] text-[11px] text-[var(--text-dim)] shadow-[0_8px_24px_-8px_rgba(0,0,0,0.4)] max-sm:hidden"
+        className="absolute bottom-[22%] left-[-16px] flex items-center gap-2 rounded-[10px] border border-[var(--border-strong)] bg-[var(--bg)] px-3 py-2 iter-mono text-[11px] text-[var(--text-dim)] shadow-[0_8px_24px_-8px_rgba(0,0,0,0.4)] max-sm:hidden"
         initial={prefersReducedMotion ? undefined : { opacity: 0, x: -18, y: 10 }}
         animate={prefersReducedMotion ? undefined : { opacity: 1, x: 0, y: 0 }}
         transition={{ duration: 0.72, delay: 0.74, ease: [0.22, 1, 0.36, 1] }}
@@ -408,7 +408,7 @@ function HeroOrb({ prefersReducedMotion }: { prefersReducedMotion: boolean }) {
         <span className="opacity-60">/ msg</span>
       </motion.div>
       <motion.div
-        className="absolute bottom-[4%] right-[8%] flex items-center gap-2 rounded-[10px] border border-[var(--border-strong)] bg-[var(--bg)] px-3 py-2 font-[family:var(--font-mono)] text-[11px] text-[var(--text-dim)] shadow-[0_8px_24px_-8px_rgba(0,0,0,0.4)] max-sm:hidden"
+        className="absolute bottom-[4%] right-[8%] flex items-center gap-2 rounded-[10px] border border-[var(--border-strong)] bg-[var(--bg)] px-3 py-2 iter-mono text-[11px] text-[var(--text-dim)] shadow-[0_8px_24px_-8px_rgba(0,0,0,0.4)] max-sm:hidden"
         initial={prefersReducedMotion ? undefined : { opacity: 0, y: 14 }}
         animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
         transition={{ duration: 0.72, delay: 0.86, ease: [0.22, 1, 0.36, 1] }}
@@ -573,7 +573,7 @@ export function LandingPage() {
           <div className="mx-auto grid max-w-[1320px] gap-12 lg:grid-cols-[1.618fr_1fr] lg:items-center lg:gap-16">
             <div className="max-lg:text-center">
               <motion.div
-                className="mb-6 inline-flex max-w-full flex-wrap items-center gap-x-2.5 gap-y-1 rounded-2xl border border-[var(--border)] bg-[var(--surface)] px-3 py-[7px] font-[family:var(--font-mono)] text-xs tracking-[0.04em] text-[var(--text-dim)] max-lg:mx-auto max-lg:justify-center sm:mb-7 sm:rounded-full sm:py-[6px]"
+                className="mb-6 inline-flex max-w-full flex-wrap items-center gap-x-2.5 gap-y-1 rounded-2xl border border-[var(--border)] bg-[var(--surface)] px-3 py-[7px] iter-mono text-xs tracking-[0.04em] text-[var(--text-dim)] max-lg:mx-auto max-lg:justify-center sm:mb-7 sm:rounded-full sm:py-[6px]"
                 initial={prefersReducedMotion ? undefined : { opacity: 0, y: 16 }}
                 animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
                 transition={{ duration: 0.62, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
@@ -587,7 +587,7 @@ export function LandingPage() {
                 <span className="max-[520px]:basis-full max-[520px]:pl-[18px]">{copy.hero.meta}</span>
               </motion.div>
 
-              <h1 className="m-0 font-[family:var(--font-display)] text-[clamp(42px,12vw,92px)] font-bold leading-[0.96] tracking-[-0.035em] text-[var(--text)]">
+              <h1 className="m-0 iter-display text-[clamp(42px,12vw,92px)] font-bold leading-[0.96] tracking-[-0.035em] text-[var(--text)]">
                 <motion.span
                   className="block"
                   initial={prefersReducedMotion ? undefined : { opacity: 0, y: 24 }}
@@ -709,10 +709,10 @@ export function LandingPage() {
                     }}
                     transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                   >
-                    <div className="mb-1.5 font-[family:var(--font-mono)] text-[10.5px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
+                    <div className="mb-1.5 iter-mono text-[10.5px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
                       {stat.k}
                     </div>
-                    <div className="font-[family:var(--font-display)] text-[22px] font-bold tracking-[-0.02em] text-[var(--text)]">
+                    <div className="iter-display text-[22px] font-bold tracking-[-0.02em] text-[var(--text)]">
                       {stat.v}
                     </div>
                   </motion.div>
@@ -724,7 +724,7 @@ export function LandingPage() {
           </div>
 
           <div className="mx-auto mt-24 max-w-[1320px] px-0 lg:px-7">
-            <div className="mb-[18px] text-center font-[family:var(--font-mono)] text-[11px] uppercase tracking-[0.14em] text-[var(--text-muted)]">
+            <div className="mb-[18px] text-center iter-mono text-[11px] uppercase tracking-[0.14em] text-[var(--text-muted)]">
               {copy.tickerLabel}
             </div>
             <div
@@ -740,7 +740,7 @@ export function LandingPage() {
                 {[...tickerStack, ...tickerStack].map((item, index) => (
                   <div
                     key={`${item}-${index}`}
-                    className="whitespace-nowrap font-[family:var(--font-display)] text-[17px] font-medium tracking-[-0.01em] text-[var(--text-dim)]"
+                    className="whitespace-nowrap iter-display text-[17px] font-medium tracking-[-0.01em] text-[var(--text-dim)]"
                   >
                     {item}
                   </div>
@@ -760,10 +760,10 @@ export function LandingPage() {
               variants={sectionHeaderVariants}
             >
               <div>
-                <div className="mb-[14px] font-[family:var(--font-mono)] text-xs uppercase tracking-[0.14em] text-[var(--accent)]">
+                <div className="mb-[14px] iter-mono text-xs uppercase tracking-[0.14em] text-[var(--accent)]">
                   {copy.offers.eyebrow}
                 </div>
-                <h2 className="m-0 max-w-[620px] font-[family:var(--font-display)] text-[clamp(34px,4.2vw,56px)] font-bold leading-[1] tracking-[-0.03em] text-balance max-lg:mx-auto">
+                <h2 className="m-0 max-w-[620px] iter-display text-[clamp(34px,4.2vw,56px)] font-bold leading-[1] tracking-[-0.03em] text-balance max-lg:mx-auto">
                   {copy.offers.title}
                 </h2>
               </div>
@@ -788,7 +788,7 @@ export function LandingPage() {
                 <div className="absolute right-[-120px] top-[-120px] size-[380px] bg-[radial-gradient(circle,var(--accent-glow),transparent_65%)] opacity-35 blur-[20px]" />
                 <div className="relative flex h-full flex-col gap-7">
                   <div className="flex items-start justify-between gap-5 max-sm:flex-col max-sm:items-center max-sm:justify-center">
-                    <div className="flex min-w-0 items-center justify-center gap-3 font-[family:var(--font-mono)] text-[11.5px] uppercase tracking-[0.12em] text-[var(--text-muted)] max-[380px]:gap-2 max-[380px]:text-[10.5px]">
+                    <div className="flex min-w-0 items-center justify-center gap-3 iter-mono text-[11.5px] uppercase tracking-[0.12em] text-[var(--text-muted)] max-[380px]:gap-2 max-[380px]:text-[10.5px]">
                       <span>{copy.offers.cards[0].num}</span>
                       <span className="h-px w-6 bg-[var(--text-muted)] max-[380px]:w-4" />
                       <span className="min-w-0 truncate">{copy.offers.cards[0].tag}</span>
@@ -797,7 +797,7 @@ export function LandingPage() {
                   </div>
 
                   <div className="mt-auto">
-                    <h3 className="mb-[14px] font-[family:var(--font-display)] text-[clamp(28px,3vw,38px)] font-bold leading-[1.05] tracking-[-0.025em]">
+                    <h3 className="mb-[14px] iter-display text-[clamp(28px,3vw,38px)] font-bold leading-[1.05] tracking-[-0.025em]">
                       {copy.offers.cards[0].title}
                     </h3>
                     <p className="mb-[22px] max-w-[520px] text-[16.5px] leading-[1.55] text-[var(--text-dim)] max-sm:mx-auto">
@@ -807,7 +807,7 @@ export function LandingPage() {
                       {copy.offers.cards[0].stack.map((item) => (
                         <span
                           key={item}
-                          className="rounded-full border border-[var(--border)] bg-[var(--bg)] px-[10px] py-[5px] font-[family:var(--font-mono)] text-[11.5px] text-[var(--text-dim)]"
+                          className="rounded-full border border-[var(--border)] bg-[var(--bg)] px-[10px] py-[5px] iter-mono text-[11.5px] text-[var(--text-dim)]"
                         >
                           {item}
                         </span>
@@ -815,7 +815,7 @@ export function LandingPage() {
                     </div>
                   </div>
 
-                  <div className="relative mt-3 rounded-2xl border border-[var(--border)] bg-[var(--bg)] p-4 font-[family:var(--font-mono)] text-[12.5px] leading-[1.7]">
+                  <div className="relative mt-3 rounded-2xl border border-[var(--border)] bg-[var(--bg)] p-4 iter-mono text-[12.5px] leading-[1.7]">
                     <div className="mb-2.5 flex items-center gap-2">
                       <span className="inline-block size-[7px] rounded-full bg-[var(--accent)] [animation:iter-pulse_2s_ease-in-out_infinite]" />
                       <span className="text-[10.5px] uppercase tracking-[0.1em] text-[var(--text-muted)]">
@@ -846,7 +846,7 @@ export function LandingPage() {
                   transition={{ duration: 0.24, ease: landingMotionEase }}
                 >
                   <div className="mb-6 flex items-start justify-between gap-5 max-sm:flex-col max-sm:items-center max-sm:justify-center">
-                    <div className="flex min-w-0 items-center justify-center gap-3 font-[family:var(--font-mono)] text-[11.5px] uppercase tracking-[0.12em] text-[var(--text-muted)] max-[380px]:gap-2 max-[380px]:text-[10.5px]">
+                    <div className="flex min-w-0 items-center justify-center gap-3 iter-mono text-[11.5px] uppercase tracking-[0.12em] text-[var(--text-muted)] max-[380px]:gap-2 max-[380px]:text-[10.5px]">
                       <span>{card.num}</span>
                       <span className="h-px w-[18px] bg-[var(--text-muted)] max-[380px]:w-4" />
                       <span className="min-w-0 truncate">{card.tag}</span>
@@ -855,7 +855,7 @@ export function LandingPage() {
                   </div>
 
                   <div className="mt-auto">
-                    <h3 className="mb-3 font-[family:var(--font-display)] text-[22px] font-bold leading-[1.15] tracking-[-0.025em]">
+                    <h3 className="mb-3 iter-display text-[22px] font-bold leading-[1.15] tracking-[-0.025em]">
                       {card.title}
                     </h3>
                     <p className="mb-4 text-[14.5px] leading-[1.55] text-[var(--text-dim)]">
@@ -865,7 +865,7 @@ export function LandingPage() {
                       {card.stack.map((item) => (
                         <span
                           key={item}
-                          className="rounded-full border border-[var(--border)] bg-[var(--bg)] px-[9px] py-1 font-[family:var(--font-mono)] text-[11px] text-[var(--text-dim)]"
+                          className="rounded-full border border-[var(--border)] bg-[var(--bg)] px-[9px] py-1 iter-mono text-[11px] text-[var(--text-dim)]"
                         >
                           {item}
                         </span>
@@ -882,12 +882,12 @@ export function LandingPage() {
                 transition={{ duration: 0.24, ease: landingMotionEase }}
               >
                 <div>
-                  <div className="mb-[14px] flex items-center gap-3 font-[family:var(--font-mono)] text-[11.5px] uppercase tracking-[0.12em] text-[var(--text-muted)] max-sm:justify-center">
+                  <div className="mb-[14px] flex items-center gap-3 iter-mono text-[11.5px] uppercase tracking-[0.12em] text-[var(--text-muted)] max-sm:justify-center">
                     <span>{copy.offers.cards[3].num}</span>
                     <span className="h-px w-[18px] bg-[var(--text-muted)]" />
                     <span>{copy.offers.cards[3].tag}</span>
                   </div>
-                  <h3 className="mb-2.5 font-[family:var(--font-display)] text-[28px] font-bold leading-[1.1] tracking-[-0.025em]">
+                  <h3 className="mb-2.5 iter-display text-[28px] font-bold leading-[1.1] tracking-[-0.025em]">
                     {copy.offers.cards[3].title}
                   </h3>
                   <p className="max-w-[640px] text-[15.5px] leading-[1.55] text-[var(--text-dim)] max-sm:mx-auto">
@@ -898,7 +898,7 @@ export function LandingPage() {
                   {copy.offers.cards[3].stack.map((item) => (
                     <span
                       key={item}
-                      className="whitespace-nowrap rounded-full border border-[var(--border)] bg-[var(--bg)] px-[11px] py-1.5 font-[family:var(--font-mono)] text-[11.5px] text-[var(--text-dim)]"
+                      className="whitespace-nowrap rounded-full border border-[var(--border)] bg-[var(--bg)] px-[11px] py-1.5 iter-mono text-[11.5px] text-[var(--text-dim)]"
                     >
                       {item}
                     </span>
@@ -919,10 +919,10 @@ export function LandingPage() {
               variants={sectionHeaderVariants}
             >
               <div>
-                <div className="mb-[14px] font-[family:var(--font-mono)] text-xs uppercase tracking-[0.14em] text-[var(--accent)]">
+                <div className="mb-[14px] iter-mono text-xs uppercase tracking-[0.14em] text-[var(--accent)]">
                   {copy.cases.eyebrow}
                 </div>
-                <h2 className="m-0 text-[clamp(34px,4.2vw,56px)] font-[family:var(--font-display)] font-bold leading-[1] tracking-[-0.03em] text-balance max-lg:mx-auto">
+                <h2 className="m-0 text-[clamp(34px,4.2vw,56px)] iter-display font-bold leading-[1] tracking-[-0.03em] text-balance max-lg:mx-auto">
                   {copy.cases.title}
                 </h2>
               </div>
@@ -958,11 +958,11 @@ export function LandingPage() {
                           "linear-gradient(135deg, black, transparent 70%)",
                       }}
                     />
-                    <div className="absolute left-4 top-4 flex items-center gap-2 font-[family:var(--font-mono)] text-[11px] uppercase tracking-[0.12em] text-white/85">
+                    <div className="absolute left-4 top-4 flex items-center gap-2 iter-mono text-[11px] uppercase tracking-[0.12em] text-white/85">
                       <span className="inline-block size-1.5 rounded-full bg-[#1FFFC7] shadow-[0_0_8px_#1FFFC7]" />
                       <span>{item.kicker}</span>
                     </div>
-                    <div className="absolute bottom-[18px] right-[22px] font-[family:var(--font-display)] text-[64px] font-bold leading-[0.9] tracking-[-0.05em] text-white/90">
+                    <div className="absolute bottom-[18px] right-[22px] iter-display text-[64px] font-bold leading-[0.9] tracking-[-0.05em] text-white/90">
                       0{item.idx1}
                       <span className="text-white/40">/02</span>
                     </div>
@@ -970,7 +970,7 @@ export function LandingPage() {
                   </div>
 
                   <div className="flex flex-col gap-4 p-7 max-sm:text-center">
-                    <h3 className="m-0 font-[family:var(--font-display)] text-[26px] font-bold leading-[1.1] tracking-[-0.02em]">
+                    <h3 className="m-0 iter-display text-[26px] font-bold leading-[1.1] tracking-[-0.02em]">
                       {item.title}
                     </h3>
                     <p className="m-0 text-[15.5px] leading-[1.55] text-[var(--text-dim)]">
@@ -980,7 +980,7 @@ export function LandingPage() {
                       {item.stack.map((stack) => (
                         <span
                           key={stack}
-                          className="rounded-full border border-[var(--border)] bg-[var(--bg)] px-[9px] py-1 font-[family:var(--font-mono)] text-[11px] text-[var(--text-dim)]"
+                          className="rounded-full border border-[var(--border)] bg-[var(--bg)] px-[9px] py-1 iter-mono text-[11px] text-[var(--text-dim)]"
                         >
                           {stack}
                         </span>
@@ -995,10 +995,10 @@ export function LandingPage() {
                         <div className="grid gap-px overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--border)] sm:grid-cols-3">
                           {item.stats.map((stat) => (
                             <div key={stat.k} className="bg-[var(--bg)] p-3">
-                              <div className="mb-1 font-[family:var(--font-mono)] text-[10px] uppercase tracking-[0.1em] text-[var(--text-muted)]">
+                              <div className="mb-1 iter-mono text-[10px] uppercase tracking-[0.1em] text-[var(--text-muted)]">
                                 {stat.k}
                               </div>
-                              <div className="font-[family:var(--font-display)] text-lg font-bold tracking-[-0.02em] text-[var(--accent)]">
+                              <div className="iter-display text-lg font-bold tracking-[-0.02em] text-[var(--accent)]">
                                 {stat.v}
                               </div>
                             </div>
@@ -1074,10 +1074,10 @@ export function LandingPage() {
               viewport={{ once: true, amount: 0.36 }}
               variants={sectionHeaderVariants}
             >
-              <div className="mb-[14px] font-[family:var(--font-mono)] text-xs uppercase tracking-[0.14em] text-[var(--accent)]">
+              <div className="mb-[14px] iter-mono text-xs uppercase tracking-[0.14em] text-[var(--accent)]">
                 {copy.plans.eyebrow}
               </div>
-              <h2 className="mx-auto mb-[14px] max-w-[760px] text-[clamp(34px,4.2vw,56px)] font-[family:var(--font-display)] font-bold leading-[1.05] tracking-[-0.03em] text-balance">
+              <h2 className="mx-auto mb-[14px] max-w-[760px] text-[clamp(34px,4.2vw,56px)] iter-display font-bold leading-[1.05] tracking-[-0.03em] text-balance">
                 {copy.plans.title}
               </h2>
               <p className="mx-auto max-w-[580px] text-[18px] leading-[1.55] text-[var(--text-dim)]">
@@ -1121,29 +1121,29 @@ export function LandingPage() {
                   ) : null}
                   <div className="mb-[22px] flex items-center justify-between">
                     <div
-                      className={`font-[family:var(--font-mono)] text-[10.5px] uppercase tracking-[0.12em] ${
+                      className={`iter-mono text-[10.5px] uppercase tracking-[0.12em] ${
                         plan.featured ? "text-[var(--accent)]" : "text-[var(--text-muted)]"
                       }`}
                     >
                       {plan.tag}
                     </div>
                     {plan.featured ? (
-                      <div className="rounded-full bg-[var(--accent)] px-[9px] py-1 font-[family:var(--font-mono)] text-[10px] font-bold uppercase tracking-[0.1em] text-[#0A0B10]">
+                      <div className="rounded-full bg-[var(--accent)] px-[9px] py-1 iter-mono text-[10px] font-bold uppercase tracking-[0.1em] text-[#0A0B10]">
                         ★ popular
                       </div>
                     ) : null}
                   </div>
-                  <h3 className="mb-2.5 font-[family:var(--font-display)] text-[28px] font-bold leading-[1.1] tracking-[-0.025em]">
+                  <h3 className="mb-2.5 iter-display text-[28px] font-bold leading-[1.1] tracking-[-0.025em]">
                     {plan.title}
                   </h3>
                   <p className="mb-6 min-h-[44px] text-[14.5px] leading-[1.55] text-[var(--text-dim)]">
                     {plan.for}
                   </p>
                   <div className="mb-6 flex items-baseline gap-2 border-b border-dashed border-[var(--border)] pb-6 max-sm:justify-center">
-                    <span className="font-[family:var(--font-display)] text-4xl font-bold tracking-[-0.03em]">
+                    <span className="iter-display text-4xl font-bold tracking-[-0.03em]">
                       {plan.price}
                     </span>
-                    <span className="font-[family:var(--font-mono)] text-xs text-[var(--text-muted)]">
+                    <span className="iter-mono text-xs text-[var(--text-muted)]">
                       {plan.priceSub}
                     </span>
                   </div>
@@ -1181,7 +1181,7 @@ export function LandingPage() {
 
             <div className="mt-7 flex justify-center">
               <motion.div
-                className="inline-flex items-center gap-3 rounded-full border border-[var(--border)] bg-[var(--surface)] px-4 py-2.5 font-[family:var(--font-mono)] text-[11.5px] tracking-[0.04em] text-[var(--text-dim)]"
+                className="inline-flex items-center gap-3 rounded-full border border-[var(--border)] bg-[var(--surface)] px-4 py-2.5 iter-mono text-[11.5px] tracking-[0.04em] text-[var(--text-dim)]"
                 initial={prefersReducedMotion ? undefined : { opacity: 0, y: 14 }}
                 whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.7 }}
@@ -1204,10 +1204,10 @@ export function LandingPage() {
               variants={sectionStaggerVariants}
             >
               <motion.div variants={sectionHeaderVariants}>
-                <div className="mb-[14px] font-[family:var(--font-mono)] text-xs uppercase tracking-[0.14em] text-[var(--accent)]">
+                <div className="mb-[14px] iter-mono text-xs uppercase tracking-[0.14em] text-[var(--accent)]">
                   {copy.trust.eyebrow}
                 </div>
-                <h2 className="mb-[22px] max-w-[560px] text-[clamp(32px,3.8vw,48px)] font-[family:var(--font-display)] font-bold leading-[1.05] tracking-[-0.03em] text-balance max-lg:mx-auto">
+                <h2 className="mb-[22px] max-w-[560px] text-[clamp(32px,3.8vw,48px)] iter-display font-bold leading-[1.05] tracking-[-0.03em] text-balance max-lg:mx-auto">
                   {copy.trust.title}
                 </h2>
                 <p className="mb-8 max-w-[480px] text-[17px] leading-[1.6] text-[var(--text-dim)] max-lg:mx-auto">
@@ -1224,10 +1224,10 @@ export function LandingPage() {
                       className="bg-[var(--bg)] px-5 py-[18px]"
                       variants={sectionListItemVariants}
                     >
-                      <div className="mb-1.5 font-[family:var(--font-mono)] text-[10.5px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
+                      <div className="mb-1.5 iter-mono text-[10.5px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
                         {pillar.k}
                       </div>
-                      <div className="font-[family:var(--font-display)] text-lg font-bold tracking-[-0.02em] text-[var(--text)]">
+                      <div className="iter-display text-lg font-bold tracking-[-0.02em] text-[var(--text)]">
                         {pillar.v}
                       </div>
                     </motion.div>
@@ -1237,7 +1237,7 @@ export function LandingPage() {
 
               <motion.div variants={sectionCardVariants}>
                 <motion.div
-                  className="mb-4 flex items-center gap-3 font-[family:var(--font-mono)] text-[11px] uppercase tracking-[0.14em] text-[var(--text-muted)] max-lg:justify-center"
+                  className="mb-4 flex items-center gap-3 iter-mono text-[11px] uppercase tracking-[0.14em] text-[var(--text-muted)] max-lg:justify-center"
                   variants={sectionListItemVariants}
                 >
                   <span>{copy.trust.stackLabel}</span>
@@ -1256,10 +1256,10 @@ export function LandingPage() {
                       whileHover={prefersReducedMotion ? undefined : { y: -2, backgroundColor: "var(--surface)" }}
                       transition={{ duration: 0.2, ease: landingMotionEase }}
                     >
-                      <div className="font-[family:var(--font-display)] text-[17px] font-bold tracking-[-0.015em] text-[var(--text)]">
+                      <div className="iter-display text-[17px] font-bold tracking-[-0.015em] text-[var(--text)]">
                         {tool.name}
                       </div>
-                      <div className="font-[family:var(--font-mono)] text-[10.5px] uppercase tracking-[0.08em] text-[var(--text-muted)]">
+                      <div className="iter-mono text-[10.5px] uppercase tracking-[0.08em] text-[var(--text-muted)]">
                         {tool.role}
                       </div>
                     </motion.div>
@@ -1313,10 +1313,10 @@ export function LandingPage() {
                 variants={sectionStaggerVariants}
               >
                 <motion.div variants={sectionListItemVariants}>
-                  <div className="mb-[18px] font-[family:var(--font-mono)] text-xs uppercase tracking-[0.14em] text-[var(--accent)]">
+                  <div className="mb-[18px] iter-mono text-xs uppercase tracking-[0.14em] text-[var(--accent)]">
                     {copy.cta.eyebrow}
                   </div>
-                  <h2 className="max-w-[760px] text-[clamp(34px,4.4vw,60px)] font-[family:var(--font-display)] font-bold leading-[1.05] tracking-[-0.03em] text-balance max-lg:mx-auto">
+                  <h2 className="max-w-[760px] text-[clamp(34px,4.4vw,60px)] iter-display font-bold leading-[1.05] tracking-[-0.03em] text-balance max-lg:mx-auto">
                     {copy.cta.title}
                   </h2>
                 </motion.div>
@@ -1349,7 +1349,7 @@ export function LandingPage() {
                     >
                       <Link
                         href={contactPhoneHref}
-                        className="inline-flex items-center gap-2.5 rounded-xl border border-[var(--border-strong)] bg-transparent px-[22px] py-[14px] font-[family:var(--font-mono)] text-[14.5px] text-[var(--text)]"
+                        className="inline-flex items-center gap-2.5 rounded-xl border border-[var(--border-strong)] bg-transparent px-[22px] py-[14px] iter-mono text-[14.5px] text-[var(--text)]"
                       >
                         <AppIcon aria-hidden="true" icon={WhatsappIcon} size={16} />
                         <span>{copy.cta.btn2}</span>
@@ -1458,7 +1458,7 @@ export function LandingPage() {
                 }}
               >
                 <motion.div
-                  className="relative mb-2 pr-10 font-[family:var(--font-mono)] text-[11px] uppercase tracking-[0.14em] text-[var(--accent)] max-sm:pr-0 max-sm:text-center"
+                  className="relative mb-2 pr-10 iter-mono text-[11px] uppercase tracking-[0.14em] text-[var(--accent)] max-sm:pr-0 max-sm:text-center"
                   variants={{
                     hidden: { opacity: 0, y: 10 },
                     show: { opacity: 1, y: 0 },
@@ -1469,7 +1469,7 @@ export function LandingPage() {
                   {copy.contact.eyebrow}
                 </motion.div>
                 <motion.h3
-                  className="relative mb-2 pr-10 font-[family:var(--font-display)] text-[clamp(30px,9vw,42px)] font-bold leading-[1.1] tracking-[-0.025em] max-sm:pr-0 max-sm:text-center sm:text-[42px]"
+                  className="relative mb-2 pr-10 iter-display text-[clamp(30px,9vw,42px)] font-bold leading-[1.1] tracking-[-0.025em] max-sm:pr-0 max-sm:text-center sm:text-[42px]"
                   variants={{
                     hidden: { opacity: 0, y: 12 },
                     show: { opacity: 1, y: 0 },
@@ -1501,7 +1501,7 @@ export function LandingPage() {
                   transition={{ duration: 0.34, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <label className="flex flex-col gap-1.5">
-                    <span className="font-[family:var(--font-mono)] text-[10.5px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
+                    <span className="iter-mono text-[10.5px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
                       {copy.contact.name} *
                     </span>
                     <input
@@ -1514,7 +1514,7 @@ export function LandingPage() {
 
                   <div className="grid gap-[14px] sm:grid-cols-2">
                     <label className="flex flex-col gap-1.5">
-                      <span className="font-[family:var(--font-mono)] text-[10.5px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
+                      <span className="iter-mono text-[10.5px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
                         {copy.contact.email} *
                       </span>
                       <input
@@ -1525,7 +1525,7 @@ export function LandingPage() {
                       />
                     </label>
                     <label className="flex flex-col gap-1.5">
-                      <span className="font-[family:var(--font-mono)] text-[10.5px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
+                      <span className="iter-mono text-[10.5px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
                         {copy.contact.company}
                       </span>
                       <input
@@ -1538,7 +1538,7 @@ export function LandingPage() {
                   </div>
 
                   <label className="flex flex-col gap-1.5">
-                    <span className="font-[family:var(--font-mono)] text-[10.5px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
+                    <span className="iter-mono text-[10.5px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
                       {copy.contact.message} *
                     </span>
                     <textarea
@@ -1590,7 +1590,7 @@ export function LandingPage() {
                     </div>
                   ) : null}
 
-                  <div className="text-center font-[family:var(--font-mono)] text-[11px] tracking-[0.04em] text-[var(--text-muted)]">
+                  <div className="text-center iter-mono text-[11px] tracking-[0.04em] text-[var(--text-muted)]">
                     {copy.contact.helper}
                   </div>
                 </motion.div>
@@ -1632,7 +1632,7 @@ export function LandingPage() {
               <p className="mb-[18px] max-w-[320px] text-sm leading-[1.55] text-[var(--text-dim)]">
                 {copy.footer.tagline}
               </p>
-              <div className="flex gap-2 font-[family:var(--font-mono)] text-[11px] tracking-[0.04em] text-[var(--text-muted)]">
+              <div className="flex gap-2 iter-mono text-[11px] tracking-[0.04em] text-[var(--text-muted)]">
                 <span className="mt-[5px] inline-block size-[7px] rounded-full bg-[var(--accent)] [animation:iter-pulse_2s_ease-in-out_infinite]" />
                 <span>{copy.footer.statusLabel}</span>
               </div>
@@ -1664,7 +1664,7 @@ export function LandingPage() {
                 viewport={{ once: true, amount: 0.28 }}
                 transition={{ ...footerRevealTransition, delay: 0.08 + columnIndex * 0.05 }}
               >
-                <div className="mb-[14px] font-[family:var(--font-mono)] text-[11px] uppercase tracking-[0.14em] text-[var(--text-muted)]">
+                <div className="mb-[14px] iter-mono text-[11px] uppercase tracking-[0.14em] text-[var(--text-muted)]">
                   {column.title}
                 </div>
                 <ul className="m-0 flex list-none flex-col gap-2 p-0">
@@ -1707,7 +1707,7 @@ export function LandingPage() {
             ))}
           </div>
           <motion.div
-            className="flex flex-wrap items-center justify-between gap-3 border-t border-[var(--border)] pt-6 font-[family:var(--font-mono)] text-[11.5px] tracking-[0.04em] text-[var(--text-muted)]"
+            className="flex flex-wrap items-center justify-between gap-3 border-t border-[var(--border)] pt-6 iter-mono text-[11.5px] tracking-[0.04em] text-[var(--text-muted)]"
             initial={prefersReducedMotion ? undefined : { opacity: 0, y: 14 }}
             whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.6 }}

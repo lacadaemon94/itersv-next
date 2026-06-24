@@ -48,7 +48,7 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body
-        className="bg-[var(--bg)] font-[family:var(--font-body)] text-[var(--text)] antialiased"
+        className="bg-[var(--bg)] iter-body text-[var(--text)] antialiased"
       >
         <HashScrollController />
         {children}

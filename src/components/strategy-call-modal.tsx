@@ -213,7 +213,7 @@ export function StrategyCallModal({
               }}
             >
               <motion.div
-                className="relative mb-2 pr-10 font-[family:var(--font-mono)] text-[11px] uppercase tracking-[0.14em] text-[var(--accent)] max-sm:pr-0 max-sm:text-center"
+                className="relative mb-2 pr-10 iter-mono text-[11px] uppercase tracking-[0.14em] text-[var(--accent)] max-sm:pr-0 max-sm:text-center"
                 variants={{
                   hidden: { opacity: 0, y: 10 },
                   show: { opacity: 1, y: 0 },
@@ -224,7 +224,7 @@ export function StrategyCallModal({
                 {copy.eyebrow}
               </motion.div>
               <motion.h3
-                className="relative mb-2 pr-10 font-[family:var(--font-display)] text-[clamp(30px,9vw,42px)] font-bold leading-[1.1] tracking-[-0.025em] max-sm:pr-0 max-sm:text-center sm:text-[42px]"
+                className="relative mb-2 pr-10 iter-display text-[clamp(30px,9vw,42px)] font-bold leading-[1.1] tracking-[-0.025em] max-sm:pr-0 max-sm:text-center sm:text-[42px]"
                 variants={{
                   hidden: { opacity: 0, y: 12 },
                   show: { opacity: 1, y: 0 },
@@ -256,7 +256,7 @@ export function StrategyCallModal({
                 transition={{ duration: 0.34, ease: modalEase }}
               >
                 <label className="flex flex-col gap-1.5">
-                  <span className="font-[family:var(--font-mono)] text-[10.5px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
+                  <span className="iter-mono text-[10.5px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
                     {copy.name} *
                   </span>
                   <input
@@ -269,7 +269,7 @@ export function StrategyCallModal({
 
                 <div className="grid gap-3.5 sm:grid-cols-2">
                   <label className="flex flex-col gap-1.5">
-                    <span className="font-[family:var(--font-mono)] text-[10.5px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
+                    <span className="iter-mono text-[10.5px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
                       {copy.email} *
                     </span>
                     <input
@@ -280,7 +280,7 @@ export function StrategyCallModal({
                     />
                   </label>
                   <label className="flex flex-col gap-1.5">
-                    <span className="font-[family:var(--font-mono)] text-[10.5px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
+                    <span className="iter-mono text-[10.5px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
                       {copy.company}
                     </span>
                     <input
@@ -293,7 +293,7 @@ export function StrategyCallModal({
                 </div>
 
                 <label className="flex flex-col gap-1.5">
-                  <span className="font-[family:var(--font-mono)] text-[10.5px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
+                  <span className="iter-mono text-[10.5px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
                     {copy.message} *
                   </span>
                   <textarea
@@ -345,7 +345,7 @@ export function StrategyCallModal({
                   </div>
                 ) : null}
 
-                <div className="text-center font-[family:var(--font-mono)] text-[11px] tracking-[0.04em] text-[var(--text-muted)]">
+                <div className="text-center iter-mono text-[11px] tracking-[0.04em] text-[var(--text-muted)]">
                   {copy.helper}
                 </div>
               </motion.div>

@@ -206,7 +206,7 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
 
   return (
     <div
-      className="relative min-h-screen overflow-x-hidden bg-[var(--bg)] font-[family:var(--font-body)] text-[var(--text)]"
+      className="relative min-h-screen overflow-x-hidden bg-[var(--bg)] iter-body text-[var(--text)]"
     >
       <div
         aria-hidden="true"
@@ -243,7 +243,7 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
           <button
             type="button"
             onClick={toggleLocale}
-            className="rounded-lg border border-[var(--border)] bg-transparent px-[10px] py-2 font-[family:var(--font-mono)] text-xs tracking-[0.04em] text-[var(--text-dim)]"
+            className="rounded-lg border border-[var(--border)] bg-transparent px-[10px] py-2 iter-mono text-xs tracking-[0.04em] text-[var(--text-dim)]"
             aria-label="Toggle language"
           >
             <span className={locale === "en" ? "text-[var(--accent)]" : ""}>EN</span>
@@ -300,7 +300,7 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
           variants={caseHeroSectionVariants}
         >
           <div className="mx-auto max-w-[1200px]">
-            <div className="mb-5 flex min-w-0 items-center gap-2 overflow-x-auto whitespace-nowrap pb-1 font-[family:var(--font-mono)] text-[10.5px] uppercase tracking-[0.12em] text-[var(--text-muted)] sm:mb-7 sm:gap-2.5 sm:text-[11.5px]">
+            <div className="mb-5 flex min-w-0 items-center gap-2 overflow-x-auto whitespace-nowrap pb-1 iter-mono text-[10.5px] uppercase tracking-[0.12em] text-[var(--text-muted)] sm:mb-7 sm:gap-2.5 sm:text-[11.5px]">
               <Link href={homePath}>Iter</Link>
               <span>/</span>
               <Link href={`${homePath}#cases`}>cases</Link>
@@ -341,18 +341,18 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
                   <span className="absolute inset-0 rounded-full bg-[#1FFFC7] [animation:iter-pulse_2.4s_ease-in-out_infinite]" />
                   <span className="absolute inset-[2px] rounded-full bg-[#1FFFC7]" />
                 </span>
-                <span className="font-[family:var(--font-mono)] text-[11.5px] uppercase tracking-[0.14em] text-white/90 max-[420px]:text-[10.5px]">
+                <span className="iter-mono text-[11.5px] uppercase tracking-[0.14em] text-white/90 max-[420px]:text-[10.5px]">
                   {study.kicker}
                 </span>
               </motion.div>
 
-              <motion.div className="absolute bottom-9 right-10 font-[family:var(--font-display)] text-[220px] font-bold leading-[0.82] tracking-[-0.06em] text-white/95 max-[920px]:bottom-6 max-[920px]:right-6 max-[920px]:text-[clamp(96px,22vw,160px)] max-[680px]:bottom-auto max-[680px]:right-[18px] max-[680px]:top-[86px] max-[680px]:text-[clamp(76px,25vw,118px)]"
+              <motion.div className="absolute bottom-9 right-10 iter-display text-[220px] font-bold leading-[0.82] tracking-[-0.06em] text-white/95 max-[920px]:bottom-6 max-[920px]:right-6 max-[920px]:text-[clamp(96px,22vw,160px)] max-[680px]:bottom-auto max-[680px]:right-[18px] max-[680px]:top-[86px] max-[680px]:text-[clamp(76px,25vw,118px)]"
                 variants={caseCoverNumberVariants}
               >
                 0{study.num}
               </motion.div>
               <motion.div
-                className="absolute bottom-14 right-[254px] font-[family:var(--font-mono)] text-xs uppercase tracking-[0.14em] text-white/70 [writing-mode:vertical-rl] max-[920px]:hidden"
+                className="absolute bottom-14 right-[254px] iter-mono text-xs uppercase tracking-[0.14em] text-white/70 [writing-mode:vertical-rl] max-[920px]:hidden"
                 variants={caseCoverContentVariants}
               >
                 case /02
@@ -361,7 +361,7 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
               <motion.div className="absolute bottom-10 left-10 right-80 max-[920px]:bottom-6 max-[920px]:left-6 max-[920px]:right-6 max-[680px]:bottom-[22px] max-[680px]:left-[18px] max-[680px]:right-[18px]"
                 variants={caseCoverContentVariants}
               >
-                <div className="text-balance font-[family:var(--font-display)] text-[clamp(32px,10vw,64px)] font-bold leading-[0.98] tracking-[-0.03em] text-white/95 max-[680px]:text-center">
+                <div className="text-balance iter-display text-[clamp(32px,10vw,64px)] font-bold leading-[0.98] tracking-[-0.03em] text-white/95 max-[680px]:text-center">
                   {study.title}
                 </div>
               </motion.div>
@@ -379,7 +379,7 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
                 {study.stack.map((item) => (
                   <span
                     key={item}
-                    className="rounded-full border border-[var(--border)] bg-[var(--surface)] px-3 py-1.5 font-[family:var(--font-mono)] text-xs text-[var(--text)]"
+                    className="rounded-full border border-[var(--border)] bg-[var(--surface)] px-3 py-1.5 iter-mono text-xs text-[var(--text)]"
                   >
                     {item}
                   </span>
@@ -393,7 +393,7 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
                   key={item.k}
                   className="grid gap-1.5 sm:grid-cols-[1fr_1.4fr] sm:items-baseline sm:gap-4"
                 >
-                  <div className="font-[family:var(--font-mono)] text-[11px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
+                  <div className="iter-mono text-[11px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
                     {item.k}
                   </div>
                   <div className="text-[14.5px] font-medium tracking-[-0.005em] text-[var(--text)]">
@@ -447,10 +447,10 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
                   className="bg-[var(--bg)] px-6 py-7 text-center"
                   variants={caseStatVariants}
                 >
-                  <div className="mb-2.5 font-[family:var(--font-mono)] text-[11px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
+                  <div className="mb-2.5 iter-mono text-[11px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
                     {stat.k}
                   </div>
-                  <div className="font-[family:var(--font-display)] text-[38px] font-bold leading-none tracking-[-0.025em] text-[var(--text)]">
+                  <div className="iter-display text-[38px] font-bold leading-none tracking-[-0.025em] text-[var(--text)]">
                     {stat.v}
                   </div>
                   <div className="mt-1.5 text-[13px] text-[var(--text-dim)]">
@@ -471,7 +471,7 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
               viewport={{ once: true, amount: 0.32 }}
               variants={caseMenuVariants}
             >
-              <div className="mb-4 font-[family:var(--font-mono)] text-[11px] uppercase tracking-[0.14em] text-[var(--text-muted)]">
+              <div className="mb-4 iter-mono text-[11px] uppercase tracking-[0.14em] text-[var(--text-muted)]">
                 {copy.onPage}
               </div>
               <motion.ul
@@ -484,7 +484,7 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
                       href={`#${item.id}`}
                       className="flex items-center gap-2.5 text-[13.5px] text-[var(--text-dim)]"
                     >
-                      <span className="w-6 flex-none font-[family:var(--font-mono)] text-[10.5px] text-[var(--text-muted)]">
+                      <span className="w-6 flex-none iter-mono text-[10.5px] text-[var(--text-muted)]">
                         {item.num}
                       </span>
                       <span>{item.label}</span>
@@ -496,10 +496,10 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
 
             <div className="w-full min-w-0 max-w-[720px] max-[920px]:mx-auto max-[680px]:text-center">
               <section id="problem" className="mb-14">
-                <div className="mb-3 font-[family:var(--font-mono)] text-xs uppercase tracking-[0.14em] text-[var(--accent)]">
+                <div className="mb-3 iter-mono text-xs uppercase tracking-[0.14em] text-[var(--accent)]">
                   {copy.problem}
                 </div>
-                <h2 className="mb-[18px] font-[family:var(--font-display)] text-[32px] font-bold leading-[1.1] tracking-[-0.025em] text-[var(--text)] max-[680px]:text-[26px]">
+                <h2 className="mb-[18px] iter-display text-[32px] font-bold leading-[1.1] tracking-[-0.025em] text-[var(--text)] max-[680px]:text-[26px]">
                   {study.problemTitle}
                 </h2>
                 <p className="mb-4 text-[17px] leading-[1.65] text-[var(--text-dim)] max-[680px]:text-base">
@@ -511,10 +511,10 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
               </section>
 
               <section id="approach" className="mb-14">
-                <div className="mb-3 font-[family:var(--font-mono)] text-xs uppercase tracking-[0.14em] text-[var(--accent)]">
+                <div className="mb-3 iter-mono text-xs uppercase tracking-[0.14em] text-[var(--accent)]">
                   {copy.approach}
                 </div>
-                <h2 className="mb-[18px] font-[family:var(--font-display)] text-[32px] font-bold leading-[1.1] tracking-[-0.025em] text-[var(--text)] max-[680px]:text-[26px]">
+                <h2 className="mb-[18px] iter-display text-[32px] font-bold leading-[1.1] tracking-[-0.025em] text-[var(--text)] max-[680px]:text-[26px]">
                   {study.approachTitle}
                 </h2>
                 <p className="mb-6 text-[17px] leading-[1.65] text-[var(--text-dim)] max-[680px]:text-base">
@@ -522,7 +522,7 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
                 </p>
 
                 <div className="relative mb-6 overflow-hidden rounded-[20px] border border-[var(--border-strong)] bg-[var(--surface)] p-8 max-[920px]:rounded-2xl max-[920px]:p-[22px]">
-                  <div className="mb-6 font-[family:var(--font-mono)] text-[10.5px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
+                  <div className="mb-6 iter-mono text-[10.5px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
                     {study.architecture} . {study.archCaption}
                   </div>
                   <div className="iter-scrollbar-none flex min-w-0 items-center justify-between gap-3 overflow-x-auto pb-2 max-[920px]:justify-start">
@@ -530,7 +530,7 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
                       <div key={node.label} className="flex flex-none items-center gap-3">
                         <div className="flex min-w-[88px] flex-col items-center gap-2">
                           <div
-                            className={`flex size-14 items-center justify-center rounded-[14px] border px-1 text-center font-[family:var(--font-mono)] text-[11px] tracking-[0.04em] ${
+                            className={`flex size-14 items-center justify-center rounded-[14px] border px-1 text-center iter-mono text-[11px] tracking-[0.04em] ${
                               node.accent
                                 ? "border-[var(--accent-soft)] bg-[rgba(31,255,199,0.08)] text-[var(--accent)]"
                                 : "border-[var(--border-strong)] bg-[var(--bg-elevated)] text-[var(--text)]"
@@ -538,7 +538,7 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
                           >
                             {node.icon}
                           </div>
-                          <div className="text-center font-[family:var(--font-mono)] text-[10.5px] leading-[1.3] text-[var(--text)]">
+                          <div className="text-center iter-mono text-[10.5px] leading-[1.3] text-[var(--text)]">
                             {node.label}
                           </div>
                         </div>
@@ -558,10 +558,10 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
               </section>
 
               <section id="build" className="mb-14">
-                <div className="mb-3 font-[family:var(--font-mono)] text-xs uppercase tracking-[0.14em] text-[var(--accent)]">
+                <div className="mb-3 iter-mono text-xs uppercase tracking-[0.14em] text-[var(--accent)]">
                   {copy.build}
                 </div>
-                <h2 className="mb-[22px] font-[family:var(--font-display)] text-[32px] font-bold leading-[1.1] tracking-[-0.025em] text-[var(--text)] max-[680px]:text-[26px]">
+                <h2 className="mb-[22px] iter-display text-[32px] font-bold leading-[1.1] tracking-[-0.025em] text-[var(--text)] max-[680px]:text-[26px]">
                   {study.buildTitle}
                 </h2>
 
@@ -571,11 +571,11 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
                       key={step.num}
                       className="grid min-w-0 grid-cols-[36px_minmax(0,1fr)] items-start gap-[18px] max-[680px]:grid-cols-1 max-[680px]:justify-items-center"
                     >
-                      <div className="flex size-9 items-center justify-center rounded-[10px] bg-[var(--accent-soft)] font-[family:var(--font-mono)] text-xs font-bold text-[var(--accent)]">
+                      <div className="flex size-9 items-center justify-center rounded-[10px] bg-[var(--accent-soft)] iter-mono text-xs font-bold text-[var(--accent)]">
                         {step.num}
                       </div>
                       <div className="min-w-0">
-                        <div className="mb-1 font-[family:var(--font-display)] text-[17px] font-bold tracking-[-0.015em] text-[var(--text)]">
+                        <div className="mb-1 iter-display text-[17px] font-bold tracking-[-0.015em] text-[var(--text)]">
                           {step.title}
                         </div>
                         <p className="m-0 text-[15px] leading-[1.55] text-[var(--text-dim)]">
@@ -588,10 +588,10 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
               </section>
 
               <section id="result" className="mb-14">
-                <div className="mb-3 font-[family:var(--font-mono)] text-xs uppercase tracking-[0.14em] text-[var(--accent)]">
+                <div className="mb-3 iter-mono text-xs uppercase tracking-[0.14em] text-[var(--accent)]">
                   {copy.outcome}
                 </div>
-                <h2 className="mb-[22px] font-[family:var(--font-display)] text-[32px] font-bold leading-[1.1] tracking-[-0.025em] text-[var(--text)] max-[680px]:text-[26px]">
+                <h2 className="mb-[22px] iter-display text-[32px] font-bold leading-[1.1] tracking-[-0.025em] text-[var(--text)] max-[680px]:text-[26px]">
                   {study.outcomeTitle}
                 </h2>
                 <p className="mb-7 text-[17px] leading-[1.65] text-[var(--text-dim)] max-[680px]:text-base">
@@ -604,7 +604,7 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
                       aria-hidden="true"
                       className="absolute right-[-64px] top-[-72px] size-48 rounded-full bg-[radial-gradient(circle,var(--accent-glow),transparent_68%)] opacity-65 blur-[28px]"
                     />
-                    <div className="relative mb-2 font-[family:var(--font-mono)] text-[11px] uppercase tracking-[0.14em] text-[var(--accent)]">
+                    <div className="relative mb-2 iter-mono text-[11px] uppercase tracking-[0.14em] text-[var(--accent)]">
                       {copy.impactMap}
                     </div>
                     <p className="relative m-0 text-[16px] leading-[1.6] text-[var(--text)]">
@@ -614,10 +614,10 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
                   <div className="grid grid-cols-2 gap-px bg-[var(--border)] max-[680px]:grid-cols-1">
                     {study.impactAreas.map((area) => (
                       <div key={area.k} className="bg-[var(--surface)] px-6 py-5 max-[680px]:text-center">
-                        <div className="mb-2 font-[family:var(--font-mono)] text-[10.5px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
+                        <div className="mb-2 iter-mono text-[10.5px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
                           {area.k}
                         </div>
-                        <div className="mb-2 font-[family:var(--font-display)] text-[21px] font-bold leading-[1.12] tracking-[-0.02em] text-[var(--text)]">
+                        <div className="mb-2 iter-display text-[21px] font-bold leading-[1.12] tracking-[-0.02em] text-[var(--text)]">
                           {area.v}
                         </div>
                         <p className="m-0 text-[14px] leading-[1.55] text-[var(--text-dim)]">
@@ -630,10 +630,10 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
               </section>
 
               <section id="takeaways" className="mb-6">
-                <div className="mb-3 font-[family:var(--font-mono)] text-xs uppercase tracking-[0.14em] text-[var(--accent)]">
+                <div className="mb-3 iter-mono text-xs uppercase tracking-[0.14em] text-[var(--accent)]">
                   {copy.takeaways}
                 </div>
-                <h2 className="mb-[22px] font-[family:var(--font-display)] text-[32px] font-bold leading-[1.1] tracking-[-0.025em] text-[var(--text)] max-[680px]:text-[26px]">
+                <h2 className="mb-[22px] iter-display text-[32px] font-bold leading-[1.1] tracking-[-0.025em] text-[var(--text)] max-[680px]:text-[26px]">
                   {study.takeawaysTitle}
                 </h2>
                 <ul className="m-0 flex list-none flex-col gap-3 p-0">
@@ -662,10 +662,10 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
                 scroll
                 className="block overflow-hidden rounded-3xl border border-[var(--border)] bg-[var(--surface)] p-7 transition hover:border-[var(--border-strong)] max-[920px]:text-center"
               >
-                <div className="mb-[18px] font-[family:var(--font-mono)] text-[11px] uppercase tracking-[0.14em] text-[var(--text-muted)]">
+                <div className="mb-[18px] iter-mono text-[11px] uppercase tracking-[0.14em] text-[var(--text-muted)]">
                   {copy.nextCase}
                 </div>
-                <h3 className="mb-2 font-[family:var(--font-display)] text-[26px] font-bold leading-[1.1] tracking-[-0.02em] text-[var(--text)]">
+                <h3 className="mb-2 iter-display text-[26px] font-bold leading-[1.1] tracking-[-0.02em] text-[var(--text)]">
                   {nextStudy.title}
                 </h3>
                 <p className="mb-[22px] text-[14.5px] leading-[1.5] text-[var(--text-dim)]">
@@ -684,10 +684,10 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
               >
                 <div className="absolute right-[-100px] top-[-100px] size-80 bg-[radial-gradient(circle,var(--accent-glow),transparent_65%)] opacity-55 blur-[40px]" />
                 <div className="relative">
-                  <div className="mb-[18px] font-[family:var(--font-mono)] text-[11px] uppercase tracking-[0.14em] text-[var(--accent)]">
+                  <div className="mb-[18px] iter-mono text-[11px] uppercase tracking-[0.14em] text-[var(--accent)]">
                     {copy.want}
                   </div>
-                  <h3 className="mb-2 font-[family:var(--font-display)] text-[26px] font-bold leading-[1.1] tracking-[-0.02em] text-[var(--text)]">
+                  <h3 className="mb-2 iter-display text-[26px] font-bold leading-[1.1] tracking-[-0.02em] text-[var(--text)]">
                     {copy.ctaTitle}
                   </h3>
                   <p className="mb-[22px] text-[14.5px] leading-[1.5] text-[var(--text-dim)]">
@@ -721,7 +721,7 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
       />
 
       <footer className="relative z-[1] border-t border-[var(--border)] px-6 py-8 max-sm:px-4">
-        <div className="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-3 font-[family:var(--font-mono)] text-[11.5px] tracking-[0.04em] text-[var(--text-muted)]">
+        <div className="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-3 iter-mono text-[11.5px] tracking-[0.04em] text-[var(--text-muted)]">
           <div>© 2026 Iter Labs. {copy.rights}</div>
           <div className="flex items-center gap-2">
             {socialLinks.map((link) => (

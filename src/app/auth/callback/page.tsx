@@ -74,10 +74,10 @@ export default function AuthCallbackPage() {
   return (
     <main className="flex min-h-screen items-center justify-center bg-[var(--bg)] px-5 text-[var(--text)]">
       <section className="w-full max-w-[420px] rounded-[8px] border border-[var(--border)] bg-[var(--surface)] p-6 text-center">
-        <p className="font-[family:var(--font-mono)] text-xs uppercase tracking-[0.14em] text-[var(--accent)]">
+        <p className="iter-mono text-xs uppercase tracking-[0.14em] text-[var(--accent)]">
           / auth
         </p>
-        <h1 className="mt-3 font-[family:var(--font-display)] text-2xl font-bold">
+        <h1 className="mt-3 iter-display text-2xl font-bold">
           {message}
         </h1>
       </section>

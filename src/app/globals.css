@@ -65,6 +65,14 @@ body {
   background: var(--bg);
 }
 
+.iter-body {
+  font-family: var(--font-body), sans-serif;
+}
+
+.iter-display {
+  font-family: var(--font-display), sans-serif;
+}
+
 html.iter-modal-open,
 html.iter-modal-open body {
   overflow: hidden;

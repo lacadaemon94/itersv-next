@@ -27,10 +27,10 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
   return (
     <main className="min-h-screen bg-[var(--bg)] px-5 py-20 text-[var(--text)]">
       <section className="mx-auto max-w-[420px] rounded-[8px] border border-[var(--border)] bg-[var(--surface)] p-6 shadow-[0_24px_80px_-48px_var(--accent-glow)]">
-        <p className="mb-3 font-[family:var(--font-mono)] text-xs uppercase tracking-[0.14em] text-[var(--accent)]">
+        <p className="mb-3 iter-mono text-xs uppercase tracking-[0.14em] text-[var(--accent)]">
           / admin
         </p>
-        <h1 className="mb-3 font-[family:var(--font-display)] text-3xl font-bold tracking-[-0.025em]">
+        <h1 className="mb-3 iter-display text-3xl font-bold tracking-[-0.025em]">
           Magic link login
         </h1>
         <p className="mb-6 text-sm leading-6 text-[var(--text-dim)]">
@@ -59,7 +59,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
         <form action="/api/auth/login" method="post" className="space-y-4">
           <input type="hidden" name="next" value={next} />
           <label className="block">
-            <span className="mb-2 block font-[family:var(--font-mono)] text-[11px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
+            <span className="mb-2 block iter-mono text-[11px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
               Email
             </span>
             <input
