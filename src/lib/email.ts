@@ -12,18 +12,26 @@ type StrategyCallEmail = {
 };
 
 function getSmtpConfig() {
-  const host = process.env.ZOHO_SMTP_HOST || process.env.SMTP_HOST;
-  const port = Number(process.env.ZOHO_SMTP_PORT || process.env.SMTP_PORT || 465);
+  const host = process.env.PRIVATE_ZOHO_SMTP_HOST;
+  const port = Number(
+    process.env.PRIVATE_ZOHO_SMTP_PORT || 465,
+  );
   const secure =
-    String(process.env.ZOHO_SMTP_SECURE || process.env.SMTP_SECURE || "true") ===
+    String(
+      process.env.PRIVATE_ZOHO_SMTP_SECURE || "true",
+    ) ===
     "true";
-  const user = process.env.ZOHO_SMTP_USER || process.env.SMTP_USER;
-  const pass = process.env.ZOHO_SMTP_PASSWORD || process.env.SMTP_PASSWORD;
+  const user = process.env.PRIVATE_ZOHO_SMTP_USER;
+  const pass = process.env.PRIVATE_ZOHO_SMTP_PASSWORD;
   const fromEmail =
-    process.env.ZOHO_SMTP_FROM_EMAIL || process.env.SMTP_FROM_EMAIL || user;
-  const fromName = process.env.ZOHO_SMTP_FROM_NAME || "Iter";
+    process.env.PRIVATE_ZOHO_SMTP_FROM_EMAIL ||
+    user;
+  const fromName =
+    process.env.PRIVATE_ZOHO_SMTP_FROM_NAME ||
+    "Iter";
   const notifyTo =
-    process.env.ZOHO_NOTIFY_TO || process.env.STRATEGY_CALL_NOTIFY_TO || user;
+    process.env.PRIVATE_ZOHO_NOTIFY_TO ||
+    user;
 
   if (!host || !user || !pass || !fromEmail || !notifyTo) {
     return null;

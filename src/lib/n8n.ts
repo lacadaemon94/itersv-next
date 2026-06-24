@@ -45,9 +45,12 @@ export async function postToN8n(url: string | undefined, payload: unknown): Prom
 }
 
 export function getStrategyCallWebhookUrl() {
-  return process.env.N8N_STRATEGY_CALL_WEBHOOK_URL || process.env.N8N_WEBHOOK_URL;
+  return (
+    process.env.PRIVATE_N8N_STRATEGY_CALL_WEBHOOK_URL ||
+    process.env.PRIVATE_N8N_WEBHOOK_URL
+  );
 }
 
 export function getOutboundWhatsAppWebhookUrl() {
-  return process.env.N8N_OUTBOUND_WEBHOOK_URL;
+  return process.env.PRIVATE_N8N_OUTBOUND_WEBHOOK_URL;
 }

@@ -11,9 +11,8 @@ export async function proxy(request: NextRequest) {
     },
   });
 
-  const supabaseUrl = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const supabaseAnonKey =
-    process.env.SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
+  const supabaseUrl = process.env.PRIVATE_SUPABASE_URL;
+  const supabaseAnonKey = process.env.PRIVATE_SUPABASE_ANON_KEY;
 
   if (!supabaseUrl || !supabaseAnonKey) {
     return response;

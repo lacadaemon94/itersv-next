@@ -9,7 +9,7 @@ export function normalizeEmail(email: string | null | undefined) {
 }
 
 export function getAdminEmails() {
-  const configured = process.env.ADMIN_EMAILS;
+  const configured = process.env.PRIVATE_ADMIN_EMAILS;
 
   if (!configured) {
     return defaultAdminEmails;

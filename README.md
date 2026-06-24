@@ -32,7 +32,6 @@ source ~/.nvm/nvm.sh
 
 ```bash
 npm install
-cp .env.example .env.local
 npm run dev
 ```
 
@@ -52,39 +51,36 @@ npm run dev -- -p 3001
 
 ```env
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
-NEXT_PUBLIC_SUPABASE_URL=
-NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=
-SUPABASE_URL=
-SUPABASE_ANON_KEY=
-SUPABASE_SERVICE_ROLE_KEY=
-ADMIN_EMAILS=javier.flores@itersv.com
-N8N_BASE_URL=
-N8N_API_KEY=
-N8N_WEBHOOK_URL=
-N8N_STRATEGY_CALL_WEBHOOK_URL=
-N8N_OUTBOUND_WEBHOOK_URL=
-N8N_STATUS_WEBHOOK_URL=
-ZOHO_SMTP_HOST=smtp.zoho.in
-ZOHO_SMTP_PORT=465
-ZOHO_SMTP_SECURE=true
-ZOHO_SMTP_USER=
-ZOHO_SMTP_PASSWORD=
-ZOHO_SMTP_FROM_EMAIL=hola@itersv.com
-ZOHO_SMTP_FROM_NAME=Iter
-ZOHO_NOTIFY_TO=javier.flores@itersv.com
-TWILIO_ACCOUNT_SID=
-TWILIO_AUTH_TOKEN=
-TWILIO_PHONE_NUMBER=whatsapp:+50360581739
-OPENAI_API_KEY=
+PRIVATE_SUPABASE_URL=
+PRIVATE_SUPABASE_ANON_KEY=
+PRIVATE_SUPABASE_SERVICE_ROLE_KEY=
+PRIVATE_ADMIN_EMAILS=javier.flores@itersv.com
+PRIVATE_N8N_BASE_URL=
+PRIVATE_N8N_API_KEY=
+PRIVATE_N8N_WEBHOOK_URL=
+PRIVATE_N8N_STRATEGY_CALL_WEBHOOK_URL=
+PRIVATE_N8N_OUTBOUND_WEBHOOK_URL=
+PRIVATE_N8N_STATUS_WEBHOOK_URL=
+PRIVATE_ZOHO_SMTP_HOST=smtp.zoho.in
+PRIVATE_ZOHO_SMTP_PORT=465
+PRIVATE_ZOHO_SMTP_SECURE=true
+PRIVATE_ZOHO_SMTP_USER=
+PRIVATE_ZOHO_SMTP_PASSWORD=
+PRIVATE_ZOHO_SMTP_FROM_EMAIL=hola@itersv.com
+PRIVATE_ZOHO_SMTP_FROM_NAME=Iter
+PRIVATE_ZOHO_NOTIFY_TO=javier.flores@itersv.com
+PRIVATE_TWILIO_ACCOUNT_SID=
+PRIVATE_TWILIO_AUTH_TOKEN=
+PRIVATE_TWILIO_PHONE_NUMBER=whatsapp:+50360581739
+PRIVATE_OPENAI_API_KEY=
 ```
 
 `NEXT_PUBLIC_SITE_URL` is used for canonical URLs, sitemap entries, and social
 image URLs. Use the production origin in deployed environments.
 
-The server-side Supabase variables power strategy-call capture, Supabase Auth,
-and the internal WhatsApp inbox at `/admin/inbox`. Keep
-`SUPABASE_SERVICE_ROLE_KEY`, n8n keys, Twilio credentials, and OpenAI keys
-server-only; do not expose them with `NEXT_PUBLIC_`.
+Every other runtime variable is server-only and intentionally uses the
+`PRIVATE_` prefix. Do not create `NEXT_PUBLIC_SUPABASE_*`, `NEXT_PUBLIC_N8N_*`,
+or any other public secret variables in Vercel.
 
 Supabase Auth should be configured with:
 
@@ -94,11 +90,11 @@ Supabase Auth should be configured with:
 - Custom SMTP enabled through the Zoho Mail account so auth emails do not rely
   on Supabase's default SMTP limits.
 
-The strategy-call endpoint uses `N8N_STRATEGY_CALL_WEBHOOK_URL` when provided.
-If that dedicated workflow URL is not configured, it sends the notification
-directly through the Zoho SMTP variables. The n8n WhatsApp workflows should use
-the Iter Supabase project and Zoho-backed email delivery for inbound WhatsApp
-notifications.
+The strategy-call endpoint uses `PRIVATE_N8N_STRATEGY_CALL_WEBHOOK_URL` when
+provided. If that dedicated workflow URL is not configured, it sends the
+notification directly through the private Zoho SMTP variables. The n8n WhatsApp
+workflows should use the Iter Supabase project and Zoho-backed email delivery
+for inbound WhatsApp notifications.
 
 ## Scripts
 

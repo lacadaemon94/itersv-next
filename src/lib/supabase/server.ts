@@ -3,14 +3,11 @@ import { createClient as createSupabaseClient } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
 
 function getSupabaseUrl() {
-  return process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
+  return process.env.PRIVATE_SUPABASE_URL;
 }
 
 function getSupabaseAnonKey() {
-  return (
-    process.env.SUPABASE_ANON_KEY ||
-    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
-  );
+  return process.env.PRIVATE_SUPABASE_ANON_KEY;
 }
 
 export async function createClient() {
@@ -20,7 +17,7 @@ export async function createClient() {
 
   if (!url || !publishableKey) {
     throw new Error(
-      "Missing SUPABASE_URL/NEXT_PUBLIC_SUPABASE_URL or SUPABASE_ANON_KEY/NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY.",
+      "Missing PRIVATE_SUPABASE_URL or PRIVATE_SUPABASE_ANON_KEY.",
     );
   }
 
@@ -44,10 +41,11 @@ export async function createClient() {
 
 export function createServiceClient() {
   const url = getSupabaseUrl();
-  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const serviceRoleKey =
+    process.env.PRIVATE_SUPABASE_SERVICE_ROLE_KEY;
 
   if (!url || !serviceRoleKey) {
-    throw new Error("Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY.");
+    throw new Error("Missing PRIVATE_SUPABASE_URL or PRIVATE_SUPABASE_SERVICE_ROLE_KEY.");
   }
 
   return createSupabaseClient(url, serviceRoleKey, {

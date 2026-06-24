@@ -64,7 +64,8 @@ export async function POST(request: NextRequest) {
   };
   const n8nWebhookUrl = getStrategyCallWebhookUrl();
   const notification =
-    n8nWebhookUrl && n8nWebhookUrl !== process.env.N8N_WEBHOOK_URL
+    n8nWebhookUrl &&
+    n8nWebhookUrl !== process.env.PRIVATE_N8N_WEBHOOK_URL
       ? await postToN8n(n8nWebhookUrl, notificationPayload)
       : await sendStrategyCallEmail({
           id: requestRow.id,
