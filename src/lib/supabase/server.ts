@@ -10,10 +10,37 @@ function getSupabaseAnonKey() {
   return process.env.PRIVATE_SUPABASE_ANON_KEY;
 }
 
+function getAuthCookieDomain() {
+  if (process.env.PRIVATE_AUTH_COOKIE_DOMAIN) {
+    return process.env.PRIVATE_AUTH_COOKIE_DOMAIN;
+  }
+
+  const configuredUrls = [
+    process.env.NEXT_PUBLIC_SITE_URL,
+    process.env.VERCEL_PROJECT_PRODUCTION_URL,
+    process.env.VERCEL_URL,
+  ].filter(Boolean);
+
+  const usesIterDomain = configuredUrls.some((value) => {
+    try {
+      const url = value?.startsWith("http")
+        ? new URL(value)
+        : new URL(`https://${value}`);
+
+      return url.hostname === "itersv.com" || url.hostname === "www.itersv.com";
+    } catch {
+      return false;
+    }
+  });
+
+  return usesIterDomain ? ".itersv.com" : undefined;
+}
+
 export async function createClient() {
   const cookieStore = await cookies();
   const url = getSupabaseUrl();
   const publishableKey = getSupabaseAnonKey();
+  const authCookieDomain = getAuthCookieDomain();
 
   if (!url || !publishableKey) {
     throw new Error(
@@ -22,6 +49,7 @@ export async function createClient() {
   }
 
   return createServerClient(url, publishableKey, {
+    cookieOptions: authCookieDomain ? { domain: authCookieDomain } : undefined,
     cookies: {
       getAll() {
         return cookieStore.getAll();

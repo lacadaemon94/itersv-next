@@ -55,6 +55,7 @@ PRIVATE_SUPABASE_URL=
 PRIVATE_SUPABASE_ANON_KEY=
 PRIVATE_SUPABASE_SERVICE_ROLE_KEY=
 PRIVATE_ADMIN_EMAILS=javier.flores@itersv.com
+PRIVATE_AUTH_COOKIE_DOMAIN=
 PRIVATE_N8N_BASE_URL=
 PRIVATE_N8N_API_KEY=
 PRIVATE_N8N_WEBHOOK_URL=
@@ -76,7 +77,11 @@ PRIVATE_OPENAI_API_KEY=
 ```
 
 `NEXT_PUBLIC_SITE_URL` is used for canonical URLs, sitemap entries, and social
-image URLs. Use the production origin in deployed environments.
+image URLs. Use the production origin in deployed environments. For production
+auth, keep the browser, magic-link redirect, and Supabase Site URL on the
+canonical `https://www.itersv.com` origin. In production,
+`PRIVATE_AUTH_COOKIE_DOMAIN` can be set to `.itersv.com` so PKCE cookies survive
+apex-to-www redirects.
 
 Every other runtime variable is server-only and intentionally uses the
 `PRIVATE_` prefix. Do not create `NEXT_PUBLIC_SUPABASE_*`, `NEXT_PUBLIC_N8N_*`,
@@ -85,8 +90,11 @@ or any other public secret variables in Vercel.
 Supabase Auth should be configured with:
 
 - Magic-link email login enabled.
-- Site URL set to the production Iter URL.
-- Redirect URLs for local and production `/auth/callback`.
+- Site URL set to `https://www.itersv.com`.
+- Redirect URLs for:
+  - `https://www.itersv.com/auth/callback`
+  - `https://itersv.com/auth/callback`
+  - `http://localhost:3000/auth/callback`
 - Custom SMTP enabled through the Zoho Mail account so auth emails do not rely
   on Supabase's default SMTP limits.
 

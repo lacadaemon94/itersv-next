@@ -18,6 +18,11 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
   const next = params.next || "/admin/inbox";
   const sent = params.sent === "1";
   const error = params.error;
+  const normalizedError = error?.toLowerCase() || "";
+  const isExpiredLinkError =
+    normalizedError.includes("expired") ||
+    normalizedError.includes("invalid") ||
+    error === "exchange_failed";
 
   return (
     <main className="min-h-screen bg-[var(--bg)] px-5 py-20 text-[var(--text)]">
@@ -45,7 +50,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
               ? "That email is not allowed for this admin area."
               : error === "missing_code"
                 ? "The login link did not include an auth code. Request a fresh link."
-                : error === "exchange_failed"
+                : isExpiredLinkError
                   ? "That login link is expired or was already used. Request a fresh link."
                   : "The login link could not be completed. Request a fresh link."}
           </div>

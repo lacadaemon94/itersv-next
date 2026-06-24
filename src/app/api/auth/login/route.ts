@@ -4,13 +4,30 @@ import { isAllowedAdminEmail, normalizeEmail } from "@/lib/admin-auth";
 import { createClient } from "@/lib/supabase/server";
 
 function getRedirectOrigin(request: NextRequest) {
-  const configured = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "");
+  const forwardedHost = request.headers
+    .get("x-forwarded-host")
+    ?.split(",")[0]
+    ?.trim();
+  const host = forwardedHost || request.headers.get("host");
 
-  if (configured && configured !== "http://localhost:3000") {
-    return configured;
+  if (host) {
+    const hostname = host.split(":")[0].toLowerCase();
+
+    if (hostname === "itersv.com" || hostname === "www.itersv.com") {
+      return "https://www.itersv.com";
+    }
+
+    const forwardedProto = request.headers
+      .get("x-forwarded-proto")
+      ?.split(",")[0]
+      ?.trim();
+    const protocol =
+      forwardedProto || request.nextUrl.protocol.replace(/:$/, "") || "https";
+
+    return `${protocol}://${host}`.replace(/\/$/, "");
   }
 
-  return request.nextUrl.origin;
+  return request.nextUrl.origin.replace(/\/$/, "");
 }
 
 export async function POST(request: NextRequest) {
