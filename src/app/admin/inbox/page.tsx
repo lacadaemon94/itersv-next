@@ -32,7 +32,7 @@ export default async function InboxPage({ searchParams }: InboxPageProps) {
       next,
     });
 
-    redirect(`/auth/callback?${callbackPath.toString()}`);
+    redirect(`/api/auth/callback?${callbackPath.toString()}`);
   }
 
   if (params.error || params.error_code || params.error_description) {

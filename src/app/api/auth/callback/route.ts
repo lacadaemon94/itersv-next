@@ -12,6 +12,7 @@ export async function GET(request: NextRequest) {
 
   if (!code) {
     loginUrl.searchParams.set("error", "missing_code");
+    loginUrl.searchParams.set("next", next);
     return NextResponse.redirect(loginUrl);
   }
 
@@ -19,6 +20,7 @@ export async function GET(request: NextRequest) {
 
   if (error) {
     loginUrl.searchParams.set("error", "exchange_failed");
+    loginUrl.searchParams.set("next", next);
     return NextResponse.redirect(loginUrl);
   }
 
