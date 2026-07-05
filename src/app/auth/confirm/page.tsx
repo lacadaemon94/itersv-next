@@ -5,6 +5,14 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Confirm Iter Admin Login",
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: {
+      index: false,
+      follow: false,
+    },
+  },
 };
 
 type ConfirmPageProps = {

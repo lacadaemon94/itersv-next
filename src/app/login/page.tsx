@@ -3,6 +3,14 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Iter Admin Login",
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: {
+      index: false,
+      follow: false,
+    },
+  },
 };
 
 type LoginPageProps = {

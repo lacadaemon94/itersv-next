@@ -361,9 +361,9 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
               <motion.div className="absolute bottom-10 left-10 right-80 max-[920px]:bottom-6 max-[920px]:left-6 max-[920px]:right-6 max-[680px]:bottom-[22px] max-[680px]:left-[18px] max-[680px]:right-[18px]"
                 variants={caseCoverContentVariants}
               >
-                <div className="text-balance iter-display text-[clamp(32px,10vw,64px)] font-bold leading-[0.98] tracking-[-0.03em] text-white/95 max-[680px]:text-center">
+                <h1 className="m-0 text-balance iter-display text-[clamp(32px,10vw,64px)] font-bold leading-[0.98] tracking-[-0.03em] text-white/95 max-[680px]:text-center">
                   {study.title}
-                </div>
+                </h1>
               </motion.div>
             </motion.div>
           </div>

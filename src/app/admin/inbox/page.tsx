@@ -8,6 +8,14 @@ import { InboxClient } from "./inbox-client";
 
 export const metadata: Metadata = {
   title: "Iter WhatsApp Inbox",
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: {
+      index: false,
+      follow: false,
+    },
+  },
 };
 
 type InboxPageProps = {

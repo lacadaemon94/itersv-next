@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
 
 import { CaseStudyPage } from "@/components/case-study-page";
+import { JsonLd } from "@/components/json-ld";
 import { SitePreferencesProvider } from "@/components/site-preferences";
 import { getCaseStudyPath } from "@/lib/i18n";
 import {
@@ -9,6 +10,7 @@ import {
   resolveCaseStudySlug,
 } from "@/lib/site-data";
 import { buildCaseStudyMetadata } from "@/lib/seo";
+import { buildCaseStudyJsonLd } from "@/lib/structured-data";
 
 type SpanishCaseStudyRouteProps = {
   params: Promise<{ slug: string }>;
@@ -49,6 +51,7 @@ export default async function SpanishCaseStudyRoute({
 
   return (
     <SitePreferencesProvider initialLocale="es">
+      <JsonLd data={buildCaseStudyJsonLd(resolvedSlug, "es")} />
       <CaseStudyPage slug={resolvedSlug} />
     </SitePreferencesProvider>
   );
