@@ -8,6 +8,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 import { AppIcon } from "@/components/app-icon";
+import { StrategyCallSubmitStatus } from "@/components/strategy-call-submit-status";
 import type { Locale } from "@/lib/site-data";
 
 type StrategyCallCopy = {
@@ -31,6 +32,20 @@ type StrategyCallModalProps = {
 };
 
 const modalEase = [0.22, 1, 0.36, 1] as const;
+const submitStatusCopy = {
+  en: {
+    loadingDetail: "Saving the request and notifying Iter now.",
+    loadingTitle: "Routing request",
+    successDetail: "Your request was received and Iter has been notified.",
+    successTitle: "Request sent",
+  },
+  es: {
+    loadingDetail: "Guardando la solicitud y notificando a Iter.",
+    loadingTitle: "Enviando solicitud",
+    successDetail: "Recibimos tu solicitud e Iter ya fue notificado.",
+    successTitle: "Solicitud enviada",
+  },
+} satisfies Record<Locale, Record<string, string>>;
 
 export function StrategyCallModal({
   copy,
@@ -47,6 +62,7 @@ export function StrategyCallModal({
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const canSubmit = Boolean(name.trim() && email.trim() && message.trim());
+  const submitCopy = submitStatusCopy[locale];
 
   const submitStrategyCall = async () => {
     if (!canSubmit || submitting) {
@@ -262,6 +278,7 @@ export function StrategyCallModal({
                   <input
                     value={name}
                     onChange={(event) => setName(event.target.value)}
+                    disabled={submitting}
                     className="rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-[14px] py-3 text-[15px] text-[var(--text)]"
                     placeholder="Jane Doe"
                   />
@@ -275,6 +292,7 @@ export function StrategyCallModal({
                     <input
                       value={email}
                       onChange={(event) => setEmail(event.target.value)}
+                      disabled={submitting}
                       className="rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-[14px] py-3 text-[15px] text-[var(--text)]"
                       placeholder="jane@company.com"
                     />
@@ -286,6 +304,7 @@ export function StrategyCallModal({
                     <input
                       value={company}
                       onChange={(event) => setCompany(event.target.value)}
+                      disabled={submitting}
                       className="rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-[14px] py-3 text-[15px] text-[var(--text)]"
                       placeholder="Acme Inc."
                     />
@@ -299,6 +318,7 @@ export function StrategyCallModal({
                   <textarea
                     value={message}
                     onChange={(event) => setMessage(event.target.value)}
+                    disabled={submitting}
                     rows={4}
                     className="resize-y rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-[14px] py-3 text-[15px] leading-[1.5] text-[var(--text)]"
                     placeholder={copy.messagePlaceholder}
@@ -313,6 +333,7 @@ export function StrategyCallModal({
                     type="button"
                     disabled={!canSubmit || submitting}
                     onClick={submitStrategyCall}
+                    aria-busy={submitting}
                     className={`mt-1 inline-flex w-full items-center justify-center gap-2.5 rounded-xl px-[22px] py-[14px] text-[15px] font-semibold tracking-[-0.01em] ${
                       canSubmit && !submitting
                         ? "bg-[var(--accent)] shadow-[0_0_0_1px_var(--accent),0_12px_28px_-10px_var(--accent-glow)]"
@@ -320,8 +341,24 @@ export function StrategyCallModal({
                     }`}
                     style={canSubmit && !submitting ? { color: "var(--accent-ink)" } : undefined}
                   >
-                    <span>{submitting ? "Sending..." : copy.send}</span>
-                    {canSubmit && !submitting ? (
+                    <span>{submitting ? submitCopy.loadingTitle : copy.send}</span>
+                    {submitting ? (
+                      <span className="flex items-center gap-1">
+                        {[0, 0.12, 0.24].map((delay) => (
+                          <motion.span
+                            key={delay}
+                            className="size-1.5 rounded-full bg-current"
+                            animate={prefersReducedMotion ? undefined : { opacity: [0.45, 1, 0.45], y: [0, -3, 0] }}
+                            transition={{
+                              delay,
+                              duration: 0.52,
+                              repeat: Number.POSITIVE_INFINITY,
+                              ease: "easeInOut",
+                            }}
+                          />
+                        ))}
+                      </span>
+                    ) : canSubmit ? (
                       <motion.span
                         initial={false}
                         animate={prefersReducedMotion ? undefined : { x: [0, 2, 0] }}
@@ -333,11 +370,25 @@ export function StrategyCallModal({
                   </button>
                 </motion.div>
 
-                {status === "success" ? (
-                  <div className="rounded-[10px] border border-[var(--accent)] bg-[var(--accent-soft)] px-3 py-2 text-center text-sm text-[var(--text)]">
-                    Thanks. Your request was received and Javier has been notified.
-                  </div>
-                ) : null}
+                <AnimatePresence mode="wait">
+                  {submitting ? (
+                    <StrategyCallSubmitStatus
+                      key="loading"
+                      detail={submitCopy.loadingDetail}
+                      prefersReducedMotion={prefersReducedMotion}
+                      state="loading"
+                      title={submitCopy.loadingTitle}
+                    />
+                  ) : status === "success" ? (
+                    <StrategyCallSubmitStatus
+                      key="success"
+                      detail={submitCopy.successDetail}
+                      prefersReducedMotion={prefersReducedMotion}
+                      state="success"
+                      title={submitCopy.successTitle}
+                    />
+                  ) : null}
+                </AnimatePresence>
 
                 {status === "error" ? (
                   <div className="rounded-[10px] border border-red-400/40 bg-red-500/10 px-3 py-2 text-center text-sm text-red-100">

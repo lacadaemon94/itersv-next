@@ -8,17 +8,19 @@ export default function NotFoundPage() {
           404
         </div>
         <h1 className="iter-section-title mt-4 text-4xl font-bold tracking-[-0.04em]">
-          That route is not part of the revamp.
+          We could not find that page.
         </h1>
         <p className="mt-4 leading-7 text-[var(--text-dim)]">
-          The new site currently exposes the landing page and case studies while
-          the rest of the rebuild continues inside `itersv_revamp`.
+          The link may be old, mistyped, or pointing to a page that moved.
+          Head back home to explore Iter&apos;s automation services and sample
+          workflows.
         </p>
         <Link
           href="/"
-          className="iter-accent-ring mt-6 inline-flex rounded-2xl bg-[var(--accent)] px-5 py-3 text-sm font-semibold text-[var(--accent-ink)]"
+          className="iter-accent-ring mt-6 inline-flex rounded-2xl bg-[var(--accent)] px-5 py-3 text-sm font-semibold"
+          style={{ color: "var(--accent-ink)" }}
         >
-          Back to landing page
+          Go back home
         </Link>
       </div>
     </main>
