@@ -22,7 +22,7 @@ import { useState } from "react";
 import { AppIcon } from "@/components/app-icon";
 import { useSitePreferences } from "@/components/site-preferences";
 import { StrategyCallModal } from "@/components/strategy-call-modal";
-import { getCaseStudyPath, getHomePath } from "@/lib/i18n";
+import { getCaseStudyPath, getHomePath, localizePath } from "@/lib/i18n";
 import {
   caseStudyContent,
   caseStudySlugs,
@@ -742,7 +742,10 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
               </Link>
             ))}
           </div>
-          <div>Clear scope . Source ownership</div>
+          <nav aria-label={locale === "es" ? "Privacidad y datos" : "Privacy and data"} className="flex flex-wrap gap-4 underline underline-offset-4">
+            <Link href={localizePath("/privacy", locale)}>{locale === "es" ? "Privacidad" : "Privacy"}</Link>
+            <Link href={localizePath("/data-deletion", locale)}>{locale === "es" ? "Eliminación de datos" : "Data deletion"}</Link>
+          </nav>
         </div>
       </footer>
     </div>
