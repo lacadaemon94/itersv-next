@@ -15,5 +15,7 @@ export async function GET(request: NextRequest) {
   }
 
   const data = await loadInboxData(request.nextUrl.searchParams.get("conversation"));
-  return NextResponse.json(data);
+  return NextResponse.json(data, {
+    headers: { "Cache-Control": "private, no-store" },
+  });
 }

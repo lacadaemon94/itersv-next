@@ -90,7 +90,7 @@ export async function loadInboxData(conversationId?: string | null): Promise<Inb
           "id, conversation_id, direction, sender_type, twilio_message_sid, from_address, to_address, body, delivery_status, error_message, created_at",
         )
         .eq("conversation_id", selectedConversation.id)
-        .order("created_at", { ascending: true })
+        .order("created_at", { ascending: false })
         .limit(100),
       supabase
         .from("ai_message_summaries")
@@ -113,7 +113,7 @@ export async function loadInboxData(conversationId?: string | null): Promise<Inb
   return {
     conversations: normalizedConversations,
     selectedConversation,
-    messages: (messages || []) as InboxMessage[],
+    messages: [...(messages || [])].reverse() as InboxMessage[],
     latestSummary: ((summaries || [])[0] as InboxSummary | undefined) || null,
   };
 }

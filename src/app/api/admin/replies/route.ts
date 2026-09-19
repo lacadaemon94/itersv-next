@@ -3,8 +3,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { isAllowedAdminEmail } from "@/lib/admin-auth";
 import { getOutboundWhatsAppWebhookUrl, postToN8n } from "@/lib/n8n";
 import { createClient, createServiceClient } from "@/lib/supabase/server";
-
-const serviceWindowMs = 24 * 60 * 60 * 1000;
+import { hasOpenWhatsAppWindow } from "@/lib/whatsapp-window";
 
 export async function POST(request: NextRequest) {
   const supabase = await createClient();
@@ -40,7 +39,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Conversation not found." }, { status: 404 });
   }
 
-  const { data: latestInbound } = await admin
+  const { data: latestInbound, error: inboundError } = await admin
     .from("whatsapp_messages")
     .select("created_at")
     .eq("conversation_id", conversationId)
@@ -50,13 +49,12 @@ export async function POST(request: NextRequest) {
     .maybeSingle();
 
   if (
-    latestInbound?.created_at &&
-    Date.now() - new Date(latestInbound.created_at).getTime() > serviceWindowMs
+    inboundError || !hasOpenWhatsAppWindow(latestInbound?.created_at)
   ) {
     return NextResponse.json(
       {
         error:
-          "This conversation is outside WhatsApp's 24-hour free-form reply window. Use an approved template before sending.",
+          "Cannot confirm an inbound message within WhatsApp's 24-hour reply window. Refresh the conversation or use an approved template.",
       },
       { status: 409 },
     );

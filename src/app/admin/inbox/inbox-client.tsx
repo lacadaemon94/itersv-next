@@ -1,8 +1,9 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import type { InboxData } from "@/lib/admin-inbox";
+import { startInboxRefresh } from "@/lib/inbox-refresh";
 
 function formatDate(value: string) {
   return new Intl.DateTimeFormat("en", {
@@ -11,44 +12,93 @@ function formatDate(value: string) {
   }).format(new Date(value));
 }
 
-export function InboxClient({ data }: { data: InboxData }) {
+export function InboxClient({ data: initialData }: { data: InboxData }) {
+  const [data, setData] = useState(initialData);
   const [reply, setReply] = useState(data.latestSummary?.suggested_reply || "");
   const [status, setStatus] = useState<string | null>(null);
+  const [refreshError, setRefreshError] = useState(false);
+  const [sending, setSending] = useState(false);
+  const sendingRef = useRef(false);
+  const [refreshVersion, setRefreshVersion] = useState(0);
   const selected = data.selectedConversation;
+  const selectedId = selected?.id;
   const contact = selected?.whatsapp_contacts;
   const latestInbound = useMemo(
     () => [...data.messages].reverse().find((message) => message.direction === "inbound"),
     [data.messages],
   );
 
+  useEffect(() => {
+    const poller = startInboxRefresh<InboxData>({
+      isVisible: () => document.visibilityState === "visible",
+      load: async (signal) => {
+        const query = selectedId ? `?conversation=${encodeURIComponent(selectedId)}` : "";
+        const response = await fetch(`/api/admin/inbox${query}`, {
+          signal,
+          cache: "no-store",
+        });
+        if (!response.ok) throw new Error("Inbox refresh failed");
+        const next: InboxData = await response.json();
+        if (selectedId && next.selectedConversation?.id !== selectedId) {
+          throw new Error("Selected conversation is no longer available");
+        }
+        return next;
+      },
+      onData: (next) => {
+        setData(next);
+        setRefreshError(false);
+      },
+      onError: () => setRefreshError(true),
+    });
+    const resume = () => void poller.refresh();
+    document.addEventListener("visibilitychange", resume);
+    window.addEventListener("focus", resume);
+    window.addEventListener("online", resume);
+    return () => {
+      poller.stop();
+      document.removeEventListener("visibilitychange", resume);
+      window.removeEventListener("focus", resume);
+      window.removeEventListener("online", resume);
+    };
+  }, [selectedId, refreshVersion]);
+
   async function sendReply(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    if (!selected || !reply.trim()) {
+    if (!selected || !reply.trim() || sendingRef.current) {
       return;
     }
 
+    sendingRef.current = true;
+    setSending(true);
     setStatus("Sending...");
-    const response = await fetch("/api/admin/replies", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({
-        conversation_id: selected.id,
-        body: reply,
-      }),
-    });
-    const payload = await response.json().catch(() => ({}));
+    try {
+      const response = await fetch("/api/admin/replies", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          conversation_id: selected.id,
+          body: reply,
+        }),
+      });
+      const payload = await response.json().catch(() => ({}));
 
-    if (!response.ok) {
-      setStatus(payload.error || "Reply failed.");
-      return;
+      if (!response.ok) {
+        setStatus(payload.error || "Reply failed. Check the conversation before retrying.");
+        return;
+      }
+
+      setReply("");
+      setStatus("Reply accepted by Twilio. Delivery status updates automatically.");
+    } catch {
+      setStatus("Could not confirm the send. Check the conversation before retrying to avoid sending twice.");
+    } finally {
+      sendingRef.current = false;
+      setSending(false);
+      setRefreshVersion((version) => version + 1);
     }
-
-    setReply("");
-    setStatus("Reply sent and queued in Twilio.");
-    window.location.reload();
   }
 
   return (
@@ -62,6 +112,11 @@ export function InboxClient({ data }: { data: InboxData }) {
             <h1 className="iter-display text-2xl font-bold">
               WhatsApp Inbox
             </h1>
+            <p role="status" className="mt-1 text-xs text-[var(--text-dim)]">
+              {refreshError
+                ? "Updates interrupted. Retrying; reload to sign in again if needed."
+                : "Updates automatically every 5 seconds while this tab is visible."}
+            </p>
           </div>
           <form action="/api/auth/logout" method="post">
             <button className="rounded-[8px] border border-[var(--border)] px-3 py-2 text-sm text-[var(--text-dim)] hover:text-[var(--text)]">
@@ -163,6 +218,7 @@ export function InboxClient({ data }: { data: InboxData }) {
                     Reply
                   </label>
                   <textarea
+                    disabled={sending}
                     value={reply}
                     onChange={(event) => setReply(event.target.value)}
                     rows={4}
@@ -177,14 +233,14 @@ export function InboxClient({ data }: { data: InboxData }) {
                     </p>
                     <button
                       type="submit"
-                      disabled={!reply.trim()}
+                      disabled={sending || !reply.trim()}
                       className="rounded-[8px] bg-[var(--accent)] px-4 py-2 text-sm font-semibold text-[var(--accent-ink)] disabled:opacity-45"
                     >
                       Send via WhatsApp
                     </button>
                   </div>
                   {status ? (
-                    <p className="mt-3 text-sm text-[var(--text-dim)]">{status}</p>
+                    <p role="status" className="mt-3 text-sm text-[var(--text-dim)]">{status}</p>
                   ) : null}
                 </form>
               </div>
