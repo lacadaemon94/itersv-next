@@ -1,6 +1,6 @@
 import type { Locale } from "@/lib/site-data";
 
-export type LegalPageKind = "privacy" | "data-deletion";
+export type LegalPageKind = "privacy" | "data-deletion" | "terms";
 type LegalDocument = {
   title: string;
   intro: string;
@@ -9,6 +9,42 @@ type LegalDocument = {
 
 export const legalContent: Record<Locale, Record<LegalPageKind, LegalDocument>> = {
   en: {
+    terms: {
+      title: "Terms of service",
+      intro: "These terms describe use of the Iter website and Iter business integrations, including the Iter Meta app. Please read them before using the services.",
+      sections: [
+        { title: "Operator and scope", paragraphs: [
+          "The service is operated by Javier Alejandro Flores, operating as Iter / Itersv in El Salvador. Contact: hola@itersv.com.",
+          "These terms apply to the website and integrations made available by Iter. A separate written project agreement may define the services, deliverables, fees, support, and other terms for a particular engagement. Connecting an account does not by itself create a paid subscription."
+        ] },
+        { title: "Authorized business access", paragraphs: [
+          "Only connect accounts and business assets that you own or are authorized to manage. If you act for a business, you must have authority to use the service on its behalf and give instructions for its data and content.",
+          "Keep credentials private and tell us if access may have been compromised. Do not use the service to bypass permissions, access another person’s information without authority, send spam, mislead people, or violate applicable law or platform rules."
+        ] },
+        { title: "Instructions and review", paragraphs: [
+          "Integrations perform the functions enabled for your project and authorized accounts. Review the destination, audience, content, and intended action before approving publication, messaging, deletion, or other changes.",
+          "AI-generated classifications, suggested replies, and reconciliation reports can contain errors or omit information. A responsible person must review them before relying on them for customer commitments or business records. API results may not include all historical activity.",
+          "The RopaChiva pilot prepares evidence for human review and does not automatically change inventory or accounting. Its Ads access is read-only."
+        ] },
+        { title: "Content and rights", paragraphs: [
+          "You retain your rights in content you provide. You must have the rights and permissions needed for Iter to process it and carry out your authorized instructions.",
+          "You permit Iter and the providers involved in the requested workflow to process that content only as needed to deliver the service, subject to the applicable project agreement and privacy notice. These terms do not transfer ownership of your content to Iter."
+        ] },
+        { title: "Third-party services and availability", paragraphs: [
+          "Connected services, including Meta, apply their own terms, permissions, and technical limits. Access can change or expire, and features may be unavailable because of platform restrictions, outages, or review decisions.",
+          "Iter does not guarantee platform approval, access to unavailable history, uninterrupted service, or a particular business outcome. Project-specific service commitments, if any, are set out in the applicable written agreement."
+        ] },
+        { title: "Privacy and ending access", paragraphs: [
+          "Our privacy policy explains processing and retention. Our data-deletion page explains how to request removal of information held by Iter. Both are linked below, and requests can be sent to hola@itersv.com without creating an account.",
+          "You can revoke an integration’s access in the connected platform or ask Iter to disconnect it. Revoking access does not automatically delete copies already held by Iter or remove content from the original platform.",
+          "Iter may restrict or suspend an integration when needed to address compromised access, misuse, or a platform requirement. Contact us to discuss restoring authorized access."
+        ] },
+        { title: "Changes and questions", paragraphs: [
+          "Updates to these terms will be published here with the updated date. Material changes affecting an ongoing project will be addressed with the client before they apply to that project.",
+          "Nothing in these terms limits rights or obligations that cannot be excluded under applicable law. For questions, contact Javier Alejandro Flores at hola@itersv.com."
+        ] }
+      ]
+    },
     privacy: {
       title: "Privacy policy",
       intro: "This notice covers itersv.com and the Iter Meta app, including services provided to authorized business clients such as RopaChiva.",
@@ -68,6 +104,42 @@ export const legalContent: Record<Locale, Record<LegalPageKind, LegalDocument>> 
     }
   },
   es: {
+    terms: {
+      title: "Términos del servicio",
+      intro: "Estos términos describen el uso del sitio de Iter y sus integraciones para negocios, incluida la app Iter de Meta. Léelos antes de utilizar los servicios.",
+      sections: [
+        { title: "Operador y alcance", paragraphs: [
+          "El servicio es operado por Javier Alejandro Flores, quien opera como Iter / Itersv en El Salvador. Contacto: hola@itersv.com.",
+          "Estos términos se aplican al sitio y las integraciones ofrecidas por Iter. Un acuerdo de proyecto por escrito puede definir servicios, entregables, precios, soporte y otras condiciones de una contratación específica. Conectar una cuenta no crea por sí solo una suscripción de pago."
+        ] },
+        { title: "Acceso autorizado", paragraphs: [
+          "Conecta únicamente cuentas y activos que te pertenezcan o que tengas autorización para administrar. Si actúas por un negocio, debes tener autoridad para usar el servicio en su nombre y dar instrucciones sobre sus datos y contenido.",
+          "Protege tus credenciales y avísanos si el acceso puede estar comprometido. No uses el servicio para evadir permisos, acceder sin autorización a información ajena, enviar spam, engañar a personas ni incumplir la ley o las reglas de las plataformas."
+        ] },
+        { title: "Instrucciones y revisión", paragraphs: [
+          "Las integraciones realizan las funciones habilitadas para tu proyecto y cuentas autorizadas. Revisa el destino, la audiencia, el contenido y la acción prevista antes de aprobar publicaciones, mensajes, eliminaciones u otros cambios.",
+          "Las clasificaciones, respuestas sugeridas e informes generados con IA pueden tener errores u omisiones. Una persona responsable debe revisarlos antes de usarlos para compromisos con clientes o registros del negocio. Los resultados de las API pueden no incluir toda la actividad histórica.",
+          "El piloto de RopaChiva prepara evidencia para revisión humana y no modifica automáticamente inventario ni contabilidad. Su acceso a anuncios es solo de lectura."
+        ] },
+        { title: "Contenido y derechos", paragraphs: [
+          "Conservas tus derechos sobre el contenido que proporcionas. Debes contar con los derechos y permisos necesarios para que Iter lo procese y ejecute tus instrucciones autorizadas.",
+          "Permites que Iter y los proveedores del flujo solicitado procesen ese contenido únicamente en la medida necesaria para prestar el servicio, sujeto al acuerdo de proyecto y al aviso de privacidad aplicables. Estos términos no transfieren a Iter la propiedad de tu contenido."
+        ] },
+        { title: "Servicios externos y disponibilidad", paragraphs: [
+          "Los servicios conectados, incluido Meta, aplican sus propios términos, permisos y límites técnicos. El acceso puede cambiar o vencer, y algunas funciones pueden no estar disponibles por restricciones, interrupciones o decisiones de revisión de las plataformas.",
+          "Iter no garantiza aprobaciones de las plataformas, acceso a historial no disponible, servicio ininterrumpido ni un resultado comercial específico. Los compromisos de servicio de cada proyecto, si existen, se establecen en el acuerdo por escrito correspondiente."
+        ] },
+        { title: "Privacidad y finalización del acceso", paragraphs: [
+          "Nuestra política de privacidad explica el procesamiento y la conservación. La página de eliminación de datos explica cómo solicitar que se retire información conservada por Iter. Ambas están enlazadas abajo; puedes enviar solicitudes a hola@itersv.com sin crear una cuenta.",
+          "Puedes revocar el acceso de una integración en la plataforma conectada o pedir a Iter que la desconecte. Revocar el acceso no elimina automáticamente las copias conservadas por Iter ni el contenido de la plataforma original.",
+          "Iter puede restringir o suspender una integración para atender accesos comprometidos, usos indebidos o requisitos de una plataforma. Contáctanos para conversar sobre la restauración del acceso autorizado."
+        ] },
+        { title: "Cambios y consultas", paragraphs: [
+          "Las actualizaciones se publicarán aquí con su fecha. Los cambios importantes que afecten un proyecto en curso se tratarán con el cliente antes de aplicarse a ese proyecto.",
+          "Nada en estos términos limita derechos u obligaciones que no puedan excluirse conforme a la ley aplicable. Para consultas, contacta a Javier Alejandro Flores en hola@itersv.com."
+        ] }
+      ]
+    },
     privacy: {
       title: "Política de privacidad",
       intro: "Este aviso cubre itersv.com y la app Iter de Meta, incluidos los servicios para negocios autorizados como RopaChiva.",

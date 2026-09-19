@@ -743,6 +743,7 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
             ))}
           </div>
           <nav aria-label={locale === "es" ? "Privacidad y datos" : "Privacy and data"} className="flex flex-wrap gap-4 underline underline-offset-4">
+            <Link href={localizePath("/terms", locale)}>{locale === "es" ? "Términos" : "Terms"}</Link>
             <Link href={localizePath("/privacy", locale)}>{locale === "es" ? "Privacidad" : "Privacy"}</Link>
             <Link href={localizePath("/data-deletion", locale)}>{locale === "es" ? "Eliminación de datos" : "Data deletion"}</Link>
           </nav>

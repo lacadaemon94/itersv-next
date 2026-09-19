@@ -427,6 +427,7 @@ export const landingContent: Record<Locale, LandingContent> = {
           links: [
             { label: contactEmail, href: `mailto:${contactEmail}` },
             { label: "+503 6058-1739", href: contactPhoneHref },
+            { label: "Terms of service", href: "/terms" },
             { label: "Privacy policy", href: "/privacy" },
             { label: "Data deletion", href: "/data-deletion" },
           ],
@@ -655,6 +656,7 @@ export const landingContent: Record<Locale, LandingContent> = {
           links: [
             { label: contactEmail, href: `mailto:${contactEmail}` },
             { label: "+503 6058-1739", href: contactPhoneHref },
+            { label: "Términos del servicio", href: "/terms" },
             { label: "Política de privacidad", href: "/privacy" },
             { label: "Eliminación de datos", href: "/data-deletion" },
           ],

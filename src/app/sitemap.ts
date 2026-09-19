@@ -24,7 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   );
 
   const legalRoutes = locales.flatMap((locale) =>
-    ["/privacy", "/data-deletion"].map((path) => ({
+    ["/privacy", "/data-deletion", "/terms"].map((path) => ({
       url: absoluteUrl(localizePath(path, locale)),
       lastModified: new Date("2026-09-19T00:00:00Z"),
       changeFrequency: "yearly" as const,

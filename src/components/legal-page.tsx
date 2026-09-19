@@ -52,6 +52,7 @@ export function LegalPage({ kind, locale }: { kind: LegalPageKind; locale: Local
       <footer className="mt-14 border-t border-[var(--border)] pt-6">
         <nav aria-label={locale === "es" ? "Privacidad y datos" : "Privacy and data"} className="flex flex-wrap gap-6 text-sm underline underline-offset-4">
           <Link href={getHomePath(locale)}>{locale === "es" ? "Inicio" : "Home"}</Link>
+          <Link href={localizePath("/terms", locale)}>{legalContent[locale].terms.title}</Link>
           <Link href={localizePath("/privacy", locale)}>{legalContent[locale].privacy.title}</Link>
           <Link href={localizePath("/data-deletion", locale)}>{legalContent[locale]["data-deletion"].title}</Link>
         </nav>
